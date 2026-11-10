@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Медиатека | СКО</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- ===== ШАПКА (копия из index.html) ===== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="images/result/logo.webp" alt="Логотип СКО" class="logo-img" loading="lazy" />
+                    <div class="logo-text">
+                        <h1>СКО</h1>
+                        <p>Сочинское Краеведческое Общество</p>
+                    </div>
+                </div>
+                <button class="nav-toggle" aria-label="Открыть меню">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="index.html#top">Главная</a></li>
+                    <li><a href="index.html#about">О нас</a></li>
+                    <li><a href="index.html#expeditions">Экспедиции</a></li>
+                    <li><a href="index.html#safety">Безопасность</a></li>
+                    <li><a href="media.html" class="active">Галерея</a></li>
+                    <li><a href="index.html#contacts">Контакты</a></li>
+                    <li><a href="index.html#join" class="btn-join">Вступить</a></li>
+                    <li><a href="https://goosko.online" target="_blank" class="btn-login">Вход</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== ГАЛЕРЕЯ ===== -->
+    <section class="section" style="padding-top: 120px;">
+        <div class="container">
+            <h2 class="section-title">Фотогалерея СКО</h2>
+            <p class="section-subtitle">Мгновения наших экспедиций, архивные находки и атмосфера усадьбы</p>
+
+            <div class="gallery-grid">
+                <!-- Все фото из папки result, повторяем для наполнения -->
+                <div class="gallery-item lightbox-trigger" data-src="images/result/team.webp">
+                    <img src="images/result/team.webp" alt="Команда СКО" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/hero-bg1.webp">
+                    <img src="images/result/hero-bg1.webp" alt="Поход в горы" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/expedition2.webp">
+                    <img src="images/result/expedition2.webp" alt="Исследование рек" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/expedition3.webp">
+                    <img src="images/result/expedition3.webp" alt="Архивные материалы" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/meteo.webp">
+                    <img src="images/result/meteo.webp" alt="Метеостанция" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/logo.webp">
+                    <img src="images/result/logo.webp" alt="Логотип СКО" loading="lazy" />
+                </div>
+                <!-- Добавляем дубли с разными подписями для красоты -->
+                <div class="gallery-item lightbox-trigger" data-src="images/result/team.webp">
+                    <img src="images/result/team.webp" alt="Команда в походе" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/hero-bg1.webp">
+                    <img src="images/result/hero-bg1.webp" alt="Водопады Сочи" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/expedition2.webp">
+                    <img src="images/result/expedition2.webp" alt="Полевые исследования" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/meteo.webp">
+                    <img src="images/result/meteo.webp" alt="Научное оборудование" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/expedition3.webp">
+                    <img src="images/result/expedition3.webp" alt="Старые карты" loading="lazy" />
+                </div>
+                <div class="gallery-item lightbox-trigger" data-src="images/result/logo.webp">
+                    <img src="images/result/logo.webp" alt="Эмблема общества" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ПОДВАЛ (копия из index.html) ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo"><img src="images/result/logo.webp" alt="Логотип СКО" class="logo-img" loading="lazy" /><div class="logo-text"><h3>СКО</h3><p>Сочинское Краеведческое Общество</p></div></div>
+                    <p class="footer-motto">Изучаем, сохраняем, популяризируем наследие Сочи</p>
+                </div>
+                <div class="footer-column"><h4>Навигация</h4><ul><li><a href="index.html#top">Главная</a></li><li><a href="index.html#about">О нас</a></li><li><a href="index.html#expeditions">Экспедиции</a></li><li><a href="media.html">Галерея</a></li></ul></div>
+                <div class="footer-column"><h4>Документы</h4><ul><li><a href="charter.pdf" target="_blank">Устав СКО</a></li><li><a href="index.html#safety">Правила безопасности</a></li><li><a href="index.html#join">Анкета для вступления</a></li></ul></div>
+                <div class="footer-column"><h4>Контакты</h4><ul><li>ул. Войкова, 68, Сочи</li><li>+7 (989) 086-89-76</li><li>cuzhima@yandex.ru</li></ul></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024-2026 Сочинское Краеведческое Общество. Все права защищены.<br />Сайт разработан активом СКО</p></div>
+        </div>
+    </footer>
+
+    <!-- ===== ЛАЙТБОКС ===== -->
+    <div class="lightbox-overlay" id="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img src="" alt="Увеличенное изображение" id="lightbox-img" />
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
