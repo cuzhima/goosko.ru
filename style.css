@@ -149,7 +149,7 @@ p {
 /* Главный баннер */
 .hero {
     height: 80vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('images/hero-bg.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://lh3.googleusercontent.com/d/1vFknYtPPMKRvHG4OuOqXusQsB-LZbEa1') center/cover no-repeat;
     display: flex;
     align-items: center;
     margin-top: 70px;
