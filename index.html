@@ -819,7 +819,6 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
             <label for="emerMode">График ЭМЕРСИТ (пост #203):</label>
             <select id="emerMode">
               <option value="temperature">Температура воздуха</option>
-              <option value="river_level">Уровень воды</option>
               <option value="precipitation">Осадки</option>
               <option value="humidity">Отн. влажность</option>
               <option value="abs_pressure">Абс. давление</option>
@@ -1337,7 +1336,6 @@ var SITE = {
     id: 203,
     modes: {
       temperature: 'Температура',
-      river_level: 'Уровень воды',
       precipitation: 'Осадки',
       humidity: 'Отн. влажность',
       abs_pressure: 'Абс. давление',
@@ -2166,7 +2164,7 @@ setInterval(loadMeteo, 5 * 60 * 1000);
       return;
     }
 
-    var pad = {l: 55, r: 10, t: 22, b: 34};
+    var pad = {l: 55, r: 10, t: 22, b: 44};
     var cx = w - pad.l - pad.r, cy = h - pad.t - pad.b;
     var vals = points.map(function(p){ return p.v; });
     var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
@@ -2197,6 +2195,24 @@ setInterval(loadMeteo, 5 * 60 * 1000);
     ctx.textAlign = 'right';
     ctx.fillText(label + ' (' + unit + ')', pad.l - 8, pad.t - 6);
 
+    // Ось X — время
+    var first = points[0].t, last = points[points.length - 1].t;
+    var spanHours = (last - first) / 36e5;
+    var stepHours = spanHours <= 6 ? 1 : (spanHours <= 18 ? 3 : 6);
+    var firstHour = new Date(first);
+    firstHour.setMinutes(0, 0, 0);
+    if (firstHour < first) firstHour.setHours(firstHour.getHours() + stepHours);
+    
+    ctx.fillStyle = 'rgba(233,241,236,.55)';
+    ctx.font = '10px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    for (var t = firstHour; t <= last; t.setHours(t.getHours() + stepHours)){
+      var ratio = (t - first) / (last - first || 1);
+      if (ratio < 0 || ratio > 1) continue;
+      var x = pad.l + ratio * cx;
+      ctx.fillText(t.getHours() + ':00', x, h - pad.b + 18);
+    }
+
     // Линия графика
     ctx.beginPath();
     ctx.strokeStyle = '#7fae97';
@@ -2217,14 +2233,14 @@ setInterval(loadMeteo, 5 * 60 * 1000);
     });
 
     // Последнее значение
-    var last = points[points.length - 1];
+    var lastPt = points[points.length - 1];
     ctx.fillStyle = '#fff';
     ctx.font = '12px system-ui, sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText(last.v.toFixed(1) + ' ' + unit, pad.l + 8, pad.t + 16);
+    ctx.fillText(lastPt.v.toFixed(1) + ' ' + unit, pad.l + 8, pad.t + 16);
     ctx.fillStyle = 'rgba(233,241,236,.6)';
     ctx.font = '10px system-ui, sans-serif';
-    ctx.fillText(last.t.toLocaleString('ru-RU', {hour:'2-digit',minute:'2-digit'}), pad.l + 8, pad.t + 30);
+    ctx.fillText(lastPt.t.toLocaleString('ru-RU', {hour:'2-digit',minute:'2-digit'}), pad.l + 8, pad.t + 30);
   }
 
   function setStatus(msg, cls){
@@ -2241,7 +2257,7 @@ setInterval(loadMeteo, 5 * 60 * 1000);
     }).then(function(text){
       var points = parseCsv(text);
       var meta = SITE.emercit.modes[mode] || mode;
-      var unit = mode === 'river_level' ? 'м' : (mode === 'precipitation' ? 'мм' : (mode === 'abs_pressure' ? 'мм рт.ст.' : (mode === 'humidity' ? '%' : (mode === 'dew_point' ? '°' : '°C'))));
+      var unit = mode === 'precipitation' ? 'мм' : (mode === 'abs_pressure' ? 'мм рт.ст.' : (mode === 'humidity' ? '%' : (mode === 'dew_point' ? '°' : '°C')));
       draw(points, meta, unit);
       setStatus(points.length ? points.length + ' точек за сутки' : 'Нет данных за сутки', points.length ? 'ok' : '');
     }).catch(function(e){
@@ -2258,6 +2274,85 @@ setInterval(loadMeteo, 5 * 60 * 1000);
     sel.addEventListener('change', function(){ load(sel.value); });
     load(sel.value);
   }
+})();
+
+/* =====================================================================
+   11c. ПОДГРУЗКА РЕАЛЬНЫХ ДАННЫХ ЭМЕРСИТ В КАРТОЧКИ МЕТЕОСТАНЦИИ
+   ===================================================================== */
+(function(){
+  var base = SITE.emercit.base;
+  var id = SITE.emercit.id;
+  var modes = SITE.emercit.modes;
+
+  function buildUrl(mode){
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    var fmt = function(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); };
+    return base + '?id=' + id + '&a=' + fmt(yesterday) + '&b=' + fmt(today) + '&mode=' + mode + '&encoding=0&divider=0&point=0&nocache=' + Date.now();
+  }
+
+  function parseCsvForLast(text){
+    if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+    var lines = text.split(/\r?\n/);
+    var lastVal = null, lastTime = null;
+    for (var i = 1; i < lines.length; i++){
+      var line = lines[i].trim();
+      if (!line) continue;
+      var cols = line.split(';');
+      if (cols.length < 2) continue;
+      var ts = cols[0].trim();
+      var raw = cols[1].trim().replace(',', '.');
+      var v = parseFloat(raw);
+      if (!ts || isNaN(v)) continue;
+      lastVal = v;
+      lastTime = new Date(ts);
+    }
+    return {val: lastVal, time: lastTime};
+  }
+
+  function fmtTemp(v){ return (v >= 0 ? '+' : '') + v.toFixed(1) + '°'; }
+  function fmtHum(v){ return v.toFixed(0) + '%'; }
+  function fmtPress(v){ return v.toFixed(1) + ' мм рт. ст.'; }
+  function fmtRain(v){ return v.toFixed(1) + ' мм'; }
+  function fmtDew(v){ return (v >= 0 ? '+' : '') + v.toFixed(1) + '°'; }
+
+  var formatters = {
+    temperature: fmtTemp,
+    humidity: fmtHum,
+    abs_pressure: fmtPress,
+    precipitation: fmtRain,
+    dew_point: fmtDew
+  };
+
+  function loadAllMeteo(){
+    var promises = Object.keys(modes).map(function(mode){
+      return fetch(buildUrl(mode), {cache: 'no-cache', mode: 'cors'})
+        .then(function(r){ return r.ok ? r.text() : ''; })
+        .then(function(text){
+          var r = parseCsvForLast(text);
+          return {mode: mode, val: r.val, time: r.time};
+        })
+        .catch(function(){ return {mode: mode, val: null, time: null}; });
+    });
+    Promise.all(promises).then(function(results){
+      var data = {};
+      results.forEach(function(r){
+        if (r.val !== null && formatters[r.mode]){
+          data[r.mode] = formatters[r.mode](r.val);
+        }
+      });
+      // Обновляем SITE.meteo и перерисовываем плитки
+      Object.keys(data).forEach(function(k){ SITE.meteo[k] = data[k]; });
+      renderMeteo(SITE.meteo);
+      stamp();
+    });
+  }
+
+  // Загружаем сразу и потом каждые 10 минут
+  loadAllMeteo();
+  setInterval(loadAllMeteo, 10 * 60 * 1000);
 })();
 
 /* =====================================================================
