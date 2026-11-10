@@ -794,13 +794,13 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
 
     <div class="meteo">
       <div class="meteo__media reveal">
-        <span class="meteo__badge"><i class="live"></i> Онлайн · ул. Войкова, 68</span>
+        <span class="meteo__badge"><i class="live" style="background:#e0a83f;animation:none"></i> Демо · ул. Войкова, 68</span>
         <img src="images/result/meteo.webp" alt="Монтаж автоматической метеостанции на территории усадьбы СКО" data-scene="meteo" data-fallback>
       </div>
 
       <div class="reveal" data-d="2">
         <div class="tiles" id="meteoTiles"></div>
-        <p class="meteo__note">Показания обновляются автоматически. Чтобы подключить свой источник данных (например, NarodMon или собственный сервер), укажите адрес API в <code>script.js</code> в блоке <code>SITE.meteoApi</code> — плитки заполнятся сами.</p>
+        <p class="meteo__note">Сейчас показаны демонстрационные данные. Чтобы подключить реальный источник (например, NarodMon или собственный сервер), укажите адрес API в блоке <code>SITE.meteoApi</code> в коде страницы — плитки заполнятся сами.</p>
         <p class="meteo__upd" id="meteoUpdated"></p>
       </div>
     </div>
@@ -962,7 +962,7 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
     <div class="head reveal">
       <span class="eyebrow">Вступление</span>
       <h2>Хотите стать частью СКО?</h2>
-      <p>Заполните форму — мы свяжемся с вами в течение двух рабочих дней. Поля, отмеченные звёздочкой, обязательны.</p>
+      <p>Заполните форму — она сформирует заявку, и вы сможете отправить её нам письмом. Поля, отмеченные звёздочкой, обязательны.</p>
     </div>
 
     <div class="join-grid">
@@ -1248,8 +1248,8 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
   <div class="overlay__in">
     <div class="overlay__hd">
       <div>
-        <h3 id="failTitle">Не удалось отправить автоматически</h3>
-        <p>Сервер не ответил, но заявка не потеряется: отправьте её одним нажатием через почтовую программу или скопируйте текст.</p>
+        <h3 id="failTitle">Отправьте заявку письмом</h3>
+        <p>Автоматическая отправка не подключена или сервер не ответил. Заявка уже сформирована — отправьте её одним нажатием или скопируйте текст.</p>
       </div>
       <button class="xbtn" type="button" data-close aria-label="Закрыть"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     </div>
@@ -1898,10 +1898,9 @@ function submitForm(form, title){
   }
   var data = collect(form);
   if (!SITE.formEndpoint) {
-    /* Демонстрационный режим: заявка сформирована, показываем успех и даём запасной e-mail */
-    try { localStorage.removeItem('sko_join_draft'); } catch(e){}
-    showOk();
-    return Promise.resolve({demo:true});
+    /* Автоматическая отправка не подключена: формируем заявку и предлагаем отправить её письмом */
+    showFail(asText(title, data));
+    return Promise.reject(new Error('demo'));
   }
   return fetch(SITE.formEndpoint, {
     method:'POST',
