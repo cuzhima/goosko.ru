@@ -2232,19 +2232,29 @@ setInterval(loadMeteo, 5 * 60 * 1000);
   function load(mode){
     setStatus('Загрузка данных…', '');
     var url = buildUrl(mode);
-    fetch(url, {cache: 'no-cache', mode: 'cors'}).then(function(r){
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.text();
-    }).then(function(text){
-      var points = parseCsv(text);
-      var meta = SITE.emercit.modes[mode] || mode;
-      var unit = mode === 'river_level' ? 'м' : (mode === 'precipitation' ? 'мм' : (mode === 'abs_pressure' ? 'мм рт.ст.' : (mode === 'humidity' ? '%' : (mode === 'dew_point' ? '°' : '°C'))));
-      draw(points, meta, unit);
-      setStatus(points.length ? points.length + ' точек за сутки' : 'Нет данных за сутки', points.length ? 'ok' : '');
-    }).catch(function(e){
-      draw([], '', '');
-      setStatus('Ошибка загрузки: ' + (e.message || e), 'err');
-    });
+    var corsProxy = 'https://corsproxy.io/?';
+    var tryUrls = [url, corsProxy + encodeURIComponent(url)];
+    
+    function tryFetch(urls, idx){
+      if (idx >= urls.length){
+        draw([], '', '');
+        setStatus('Ошибка CORS: emercit.com не отдаёт Access-Control-Allow-Origin. Настройте CORS на сервере или используйте прокси.', 'err');
+        return;
+      }
+      fetch(urls[idx], {cache: 'no-cache', mode: 'cors'}).then(function(r){
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      }).then(function(text){
+        var points = parseCsv(text);
+        var meta = SITE.emercit.modes[mode] || mode;
+        var unit = mode === 'river_level' ? 'м' : (mode === 'precipitation' ? 'мм' : (mode === 'abs_pressure' ? 'мм рт.ст.' : (mode === 'humidity' ? '%' : (mode === 'dew_point' ? '°' : '°C'))));
+        draw(points, meta, unit);
+        setStatus(points.length ? points.length + ' точек за сутки' : 'Нет данных за сутки', points.length ? 'ok' : '');
+      }).catch(function(e){
+        tryFetch(urls, idx + 1);
+      });
+    }
+    tryFetch(tryUrls, 0);
   }
 
   if (sel) {
