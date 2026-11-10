@@ -1328,9 +1328,15 @@ var SITE = {
   /* Адрес API метеостанции (NarodMon / свой сервер). Пусто = демонстрационные данные.
      Ожидаемый JSON: {temp, humidity, pressure, windSpeed, windDir, rain24, soilTemp} */
   meteoApi: '',
-  /* ЭМЕРСИТ — гидропост #203. Данные грузятся со стороны браузера (fetch), без сервера. */
+  /* ЭМЕРСИТ — гидропост #203.
+     Прямой запрос на emercit.com блокируется CORS (нет Access-Control-Allow-Origin).
+     РЕШЕНИЕ: разверни Cloudflare Worker (см. emercit-worker.js и CLOUDFLARE_WORKER_DEPLOY.md)
+     и замени base на URL своего Worker'а, напр.:
+       base: 'https://emercit-proxy.твой-аккаунт.workers.dev'
+     Worker ходит на emercit.com, кеширует 5 мин, отдаёт с CORS.
+  */
   emercit: {
-    base: 'http://emercit.com/map/csv.php',
+    base: 'http://emercit.com/map/csv.php',  // ЗАМЕНИ НА URL WORKER'А ПОСЛЕ ДЕПЛОЯ
     id: 203,
     modes: {
       temperature: 'Температура',
