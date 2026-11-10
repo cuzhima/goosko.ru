@@ -1329,14 +1329,11 @@ var SITE = {
      Ожидаемый JSON: {temp, humidity, pressure, windSpeed, windDir, rain24, soilTemp} */
   meteoApi: '',
   /* ЭМЕРСИТ — гидропост #203.
-     Прямой запрос на emercit.com блокируется CORS (нет Access-Control-Allow-Origin).
-     РЕШЕНИЕ: разверни Cloudflare Worker (см. emercit-worker.js и CLOUDFLARE_WORKER_DEPLOY.md)
-     и замени base на URL своего Worker'а, напр.:
-       base: 'https://emercit-proxy.твой-аккаунт.workers.dev'
-     Worker ходит на emercit.com, кеширует 5 мин, отдаёт с CORS.
+     Cloudflare Worker проксирует emercit.com и отдаёт CSV с CORS.
+     Worker URL: https://emercitproxy.cuzhima.workers.dev
   */
   emercit: {
-    base: 'http://emercit.com/map/csv.php',  // ЗАМЕНИ НА URL WORKER'А ПОСЛЕ ДЕПЛОЯ
+    base: 'https://emercitproxy.cuzhima.workers.dev/csv.php',
     id: 203,
     modes: {
       temperature: 'Температура',
