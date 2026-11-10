@@ -2130,19 +2130,20 @@ setInterval(loadMeteo, 5 * 60 * 1000);
     return SITE.emercit.base + '?' + p.join('&');
   }
 
-  /* Парсинг CSV: разделитель ";", десятичная запятая, возможен BOM */
+  /* Парсинг CSV: разделитель ";", десятичная запятая, возможен BOM.
+     Формат emercit: 2 колонки — timestamp;value (value с запятой) */
   function parseCsv(text){
     // Удаляем BOM
     if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
     var lines = text.split(/\r?\n/);
     var points = [];
-    for (var i = 1; i < lines.length; i++) {
+    for (var i = 1; i < lines.length; i++) { // пропускаем заголовок
       var line = lines[i].trim();
       if (!line) continue;
       var cols = line.split(';');
-      if (cols.length < 3) continue;
+      if (cols.length < 2) continue;
       var ts = cols[0].trim();
-      var raw = cols[2].trim().replace(',', '.');  // колонка со значением — 3-я
+      var raw = cols[1].trim().replace(',', '.'); // значение во 2-й колонке
       var v = parseFloat(raw);
       if (!ts || isNaN(v)) continue;
       points.push({t: new Date(ts), v: v});
