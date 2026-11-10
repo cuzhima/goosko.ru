@@ -336,6 +336,18 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
 .meteo__note code{background:rgba(255,255,255,.1); padding:1px 6px; border-radius:5px; font-size:12.6px}
 .meteo__upd{margin-top:10px; font-size:12.6px; color:rgba(233,241,236,.5)}
 
+/* ============ ЧАРТ ЭМЕРСИТ ============ */
+.emer-wrap{display:flex; flex-direction:column; gap:12px}
+.emer-ctrl{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.emer-ctrl label{font-size:13px; color:rgba(233,241,236,.85); font-weight:600}
+.emer-ctrl select{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:#fff; border-radius:var(--r-sm); padding:6px 10px; font-size:13px; cursor:pointer}
+.emer-ctrl select option{background:#151f1b; color:#fff}
+.emer-canvas{width:100%; height:220px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); border-radius:var(--r-md); display:block}
+.emer-status{font-size:12.4px; color:rgba(233,241,236,.65); min-height:18px}
+.emer-status.ok{color:#5ad08a}
+.emer-status.err{color:#ff8a8a}
+.emer-empty{grid-column:1/-1; display:flex; align-items:center; justify-content:center; height:220px; border-radius:var(--r-md); border:1px dashed rgba(255,255,255,.25); background:rgba(255,255,255,.03); color:rgba(233,241,236,.5); font-size:13px}
+
 /* ============ БЕЗОПАСНОСТЬ ============ */
 .safe{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(22px,3vw,40px); align-items:start}
 @media (max-width:940px){ .safe{grid-template-columns:1fr} }
@@ -800,7 +812,24 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
 
       <div class="reveal" data-d="2">
         <div class="tiles" id="meteoTiles"></div>
-        <p class="meteo__note">Сейчас показаны демонстрационные данные. Чтобы подключить реальный источник (например, NarodMon или собственный сервер), укажите адрес API в блоке <code>SITE.meteoApi</code> в коде страницы — плитки заполнятся сами.</p>
+
+        <!-- График ЭМЕРСИТ (загружается со стороны клиента, без сервера) -->
+        <div class="emer-wrap">
+          <div class="emer-ctrl">
+            <label for="emerMode">График ЭМЕРСИТ (пост #203):</label>
+            <select id="emerMode">
+              <option value="temperature">Температура воздуха</option>
+              <option value="river_level">Уровень воды</option>
+              <option value="precipitation">Осадки</option>
+              <option value="humidity">Отн. влажность</option>
+              <option value="abs_pressure">Абс. давление</option>
+              <option value="dew_point">Точка росы</option>
+            </select>
+          </div>
+          <canvas id="emerChart" class="emer-canvas"></canvas>
+          <p id="emerStatus" class="emer-status">Загрузка данных…</p>
+        </div>
+
         <p class="meteo__upd" id="meteoUpdated"></p>
       </div>
     </div>
@@ -1299,6 +1328,19 @@ var SITE = {
   /* Адрес API метеостанции (NarodMon / свой сервер). Пусто = демонстрационные данные.
      Ожидаемый JSON: {temp, humidity, pressure, windSpeed, windDir, rain24, soilTemp} */
   meteoApi: '',
+  /* ЭМЕРСИТ — гидропост #203. Данные грузятся со стороны браузера (fetch), без сервера. */
+  emercit: {
+    base: 'http://emercit.com/map/csv.php',
+    id: 203,
+    modes: {
+      temperature: 'Температура',
+      river_level: 'Уровень воды',
+      precipitation: 'Осадки',
+      humidity: 'Отн. влажность',
+      abs_pressure: 'Абс. давление',
+      dew_point: 'Точка росы'
+    }
+  },
   /* Endpoint для приёма заявок. Пусто = демонстрационный режим (заявка показывается пользователю). */
   formEndpoint: '',
   mailTo: 'cuzhima@yandex.ru',
@@ -2039,6 +2081,176 @@ function loadMeteo(){
 }
 loadMeteo();
 setInterval(loadMeteo, 5 * 60 * 1000);
+
+/* =====================================================================
+   11b. ГРАФИК ЭМЕРСИТ (клиентская загрузка CSV, без сервера)
+   ===================================================================== */
+(function(){
+  var canvas = $('#emerChart');
+  var sel = $('#emerMode');
+  var status = $('#emerStatus');
+  var ctx = canvas ? canvas.getContext('2d') : null;
+
+  if (!canvas || !ctx) return;
+
+  /* Разрешение дисплея (retina) */
+  function setRes(){
+    var dpr = window.devicePixelRatio || 1;
+    var rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
+  }
+  setRes();
+  window.addEventListener('resize', setRes);
+
+  /* Дата "вчера" и "сегодня" в формате YYYY-MM-DD (локальное время браузера) */
+  function dateRange(){
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    var fmt = function(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); };
+    return {a: fmt(yesterday), b: fmt(today)};
+  }
+
+  function buildUrl(mode){
+    var dr = dateRange();
+    var nocache = Date.now();
+    var p = [
+      'id=' + SITE.emercit.id,
+      'a=' + dr.a,
+      'b=' + dr.b,
+      'mode=' + mode,
+      'encoding=0',
+      'divider=0',
+      'point=0',
+      'nocache=' + nocache
+    ];
+    return SITE.emercit.base + '?' + p.join('&');
+  }
+
+  /* Парсинг CSV: разделитель ";", десятичная запятая, возможен BOM */
+  function parseCsv(text){
+    // Удаляем BOM
+    if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+    var lines = text.split(/\r?\n/);
+    var points = [];
+    for (var i = 1; i < lines.length; i++) {
+      var line = lines[i].trim();
+      if (!line) continue;
+      var cols = line.split(';');
+      if (cols.length < 3) continue;
+      var ts = cols[0].trim();
+      var raw = cols[2].trim().replace(',', '.');  // колонка со значением — 3-я
+      var v = parseFloat(raw);
+      if (!ts || isNaN(v)) continue;
+      points.push({t: new Date(ts), v: v});
+    }
+    points.sort(function(a,b){ return a.t - b.t; });
+    return points;
+  }
+
+  function draw(points, label, unit){
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    if (!points || points.length === 0){
+      ctx.fillStyle = 'rgba(233,241,236,.5)';
+      ctx.font = '13px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('Нет данных за выбранный период', w/2, h/2);
+      return;
+    }
+
+    var pad = {l: 55, r: 10, t: 22, b: 34};
+    var cx = w - pad.l - pad.r, cy = h - pad.t - pad.b;
+    var vals = points.map(function(p){ return p.v; });
+    var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
+    var range = max - min || 1;
+    var padV = range * 0.15;
+    var ymin = min - padV, ymax = max + padV;
+
+    var toX = function(i){ return pad.l + (i / (points.length - 1 || 1)) * cx; };
+    var toY = function(v){ return h - pad.b - ((v - ymin) / (ymax - ymin)) * cy; };
+
+    // Сетка по Y
+    ctx.strokeStyle = 'rgba(255,255,255,.08)';
+    ctx.lineWidth = 1;
+    var gridN = 4;
+    for (var g = 0; g <= gridN; g++){
+      var vv = ymin + (g / gridN) * (ymax - ymin);
+      var yy = toY(vv);
+      ctx.beginPath();
+      ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy);
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(233,241,236,.55)';
+      ctx.font = '11px system-ui, sans-serif';
+      ctx.textAlign = 'right';
+      ctx.fillText(vv.toFixed(1), pad.l - 8, yy + 4);
+    }
+    ctx.fillStyle = 'rgba(233,241,236,.45)';
+    ctx.font = '10px system-ui, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(label + ' (' + unit + ')', pad.l - 8, pad.t - 6);
+
+    // Линия графика
+    ctx.beginPath();
+    ctx.strokeStyle = '#7fae97';
+    ctx.lineWidth = 2;
+    ctx.lineJoin = 'round';
+    points.forEach(function(p, i){
+      var x = toX(i), y = toY(p.v);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+
+    // Точки
+    ctx.fillStyle = '#fff';
+    points.forEach(function(p, i){
+      ctx.beginPath();
+      ctx.arc(toX(i), toY(p.v), 2.2, 0, Math.PI*2);
+      ctx.fill();
+    });
+
+    // Последнее значение
+    var last = points[points.length - 1];
+    ctx.fillStyle = '#fff';
+    ctx.font = '12px system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText(last.v.toFixed(1) + ' ' + unit, pad.l + 8, pad.t + 16);
+    ctx.fillStyle = 'rgba(233,241,236,.6)';
+    ctx.font = '10px system-ui, sans-serif';
+    ctx.fillText(last.t.toLocaleString('ru-RU', {hour:'2-digit',minute:'2-digit'}), pad.l + 8, pad.t + 30);
+  }
+
+  function setStatus(msg, cls){
+    status.textContent = msg;
+    status.className = 'emer-status ' + (cls || '');
+  }
+
+  function load(mode){
+    setStatus('Загрузка данных…', '');
+    var url = buildUrl(mode);
+    fetch(url, {cache: 'no-cache', mode: 'cors'}).then(function(r){
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    }).then(function(text){
+      var points = parseCsv(text);
+      var meta = SITE.emercit.modes[mode] || mode;
+      var unit = mode === 'river_level' ? 'м' : (mode === 'precipitation' ? 'мм' : (mode === 'abs_pressure' ? 'мм рт.ст.' : (mode === 'humidity' ? '%' : (mode === 'dew_point' ? '°' : '°C'))));
+      draw(points, meta, unit);
+      setStatus(points.length ? points.length + ' точек за сутки' : 'Нет данных за сутки', points.length ? 'ok' : '');
+    }).catch(function(e){
+      draw([], '', '');
+      setStatus('Ошибка загрузки: ' + (e.message || e), 'err');
+    });
+  }
+
+  if (sel) {
+    sel.addEventListener('change', function(){ load(sel.value); });
+    load(sel.value);
+  }
+})();
 
 /* =====================================================================
    12. ВИДЖЕТ ВКОНТАКТЕ — ПОКАЗЫВАЕМ САМО СООБЩЕСТВО  (ИСПРАВЛЕНИЕ №3)
