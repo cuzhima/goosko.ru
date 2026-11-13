@@ -18,569 +18,7 @@
 
 <script>document.documentElement.classList.add('js');</script>
 
-<style>
-/* ============ ТОКЕНЫ ============ */
-:root{
-  --paper:#f7f5ef;
-  --paper-2:#efece2;
-  --card:#ffffff;
-  --ink:#151f1b;
-  --ink-2:#3d4d45;
-  --ink-3:#6c7d74;
-  --green-900:#0d2a1f;
-  --green-800:#123a2b;
-  --green-700:#1c4b39;
-  --green-500:#2f7a5c;
-  --green-300:#7fae97;
-  --green-100:#dfeee5;
-  --clay:#bd5730;
-  --clay-600:#a44a27;
-  --clay-100:#f6e4d9;
-  --gold:#d3a13f;
-  --line:rgba(21,31,27,.12);
-  --line-2:rgba(21,31,27,.07);
-  --r-sm:10px; --r-md:16px; --r-lg:22px; --r-xl:30px;
-  --sh-1:0 1px 2px rgba(13,42,31,.05), 0 6px 18px rgba(13,42,31,.06);
-  --sh-2:0 10px 40px rgba(13,42,31,.14);
-  --sh-3:0 24px 70px rgba(13,42,31,.28);
-  --header-h:74px;
-  --maxw:1240px;
-  --font:'Manrope',ui-sans-serif,system-ui,'Segoe UI',Roboto,Arial,sans-serif;
-  --display:'Playfair Display',Georgia,'Times New Roman',serif;
-  --ease:cubic-bezier(.22,.61,.36,1);
-}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top:calc(var(--header-h) + 16px)}
-body{
-  margin:0; background:var(--paper); color:var(--ink);
-  font-family:var(--font); font-size:16.5px; line-height:1.62; font-weight:400;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
-}
-/* Блокировка прокрутки ТОЛЬКО классом (никаких position:fixed — они и ломали скролл) */
-html.is-locked,body.is-locked{overflow:hidden!important; touch-action:none}
-body.is-locked{position:relative!important; top:auto!important; left:auto!important}
-img{max-width:100%; display:block}
-a{color:inherit}
-button,input,select,textarea{font:inherit; color:inherit}
-h1,h2,h3,h4{margin:0; font-family:var(--display); font-weight:700; line-height:1.12; letter-spacing:-.01em}
-p{margin:0}
-ul{margin:0; padding:0; list-style:none}
-:focus-visible{outline:2.5px solid var(--green-500); outline-offset:3px; border-radius:6px}
-.wrap{width:100%; max-width:var(--maxw); margin:0 auto; padding:0 24px}
-.skip{position:absolute; left:-9999px; top:0; z-index:200; background:var(--green-900); color:#fff; padding:12px 18px; border-radius:0 0 12px 0}
-.skip:focus{left:0}
-
-/* ============ КНОПКИ ============ */
-.btn{
-  --bg:var(--clay); --fg:#fff; --bd:transparent;
-  display:inline-flex; align-items:center; justify-content:center; gap:9px;
-  background:var(--bg); color:var(--fg); border:1.5px solid var(--bd);
-  padding:13px 22px; border-radius:999px; font-weight:700; font-size:15px;
-  text-decoration:none; cursor:pointer; white-space:nowrap;
-  transition:transform .18s var(--ease), box-shadow .22s var(--ease), background .2s, border-color .2s, color .2s;
-  box-shadow:0 6px 18px rgba(189,87,48,.22);
-}
-.btn:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(189,87,48,.3); background:var(--clay-600)}
-.btn:active{transform:translateY(0)}
-.btn--green{--bg:var(--green-700); box-shadow:0 6px 18px rgba(28,75,57,.24)}
-.btn--green:hover{background:var(--green-800); box-shadow:0 12px 26px rgba(28,75,57,.32)}
-.btn--ghost{--bg:transparent; --fg:var(--ink); --bd:var(--line); box-shadow:none}
-.btn--ghost:hover{background:rgba(21,31,27,.05); box-shadow:none; border-color:rgba(21,31,27,.28)}
-.btn--light{--bg:rgba(255,255,255,.14); --fg:#fff; --bd:rgba(255,255,255,.4); box-shadow:none; backdrop-filter:blur(6px)}
-.btn--light:hover{--bg:rgba(255,255,255,.24); box-shadow:none}
-.btn--sm{padding:9px 16px; font-size:14px}
-.btn svg{width:17px; height:17px; flex:none}
-
-/* ============ ШАПКА ============ */
-.header{
-  position:sticky; top:0; z-index:90;
-  background:rgba(247,245,239,.86); backdrop-filter:saturate(160%) blur(14px);
-  border-bottom:1px solid var(--line-2);
-  transition:box-shadow .25s, background .25s, padding .25s;
-}
-.header.is-stuck{box-shadow:0 6px 24px rgba(13,42,31,.09); background:rgba(247,245,239,.96)}
-.header__in{display:flex; align-items:center; gap:18px; height:var(--header-h); transition:height .25s var(--ease)}
-.header.is-stuck .header__in{height:64px}
-.brand{display:flex; align-items:center; gap:11px; text-decoration:none; flex:none}
-.brand__mark{width:40px; height:40px; border-radius:50%; overflow:hidden; flex:none; background:var(--green-100); box-shadow:0 0 0 1px var(--line)}
-.brand__mark img{width:100%; height:100%; object-fit:cover}
-.brand__txt{display:flex; flex-direction:column; line-height:1.15; min-width:0}
-.brand__name{font-family:var(--display); font-weight:700; font-size:19px; letter-spacing:.02em}
-.brand__sub{font-size:10.5px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-3); font-weight:700; white-space:nowrap}
-
-/* НАВИГАЦИЯ: nowrap — «О нас» больше не переносится на 2 строки */
-.nav{margin-left:auto; display:flex; align-items:center; gap:2px; flex-wrap:nowrap; min-width:0}
-.nav a{
-  position:relative; display:block; padding:9px 12px; border-radius:999px;
-  font-size:14.5px; font-weight:600; color:var(--ink-2); text-decoration:none;
-  white-space:nowrap;          /* КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ */
-  word-break:keep-all; overflow-wrap:normal;
-  transition:color .2s, background .2s;
-}
-.nav a:hover{color:var(--green-700); background:var(--green-100)}
-.nav a.is-active{color:var(--green-800); background:var(--green-100)}
-.nav a.is-active::after{content:""; position:absolute; left:12px; right:12px; bottom:4px; height:2px; border-radius:2px; background:var(--clay)}
-.header__act{display:flex; align-items:center; gap:9px; flex:none}
-.burger{display:none; width:44px; height:44px; border-radius:12px; border:1.5px solid var(--line); background:#fff; cursor:pointer; align-items:center; justify-content:center}
-.burger span{display:block; width:19px; height:2px; background:var(--ink); border-radius:2px; position:relative; transition:.25s var(--ease)}
-.burger span::before,.burger span::after{content:""; position:absolute; left:0; width:19px; height:2px; background:var(--ink); border-radius:2px; transition:.25s var(--ease)}
-.burger span::before{top:-6px} .burger span::after{top:6px}
-body.menu-open .burger span{background:transparent}
-body.menu-open .burger span::before{transform:translateY(6px) rotate(45deg)}
-body.menu-open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
-
-@media (max-width:1240px){
-  .nav a{padding:9px 9px; font-size:13.6px}
-  .brand__sub{display:none}
-}
-@media (max-width:1080px){
-  .nav,.header__act .btn--login{display:none}
-  .burger{display:flex}
-}
-@media (max-width:520px){
-  .header__act .btn{padding:11px 16px; font-size:14px}
-  .brand__name{font-size:17px}
-}
-
-/* Мобильное меню */
-.mnav{
-  position:fixed; inset:var(--header-h) 0 0; z-index:89; background:var(--paper);
-  padding:22px 24px 40px; overflow-y:auto; overscroll-behavior:contain;
-  transform:translateY(-8px); opacity:0; visibility:hidden; transition:.28s var(--ease);
-}
-.mnav.is-open{transform:none; opacity:1; visibility:visible}
-.mnav a{display:block; padding:15px 4px; font-family:var(--display); font-size:23px; font-weight:600; text-decoration:none; border-bottom:1px solid var(--line-2)}
-.mnav a small{display:block; font-family:var(--font); font-size:12px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3)}
-.mnav__act{display:flex; flex-direction:column; gap:10px; margin-top:26px}
-.mnav__act .btn{width:100%}
-.mnav__contacts{margin-top:28px; font-size:14.5px; color:var(--ink-2); display:grid; gap:7px}
-.mnav__contacts a{text-decoration:none; border:0; padding:0; font-family:var(--font); font-size:14.5px; color:var(--green-700); font-weight:700}
-
-/* ============ HERO ============ */
-.hero{position:relative; isolation:isolate; color:#fff; overflow:hidden; background:var(--green-900)}
-.hero__bg{position:absolute; inset:0; z-index:-2; background:linear-gradient(160deg,#123a2b,#0d2a1f 55%,#1c4b39)}
-.hero__bg img{width:100%; height:100%; object-fit:cover; opacity:.55}
-.hero::after{content:""; position:absolute; inset:0; z-index:-1;
-  background:linear-gradient(180deg,rgba(9,26,19,.72) 0%,rgba(9,26,19,.42) 40%,rgba(9,26,19,.88) 100%)}
-.hero__in{padding:clamp(58px,9vw,110px) 0 clamp(40px,6vw,72px); display:grid; gap:34px}
-.chip{display:inline-flex; align-items:center; gap:8px; padding:7px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.28); background:rgba(255,255,255,.1); backdrop-filter:blur(8px); font-size:12.5px; font-weight:700; letter-spacing:.04em}
-.chip .dot{width:7px; height:7px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 4px rgba(211,161,63,.25)}
-.hero h1{font-size:clamp(38px,6.6vw,78px); max-width:16ch; margin:18px 0 0}
-.hero h1 em{font-style:normal; color:var(--gold)}
-.hero__lead{max-width:64ch; margin-top:18px; font-size:clamp(15.5px,1.5vw,18.5px); color:rgba(255,255,255,.86)}
-.hero__cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:10px}
-.hero__stats{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:14px;
-  background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.16); border-radius:var(--r-lg); overflow:hidden;
-  backdrop-filter:blur(10px);
-}
-.hstat{background:rgba(9,26,19,.5); padding:18px 20px}
-.hstat b{display:block; font-family:var(--display); font-size:clamp(26px,3.4vw,40px); line-height:1; color:#fff}
-.hstat span{display:block; margin-top:7px; font-size:12.8px; color:rgba(255,255,255,.72); font-weight:600; letter-spacing:.02em}
-@media (max-width:860px){ .hero__stats{grid-template-columns:repeat(2,1fr)} }
-
-/* ============ СЕКЦИИ ============ */
-section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) + 10px)}
-.section--tint{background:var(--paper-2)}
-.section--dark{background:var(--green-900); color:#e9f1ec}
-.head{max-width:74ch; margin-bottom:clamp(30px,4vw,52px)}
-.eyebrow{display:inline-flex; align-items:center; gap:9px; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--clay)}
-.eyebrow::before{content:""; width:26px; height:2px; border-radius:2px; background:currentColor}
-.section--dark .eyebrow{color:var(--gold)}
-.head h2{font-size:clamp(28px,4.2vw,46px); margin-top:14px}
-.head p{margin-top:14px; color:var(--ink-2); font-size:clamp(15.5px,1.4vw,17.5px)}
-.section--dark .head p{color:rgba(233,241,236,.74)}
-.head--row{display:flex; align-items:flex-end; justify-content:space-between; gap:28px; max-width:none; flex-wrap:wrap}
-
-/* Reveal */
-.js .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease)}
-.js .reveal.is-in{opacity:1; transform:none}
-.js .reveal[data-d="1"]{transition-delay:.08s} .js .reveal[data-d="2"]{transition-delay:.16s}
-.js .reveal[data-d="3"]{transition-delay:.24s} .js .reveal[data-d="4"]{transition-delay:.32s}
-@media (prefers-reduced-motion:reduce){ .js .reveal{opacity:1; transform:none; transition:none} html{scroll-behavior:auto} }
-
-/* ============ О НАС ============ */
-.about{display:grid; grid-template-columns:1.12fr .88fr; gap:clamp(28px,4vw,56px); align-items:start}
-@media (max-width:960px){ .about{grid-template-columns:1fr} }
-.about p+p{margin-top:14px}
-.about p{color:var(--ink-2)}
-.mission{margin-top:26px; padding:22px 24px; border-radius:var(--r-md); background:var(--green-100); border:1px solid rgba(28,75,57,.16); position:relative; overflow:hidden}
-.mission::before{content:""; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--green-500)}
-.mission b{display:block; font-family:var(--display); font-size:19px; color:var(--green-800); margin-bottom:6px}
-.mission span{color:var(--ink-2); font-size:15.5px}
-.tick-list{margin-top:26px; display:grid; gap:12px}
-.tick-list li{display:flex; gap:12px; align-items:flex-start; font-size:15.5px; color:var(--ink-2)}
-.tick-list svg{width:22px; height:22px; flex:none; margin-top:2px; color:var(--green-500)}
-.about__cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:30px}
-.figure{border-radius:var(--r-lg); overflow:hidden; background:var(--paper-2); box-shadow:var(--sh-2); border:1px solid var(--line)}
-.figure img{width:100%; aspect-ratio:4/3; object-fit:cover; background:linear-gradient(150deg,#dfeee5,#c9ddd0)}
-.figure figcaption{padding:14px 18px; font-size:13.5px; color:var(--ink-3); background:#fff; border-top:1px solid var(--line-2)}
-.mini-stats{margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:10px}
-.mini-stats div{background:#fff; border:1px solid var(--line); border-radius:var(--r-md); padding:14px 16px}
-.mini-stats b{display:block; font-family:var(--display); font-size:26px; line-height:1; color:var(--green-700)}
-.mini-stats span{font-size:12.4px; color:var(--ink-3); font-weight:600}
-
-/* ============ НАПРАВЛЕНИЯ ============ */
-.dir-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-@media (max-width:980px){ .dir-grid{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:620px){ .dir-grid{grid-template-columns:1fr} }
-.dir{
-  background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); padding:26px;
-  display:flex; flex-direction:column; gap:12px; box-shadow:var(--sh-1);
-  transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
-  position:relative; overflow:hidden;
-}
-.dir::after{content:""; position:absolute; right:-40px; top:-40px; width:130px; height:130px; border-radius:50%; background:var(--green-100); opacity:.55; transition:transform .4s var(--ease)}
-.dir:hover{transform:translateY(-5px); box-shadow:var(--sh-2); border-color:rgba(47,122,92,.3)}
-.dir:hover::after{transform:scale(1.25)}
-.dir__ic{width:52px; height:52px; border-radius:15px; background:var(--green-700); color:#fff; display:grid; place-items:center; position:relative; z-index:1}
-.dir__ic svg{width:26px; height:26px}
-.dir h3{font-size:20.5px; position:relative; z-index:1}
-.dir p{font-size:15px; color:var(--ink-2); position:relative; z-index:1}
-.tag{display:inline-flex; align-items:center; gap:7px; align-self:flex-start; padding:5px 12px; border-radius:999px; background:var(--clay-100); color:var(--clay-600); font-size:11.6px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; position:relative; z-index:1}
-
-/* ============ ЭКСПЕДИЦИИ / ГАЛЕРЕЯ ============ */
-.gal{display:grid; grid-template-columns:1.25fr 1fr 1fr; gap:16px}
-@media (max-width:900px){ .gal{grid-template-columns:1fr 1fr} .gal > :first-child{grid-column:1/-1} }
-@media (max-width:560px){ .gal{grid-template-columns:1fr} }
-.gcard{position:relative; border-radius:var(--r-lg); overflow:hidden; cursor:zoom-in; border:0; padding:0; background:var(--green-900); box-shadow:var(--sh-1); display:block; width:100%; text-align:left}
-.gcard img{width:100%; aspect-ratio:4/3; object-fit:cover; transition:transform .6s var(--ease), opacity .3s}
-.gal > :first-child .gcard img,.gcard--tall img{aspect-ratio:4/3}
-.gcard:hover img{transform:scale(1.05)}
-.gcard__cap{position:absolute; inset:auto 0 0 0; padding:44px 20px 18px; color:#fff;
-  background:linear-gradient(180deg,rgba(9,26,19,0),rgba(9,26,19,.88))}
-.gcard__cap b{display:block; font-family:var(--display); font-size:18px}
-.gcard__cap span{font-size:13px; color:rgba(255,255,255,.78)}
-.gcard__zoom{position:absolute; top:14px; right:14px; width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,.9); color:var(--green-800); display:grid; place-items:center; opacity:0; transform:scale(.85); transition:.28s var(--ease)}
-.gcard:hover .gcard__zoom{opacity:1; transform:none}
-.gcard__zoom svg{width:18px; height:18px}
-
-/* ============ АНОНС-БАННЕР ============ */
-.promo{border-radius:var(--r-xl); overflow:hidden; background:linear-gradient(120deg,var(--green-800),var(--green-700) 60%,#2b6a4f); color:#fff; padding:clamp(26px,3.4vw,44px); display:flex; gap:28px; align-items:center; justify-content:space-between; flex-wrap:wrap; box-shadow:var(--sh-2); position:relative}
-.promo::before{content:""; position:absolute; inset:0; background:radial-gradient(600px 200px at 88% 0%,rgba(211,161,63,.28),transparent 70%)}
-.promo__t{position:relative; max-width:62ch}
-.promo__t b{display:inline-block; font-size:11.6px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; font-weight:800}
-.promo__t h3{font-size:clamp(22px,2.6vw,30px)}
-.promo__t p{margin-top:10px; color:rgba(255,255,255,.82); font-size:15.5px}
-.promo .btn{position:relative}
-
-/* ============ ПЛАН МЕРОПРИЯТИЙ ============ */
-.toolbar{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:26px}
-.filters{display:flex; gap:8px; flex-wrap:wrap}
-.fbtn{border:1.5px solid var(--line); background:#fff; padding:9px 16px; border-radius:999px; font-weight:700; font-size:14px; cursor:pointer; color:var(--ink-2); transition:.2s; white-space:nowrap}
-.fbtn:hover{border-color:rgba(47,122,92,.5); color:var(--green-700)}
-.fbtn.is-on{background:var(--green-700); border-color:var(--green-700); color:#fff}
-.switch{display:inline-flex; align-items:center; gap:9px; font-size:14px; font-weight:600; color:var(--ink-2); cursor:pointer; user-select:none; padding:8px 14px; border:1.5px dashed var(--line); border-radius:999px; background:#fff}
-.switch input{appearance:none; width:38px; height:22px; border-radius:999px; background:#d6ddd8; position:relative; cursor:pointer; transition:.22s; flex:none; margin:0}
-.switch input::after{content:""; position:absolute; top:3px; left:3px; width:16px; height:16px; border-radius:50%; background:#fff; transition:.22s var(--ease); box-shadow:0 1px 3px rgba(0,0,0,.25)}
-.switch input:checked{background:var(--green-500)}
-.switch input:checked::after{transform:translateX(16px)}
-.events{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
-@media (max-width:900px){ .events{grid-template-columns:1fr} }
-.evt{background:var(--card); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--sh-1); display:flex; flex-direction:column; transition:box-shadow .3s, border-color .3s, opacity .3s}
-.evt:hover{box-shadow:var(--sh-2); border-color:rgba(47,122,92,.28)}
-.evt.is-hidden{display:none}
-.evt__top{display:flex; gap:18px; padding:22px 22px 16px}
-.date{flex:none; width:76px; text-align:center; border-radius:var(--r-md); background:var(--green-100); border:1px solid rgba(28,75,57,.14); padding:10px 6px; align-self:flex-start}
-.date b{display:block; font-family:var(--display); font-size:30px; line-height:1; color:var(--green-800)}
-.date span{display:block; font-size:12px; font-weight:700; color:var(--green-700); text-transform:lowercase}
-.date i{display:block; font-style:normal; font-size:10.6px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); margin-top:3px; font-weight:800}
-.evt__body{min-width:0; flex:1}
-.evt__body h3{font-size:19.5px; line-height:1.25}
-.meta{display:flex; flex-wrap:wrap; gap:7px; margin-top:11px}
-.pill{display:inline-flex; align-items:center; gap:6px; padding:5px 11px; border-radius:999px; background:var(--paper-2); font-size:12.4px; font-weight:600; color:var(--ink-2); border:1px solid var(--line-2)}
-.pill svg{width:14px; height:14px; color:var(--ink-3)}
-.pill--open{background:#e6f5ea; color:#1d6b3d; border-color:rgba(29,107,61,.2); font-weight:800}
-.pill--wait{background:#fdf3e2; color:#8a5c12; border-color:rgba(138,92,18,.2); font-weight:800}
-.pill--closed{background:#f0ecec; color:#7b4a45; border-color:rgba(123,74,69,.18); font-weight:800}
-.pill--lvl-easy{background:var(--green-100); color:var(--green-800)}
-.pill--lvl-mid{background:#fdf0e0; color:#9a5c17}
-.pill--lvl-hard{background:#fbe6e2; color:#a33b23}
-.evt__act{display:flex; gap:9px; flex-wrap:wrap; padding:0 22px 20px; align-items:center}
-.linkbtn{background:none; border:0; cursor:pointer; font-weight:700; font-size:14px; color:var(--green-700); display:inline-flex; align-items:center; gap:7px; padding:10px 6px; text-decoration:underline; text-underline-offset:4px; text-decoration-color:rgba(28,75,57,.3)}
-.linkbtn svg{width:16px; height:16px; transition:transform .3s var(--ease)}
-.evt.is-open .linkbtn svg{transform:rotate(180deg)}
-.evt__details{display:grid; grid-template-rows:0fr; transition:grid-template-rows .38s var(--ease); border-top:1px solid var(--line-2)}
-.evt.is-open .evt__details{grid-template-rows:1fr}
-.evt__details > div{overflow:hidden}
-.evt__det-in{padding:20px 22px 24px; display:grid; gap:16px; background:linear-gradient(180deg,#fbfaf6,#fff)}
-.det h4{font-family:var(--font); font-size:11.6px; letter-spacing:.12em; text-transform:uppercase; color:var(--clay); margin-bottom:7px; font-weight:800}
-.det p{font-size:14.8px; color:var(--ink-2)}
-.det ul{display:grid; gap:6px; margin-top:2px}
-.det ul li{display:flex; gap:9px; font-size:14.6px; color:var(--ink-2); align-items:flex-start}
-.det ul li::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--green-500); margin-top:9px; flex:none}
-.det a{color:var(--green-700); font-weight:700}
-.det .note{margin-top:8px; font-size:13.4px; color:var(--ink-3); border-left:2px solid var(--line); padding-left:11px}
-.empty{padding:40px; text-align:center; border:1.5px dashed var(--line); border-radius:var(--r-lg); color:var(--ink-2); background:#fff; display:none}
-.empty.is-on{display:block}
-.legend{display:grid; gap:9px; margin-top:26px; padding:20px 22px; background:#fff; border:1px solid var(--line); border-radius:var(--r-md)}
-.legend div{display:flex; gap:10px; font-size:14px; color:var(--ink-2); align-items:flex-start}
-.legend b{color:var(--ink); font-weight:800; flex:none}
-
-/* ============ МЕТЕО ============ */
-.meteo{display:grid; grid-template-columns:.92fr 1.08fr; gap:clamp(22px,3vw,40px); align-items:stretch}
-@media (max-width:940px){ .meteo{grid-template-columns:1fr} }
-.meteo__media{border-radius:var(--r-xl); overflow:hidden; position:relative; min-height:300px; box-shadow:var(--sh-2); background:var(--green-800)}
-.meteo__media img{width:100%; height:100%; object-fit:cover; position:absolute; inset:0}
-.meteo__badge{position:absolute; left:16px; top:16px; z-index:2; background:rgba(9,26,19,.72); backdrop-filter:blur(8px); color:#fff; padding:8px 14px; border-radius:999px; font-size:12.4px; font-weight:800; letter-spacing:.05em; display:flex; align-items:center; gap:8px}
-.meteo__badge .live{width:8px; height:8px; border-radius:50%; background:#5ad08a; box-shadow:0 0 0 0 rgba(90,208,138,.7); animation:pulse 2.2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(90,208,138,.6)} 70%{box-shadow:0 0 0 12px rgba(90,208,138,0)} 100%{box-shadow:0 0 0 0 rgba(90,208,138,0)}}
-.tiles{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
-@media (max-width:620px){ .tiles{grid-template-columns:repeat(2,1fr)} }
-.tile{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:var(--r-md); padding:18px; transition:.28s var(--ease)}
-.tile:hover{background:rgba(255,255,255,.11); transform:translateY(-3px)}
-.tile b{display:block; font-family:var(--display); font-size:clamp(24px,2.6vw,32px); line-height:1; color:#fff}
-.tile span{display:block; margin-top:8px; font-size:12.8px; color:rgba(233,241,236,.7); font-weight:600}
-.tile svg{width:20px; height:20px; color:var(--gold); margin-bottom:10px}
-.meteo__note{margin-top:16px; font-size:13.8px; color:rgba(233,241,236,.66); border-left:2px solid rgba(211,161,63,.5); padding-left:14px}
-.meteo__note code{background:rgba(255,255,255,.1); padding:1px 6px; border-radius:5px; font-size:12.6px}
-.meteo__upd{margin-top:10px; font-size:12.6px; color:rgba(233,241,236,.5)}
-
-/* ============ ЧАРТ ЭМЕРСИТ ============ */
-.emer-wrap{display:flex; flex-direction:column; gap:12px}
-.emer-ctrl{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
-.emer-ctrl label{font-size:13px; color:rgba(233,241,236,.85); font-weight:600}
-.emer-ctrl select{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); color:#fff; border-radius:var(--r-sm); padding:6px 10px; font-size:13px; cursor:pointer}
-.emer-ctrl select option{background:#151f1b; color:#fff}
-.emer-canvas{width:100%; height:220px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.12); border-radius:var(--r-md); display:block}
-.emer-status{font-size:12.4px; color:rgba(233,241,236,.65); min-height:18px}
-.emer-status.ok{color:#5ad08a}
-.emer-status.err{color:#ff8a8a}
-.emer-empty{grid-column:1/-1; display:flex; align-items:center; justify-content:center; height:220px; border-radius:var(--r-md); border:1px dashed rgba(255,255,255,.25); background:rgba(255,255,255,.03); color:rgba(233,241,236,.5); font-size:13px}
-
-/* ============ БЕЗОПАСНОСТЬ ============ */
-.safe{display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(22px,3vw,40px); align-items:start}
-@media (max-width:940px){ .safe{grid-template-columns:1fr} }
-.rules{display:grid; gap:14px}
-.rule{background:#fff; border:1px solid var(--line); border-radius:var(--r-md); padding:20px 22px; display:flex; gap:16px; box-shadow:var(--sh-1); transition:.28s var(--ease)}
-.rule:hover{transform:translateX(4px); border-color:rgba(47,122,92,.3)}
-.rule__n{flex:none; width:40px; height:40px; border-radius:12px; background:var(--clay-100); color:var(--clay); display:grid; place-items:center; font-family:var(--display); font-weight:700; font-size:18px}
-.rule h3{font-size:17.5px; margin-bottom:5px}
-.rule p{font-size:14.8px; color:var(--ink-2)}
-.checkcard{background:var(--green-900); color:#e9f1ec; border-radius:var(--r-lg); padding:26px; box-shadow:var(--sh-2)}
-.checkcard h3{color:#fff; font-size:21px; margin-bottom:16px; display:flex; align-items:center; gap:10px}
-.checkcard h3 svg{width:22px; height:22px; color:var(--gold)}
-.check{display:grid; gap:2px}
-.check label{display:flex; gap:12px; align-items:flex-start; padding:9px 10px; border-radius:11px; cursor:pointer; font-size:14.8px; color:rgba(233,241,236,.86); transition:.2s}
-.check label:hover{background:rgba(255,255,255,.06)}
-.check input{appearance:none; width:21px; height:21px; border-radius:7px; border:1.6px solid rgba(255,255,255,.35); flex:none; margin:1px 0 0; cursor:pointer; position:relative; transition:.2s}
-.check input:checked{background:var(--gold); border-color:var(--gold)}
-.check input:checked::after{content:""; position:absolute; left:6.5px; top:2.5px; width:5px; height:10px; border:2.4px solid var(--green-900); border-top:0; border-left:0; transform:rotate(42deg)}
-.check label:has(input:checked){color:rgba(233,241,236,.45); text-decoration:line-through}
-.memo{margin-top:18px; background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:26px; box-shadow:var(--sh-1)}
-.memo h3{font-size:20px; margin-bottom:12px}
-.memo p{font-size:15px; color:var(--ink-2)}
-.memo p+p{margin-top:10px}
-.memo a{color:var(--green-700); font-weight:700}
-.memo__cta{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
-
-/* ============ ВК ============ */
-.vk-grid{display:grid; grid-template-columns:1.35fr .65fr; gap:clamp(20px,3vw,34px); align-items:start}
-@media (max-width:1000px){ .vk-grid{grid-template-columns:1fr} }
-.vk-stage{background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--sh-1); min-height:640px; position:relative}
-.vk-stage__head{display:flex; align-items:center; gap:10px; padding:13px 18px; border-bottom:1px solid var(--line-2); background:var(--paper-2); font-size:13px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-3)}
-.vk-stage__head .spin{width:14px; height:14px; border-radius:50%; border:2px solid rgba(21,31,27,.18); border-top-color:var(--green-500); animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-#vk-community-widget{width:100%; min-height:600px}
-#vk-community-widget iframe{width:100%!important; border:0}
-.vk-fallback{padding:26px; display:none}
-.vk-fallback.is-on{display:block}
-.vk-fallback__warn{background:#fdf3e2; border:1px solid rgba(211,161,63,.4); color:#7d5614; padding:12px 15px; border-radius:12px; font-size:13.8px; margin-bottom:20px}
-.vk-card{border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden}
-.vk-card__cover{height:120px; background:linear-gradient(120deg,var(--green-800),var(--green-500)); position:relative}
-.vk-card__cover img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5}
-.vk-card__in{padding:0 20px 20px; margin-top:-34px; position:relative}
-.vk-card__logo{width:70px; height:70px; border-radius:50%; overflow:hidden; border:3px solid #fff; background:var(--paper-2); box-shadow:var(--sh-1)}
-.vk-card__logo img{width:100%; height:100%; object-fit:cover}
-.vk-card h3{font-size:19px; margin-top:12px}
-.vk-card .kind{font-size:13px; color:var(--ink-3); font-weight:600}
-.vk-card p{font-size:14.6px; color:var(--ink-2); margin-top:10px}
-.vk-card__stats{display:flex; gap:22px; margin:16px 0 18px; flex-wrap:wrap}
-.vk-card__stats div b{display:block; font-family:var(--display); font-size:22px; color:var(--green-700); line-height:1}
-.vk-card__stats div span{font-size:12.4px; color:var(--ink-3)}
-.vk-card__act{display:flex; gap:9px; flex-wrap:wrap}
-.vk-side{display:grid; gap:14px}
-.feed{background:#fff; border:1px solid var(--line); border-radius:var(--r-md); padding:18px 20px; box-shadow:var(--sh-1); transition:.28s var(--ease); display:block; text-decoration:none}
-.feed:hover{transform:translateY(-3px); box-shadow:var(--sh-2); border-color:rgba(47,122,92,.3)}
-.feed b{display:inline-block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--clay); margin-bottom:6px; font-weight:800}
-.feed h4{font-family:var(--display); font-size:16.5px; line-height:1.3}
-.feed p{font-size:13.8px; color:var(--ink-3); margin-top:6px}
-.feed span.go{display:inline-flex; align-items:center; gap:6px; margin-top:11px; font-size:13.4px; font-weight:800; color:var(--green-700)}
-.feed span.go svg{width:14px; height:14px}
-
-/* ============ ДОКУМЕНТЫ ============ */
-.docs{display:grid; gap:10px}
-.doc{display:flex; align-items:center; gap:18px; background:#fff; border:1px solid var(--line); border-radius:var(--r-md); padding:17px 22px; text-decoration:none; box-shadow:var(--sh-1); transition:.26s var(--ease)}
-.doc:hover{transform:translateX(5px); border-color:rgba(47,122,92,.35); box-shadow:var(--sh-2)}
-.doc__ic{width:44px; height:44px; border-radius:12px; background:var(--green-100); color:var(--green-700); display:grid; place-items:center; flex:none}
-.doc__ic svg{width:21px; height:21px}
-.doc__t{flex:1; min-width:0}
-.doc__t b{display:block; font-size:16px; font-weight:800}
-.doc__t span{font-size:13.6px; color:var(--ink-3)}
-.doc__type{font-size:11.4px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); border:1px solid var(--line); padding:5px 11px; border-radius:999px; flex:none; display:inline-flex; align-items:center; gap:6px}
-
-/* ============ ФОРМА ============ */
-.join-grid{display:grid; grid-template-columns:1.25fr .75fr; gap:clamp(22px,3vw,38px); align-items:start}
-@media (max-width:1000px){ .join-grid{grid-template-columns:1fr} }
-.formcard{background:#fff; border:1px solid var(--line); border-radius:var(--r-xl); padding:clamp(22px,3vw,34px); box-shadow:var(--sh-2)}
-.fgrid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-@media (max-width:640px){ .fgrid{grid-template-columns:1fr} }
-.field{display:flex; flex-direction:column; gap:7px; min-width:0}
-.field--full{grid-column:1/-1}
-.field label{font-size:13.4px; font-weight:800; color:var(--ink-2); letter-spacing:.01em}
-.field label i{color:var(--clay); font-style:normal}
-.field input[type=text],.field input[type=email],.field input[type=tel],.field select,.field textarea{
-  width:100%; padding:13px 15px; border:1.5px solid var(--line); border-radius:12px; background:var(--paper);
-  font-size:15px; transition:.2s; appearance:none;
-}
-.field select{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236c7d74' stroke-width='2.2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 13px center; background-size:17px; padding-right:40px}
-.field textarea{resize:vertical; min-height:104px; line-height:1.55}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none; border-color:var(--green-500); background:#fff; box-shadow:0 0 0 4px rgba(47,122,92,.12)}
-.field.is-bad input,.field.is-bad select,.field.is-bad textarea{border-color:#c0392b; background:#fdf1ef}
-.err{font-size:12.4px; color:#c0392b; font-weight:700; display:none}
-.field.is-bad .err{display:block}
-.hint{font-size:12.6px; color:var(--ink-3)}
-.interests{display:flex; flex-wrap:wrap; gap:8px}
-.interests label{position:relative; display:inline-flex}
-.interests input{position:absolute; opacity:0; width:0; height:0}
-.interests span{display:inline-flex; align-items:center; gap:7px; padding:9px 15px; border-radius:999px; border:1.5px solid var(--line); background:var(--paper); font-size:14px; font-weight:600; cursor:pointer; transition:.2s; color:var(--ink-2)}
-.interests span::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--line); transition:.2s}
-.interests input:checked + span{background:var(--green-100); border-color:rgba(28,75,57,.35); color:var(--green-800); font-weight:700}
-.interests input:checked + span::before{background:var(--green-500)}
-.interests input:focus-visible + span{outline:2.5px solid var(--green-500); outline-offset:2px}
-.consent{display:grid; gap:11px; margin-top:6px}
-.consent label{display:flex; gap:12px; align-items:flex-start; font-size:14.2px; color:var(--ink-2); cursor:pointer; line-height:1.5}
-.consent input{appearance:none; width:22px; height:22px; border-radius:7px; border:1.6px solid var(--line); flex:none; margin:1px 0 0; cursor:pointer; position:relative; transition:.2s; background:#fff}
-.consent input:checked{background:var(--green-500); border-color:var(--green-500)}
-.consent input:checked::after{content:""; position:absolute; left:7px; top:3px; width:5.5px; height:11px; border:2.4px solid #fff; border-top:0; border-left:0; transform:rotate(42deg)}
-.consent label.is-bad input{border-color:#c0392b; background:#fdf1ef}
-.consent label.is-bad{color:#a33b23; font-weight:600}
-#parentBlock{display:none}
-#parentBlock.is-on{display:block; animation:fadeIn .3s var(--ease)}
-@keyframes fadeIn{from{opacity:0; transform:translateY(-5px)} to{opacity:1; transform:none}}
-/* КНОПКА ОТПРАВКИ: больше не во всю ширину */
-.form-foot{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:26px}
-.btn-submit{width:auto; min-width:230px; max-width:340px; flex:0 1 auto; padding:15px 30px; font-size:15.5px}
-@media (max-width:560px){ .btn-submit{width:100%; max-width:none} .form-foot{gap:12px} }
-.draft{font-size:12.8px; color:var(--ink-3); display:flex; align-items:center; gap:7px}
-.draft svg{width:15px; height:15px}
-.steps{display:grid; gap:0; counter-reset:s}
-.steps li{position:relative; padding:0 0 22px 46px; counter-increment:s}
-.steps li::before{content:counter(s); position:absolute; left:0; top:-2px; width:32px; height:32px; border-radius:50%; background:var(--green-100); color:var(--green-800); display:grid; place-items:center; font-weight:800; font-size:14px; border:1px solid rgba(28,75,57,.16)}
-.steps li::after{content:""; position:absolute; left:16px; top:32px; bottom:2px; width:1.5px; background:var(--line)}
-.steps li:last-child{padding-bottom:0} .steps li:last-child::after{display:none}
-.steps b{display:block; font-size:15.2px; font-weight:700}
-.sidebox{background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:24px; box-shadow:var(--sh-1); margin-top:18px}
-.sidebox h3{font-size:19px; margin-bottom:14px}
-.sidebox p{font-size:14.6px; color:var(--ink-2)}
-.sidebox .who{font-weight:800; color:var(--ink)}
-.sidebox a{color:var(--green-700); font-weight:700; text-decoration:none}
-.sidebox a:hover{text-decoration:underline}
-.contact-rows{display:grid; gap:9px; margin-top:12px}
-.contact-rows div{display:flex; gap:10px; align-items:center; font-size:14.4px; color:var(--ink-2)}
-.contact-rows svg{width:17px; height:17px; color:var(--green-500); flex:none}
-
-/* ============ FAQ ============ */
-.faq{display:grid; gap:10px; margin-top:38px}
-.q{background:#fff; border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; transition:border-color .25s, box-shadow .25s}
-.q.is-open{border-color:rgba(47,122,92,.35); box-shadow:var(--sh-1)}
-.q__btn{width:100%; display:flex; align-items:center; gap:16px; justify-content:space-between; padding:18px 22px; background:none; border:0; cursor:pointer; text-align:left; font-weight:700; font-size:16px; font-family:var(--font); color:var(--ink)}
-.q__btn svg{width:20px; height:20px; flex:none; color:var(--green-500); transition:transform .3s var(--ease)}
-.q.is-open .q__btn svg{transform:rotate(45deg)}
-.q__a{display:grid; grid-template-rows:0fr; transition:grid-template-rows .34s var(--ease)}
-.q.is-open .q__a{grid-template-rows:1fr}
-.q__a > div{overflow:hidden}
-.q__a p{padding:0 22px 20px; font-size:15px; color:var(--ink-2)}
-
-/* ============ КОНТАКТЫ ============ */
-.contacts-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px}
-@media (max-width:1040px){ .contacts-grid{grid-template-columns:repeat(2,1fr)} }
-@media (max-width:600px){ .contacts-grid{grid-template-columns:1fr} }
-.ccard{background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:22px; box-shadow:var(--sh-1); display:flex; flex-direction:column; gap:9px; transition:.28s var(--ease)}
-.ccard:hover{transform:translateY(-4px); box-shadow:var(--sh-2)}
-.ccard__ic{width:42px; height:42px; border-radius:12px; background:var(--green-100); color:var(--green-700); display:grid; place-items:center}
-.ccard__ic svg{width:20px; height:20px}
-.ccard h3{font-size:17px}
-.ccard p{font-size:14.2px; color:var(--ink-2)}
-.ccard a{color:var(--green-700); font-weight:700; text-decoration:none; font-size:14.6px; display:inline-flex; align-items:center; gap:7px}
-.ccard a:hover{text-decoration:underline}
-.ccard ul{display:grid; gap:7px}
-.mapwrap{margin-top:20px; position:relative; border-radius:var(--r-xl); overflow:hidden; border:1px solid var(--line); background:linear-gradient(140deg,#dfeee5,#cfe0d4 45%,#e6e0cf); min-height:380px; box-shadow:var(--sh-1)}
-.mapwrap iframe{position:absolute; inset:0; width:100%; height:100%; border:0; min-height:380px}
-.mapcover{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center; padding:28px; background:linear-gradient(140deg,rgba(223,238,229,.94),rgba(230,224,207,.94)); transition:opacity .4s}
-.mapcover.is-off{opacity:0; pointer-events:none}
-.mapcover svg{width:46px; height:46px; color:var(--green-700)}
-.mapcover b{font-family:var(--display); font-size:21px}
-.mapcover span{font-size:14.4px; color:var(--ink-2); max-width:44ch}
-
-/* ============ ФУТЕР ============ */
-.footer{background:var(--green-900); color:rgba(233,241,236,.78); padding:clamp(44px,5vw,68px) 0 26px; margin-top:0}
-.footer__grid{display:grid; grid-template-columns:1.5fr 1fr 1fr 1.2fr; gap:34px}
-@media (max-width:960px){ .footer__grid{grid-template-columns:1fr 1fr} }
-@media (max-width:560px){ .footer__grid{grid-template-columns:1fr} }
-.footer .brand__name,.footer h4{color:#fff}
-.footer h4{font-family:var(--font); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(233,241,236,.55); margin-bottom:14px; font-weight:800}
-.footer ul{display:grid; gap:9px}
-.footer a{color:rgba(233,241,236,.8); text-decoration:none; font-size:14.6px; transition:color .2s}
-.footer a:hover{color:var(--gold)}
-.footer__about p{font-size:14.4px; margin-top:14px; max-width:40ch}
-.footer__soc{display:flex; gap:9px; margin-top:18px; flex-wrap:wrap}
-.footer__soc a{display:inline-flex; align-items:center; gap:8px; padding:9px 15px; border-radius:999px; border:1px solid rgba(255,255,255,.18); font-size:13.6px; font-weight:700}
-.footer__soc a:hover{background:rgba(255,255,255,.08); color:#fff}
-.footer__soc svg{width:16px; height:16px}
-.footer__bot{margin-top:40px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12); display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; font-size:13.2px; color:rgba(233,241,236,.55)}
-.footer .brand__sub{color:rgba(233,241,236,.5)}
-
-/* ============ ОВЕРЛЕИ (модалки, лайтбокс) ============ */
-.overlay{position:fixed; inset:0; z-index:150; display:none; padding:22px; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch}
-.overlay.is-open{display:block}
-.overlay__bd{position:fixed; inset:0; background:rgba(7,20,15,.72); backdrop-filter:blur(5px); animation:fade .25s var(--ease)}
-@keyframes fade{from{opacity:0} to{opacity:1}}
-.overlay__in{position:relative; z-index:2; max-width:660px; margin:4vh auto; background:var(--paper); border-radius:var(--r-xl); box-shadow:var(--sh-3); animation:pop .3s var(--ease); overflow:hidden}
-@keyframes pop{from{opacity:0; transform:translateY(18px) scale(.985)} to{opacity:1; transform:none}}
-.overlay__hd{display:flex; align-items:flex-start; gap:16px; padding:24px 26px 16px; border-bottom:1px solid var(--line-2); background:#fff}
-.overlay__hd h3{font-size:22px}
-.overlay__hd p{font-size:14.2px; color:var(--ink-3); margin-top:6px}
-.xbtn{margin-left:auto; flex:none; width:40px; height:40px; border-radius:12px; border:1.5px solid var(--line); background:var(--paper); cursor:pointer; display:grid; place-items:center; transition:.2s; color:var(--ink-2)}
-.xbtn:hover{background:var(--clay-100); border-color:rgba(189,87,48,.3); color:var(--clay); transform:rotate(90deg)}
-.xbtn svg{width:18px; height:18px}
-.overlay__bd-in{padding:24px 26px 28px; max-height:min(74vh,760px); overflow-y:auto; overscroll-behavior:contain}
-.overlay__ft{padding:18px 26px 24px; border-top:1px solid var(--line-2); background:#fff; display:flex; gap:12px; align-items:center; flex-wrap:wrap}
-.state-ic{width:64px; height:64px; border-radius:50%; display:grid; place-items:center; margin:0 auto 16px}
-.state-ic svg{width:32px; height:32px}
-.state-ic--ok{background:var(--green-100); color:var(--green-700)}
-.state-ic--warn{background:#fdf3e2; color:#a06a12}
-.state{text-align:center; padding:34px 26px}
-.state h3{font-size:24px; margin-bottom:10px}
-.state p{color:var(--ink-2); font-size:15.2px; max-width:48ch; margin:0 auto}
-.state__act{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:22px}
-.state code{background:var(--paper-2); padding:1px 6px; border-radius:5px; font-size:13.4px}
-
-/* Лайтбокс */
-.lb .overlay__in{max-width:min(1180px,96vw); margin:3vh auto; background:rgba(7,20,15,.62); box-shadow:none; border-radius:var(--r-lg)}
-.lb__stage{position:relative; display:grid; place-items:center; padding:14px; min-height:min(74vh,720px)}
-.lb__stage img{max-width:100%; max-height:min(72vh,700px); width:auto; border-radius:12px; box-shadow:var(--sh-3); background:#12251d; object-fit:contain}
-.lb__bar{display:flex; align-items:center; gap:14px; padding:12px 18px 18px; color:#fff}
-.lb__cap b{display:block; font-family:var(--display); font-size:17px}
-.lb__cap span{font-size:13px; color:rgba(255,255,255,.66)}
-.lb__count{margin-left:auto; font-size:13px; font-weight:800; letter-spacing:.08em; color:rgba(255,255,255,.7); flex:none}
-.lb__nav{display:flex; gap:8px; flex:none}
-.lb__btn{width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.1); color:#fff; cursor:pointer; display:grid; place-items:center; transition:.2s}
-.lb__btn:hover{background:rgba(255,255,255,.22); transform:scale(1.06)}
-.lb__btn svg{width:19px; height:19px}
-@media (max-width:640px){ .lb__bar{flex-wrap:wrap} .lb__count{margin-left:0; order:3; width:100%} }
-
-/* ============ КНОПКА НАВЕРХ ============ */
-.totop{position:fixed; right:22px; bottom:22px; z-index:80; width:50px; height:50px; border-radius:50%; border:0; background:var(--green-700); color:#fff; cursor:pointer; display:grid; place-items:center; box-shadow:var(--sh-2); opacity:0; transform:translateY(14px) scale(.9); pointer-events:none; transition:.3s var(--ease)}
-.totop.is-on{opacity:1; transform:none; pointer-events:auto}
-.totop:hover{background:var(--green-800); transform:translateY(-3px)}
-.totop svg{width:20px; height:20px}
-@media (max-width:520px){ .totop{right:14px; bottom:14px} }
-
-.img-ph{background:linear-gradient(150deg,#dfeee5,#c7dccc 55%,#e7e1d0)!important}
-.toast{position:fixed; left:50%; bottom:26px; transform:translate(-50%,20px); z-index:200; background:var(--green-900); color:#fff; padding:13px 22px; border-radius:999px; font-size:14.4px; font-weight:700; box-shadow:var(--sh-3); opacity:0; pointer-events:none; transition:.3s var(--ease)}
-.toast.is-on{opacity:1; transform:translate(-50%,0)}
-</style>
+<link rel="stylesheet" href="site.css">
 </head>
 <body>
 <a class="skip" href="#main">Перейти к содержимому</a>
@@ -801,17 +239,18 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
     <div class="head reveal">
       <span class="eyebrow">Проект «Метеостанция СКО»</span>
       <h2>Погода усадьбы в цифрах</h2>
-      <p>Автоматическая станция на территории усадьбы круглосуточно снимает показания. Данные используются в исследованиях малых рек и в школьных проектах.</p>
+      <p>Показания автоматического гидропоста №203 на карте emercit.com: температура, влажность, давление и осадки. Данные используются в исследованиях малых рек и в школьных проектах.</p>
     </div>
 
     <div class="meteo">
       <div class="meteo__media reveal">
-        <span class="meteo__badge"><i class="live" style="background:#e0a83f;animation:none"></i> Демо · ул. Войкова, 68</span>
+        <span class="meteo__badge"><i class="live"></i> Гидропост №203 · emercit.com</span>
         <img src="https://lh3.googleusercontent.com/d/1H-WDgIXsupFDg37rG9dAj-6M5vmYMOGH" alt="Монтаж автоматической метеостанции на территории усадьбы СКО" data-scene="meteo" data-fallback>
       </div>
 
       <div class="reveal" data-d="2">
         <div class="tiles" id="meteoTiles"></div>
+        <p class="meteo__note">Источник — автоматический гидропост №203 (emercit.com), а не станция на территории усадьбы. Обновление каждые 10 минут.</p>
 
         <!-- График ЭМЕРСИТ (загружается со стороны клиента, без сервера) -->
         <div class="emer-wrap">
@@ -824,8 +263,12 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
               <option value="abs_pressure">Абс. давление</option>
               <option value="dew_point">Точка росы</option>
             </select>
+            <button class="emer-refresh" id="emerRefresh" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg>
+              Обновить
+            </button>
           </div>
-          <canvas id="emerChart" class="emer-canvas"></canvas>
+          <canvas id="emerChart" class="emer-canvas" role="img" aria-label="График показаний гидропоста №203 за последние двое суток"></canvas>
           <p id="emerStatus" class="emer-status">Загрузка данных…</p>
         </div>
 
@@ -902,8 +345,8 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
         <div class="vk-stage__head"><span class="spin" id="vkSpin"></span> <span id="vkStageTitle">Загружаем сообщество ВКонтакте…</span></div>
         <div id="vk-community-widget" role="region" aria-label="Сообщество СКО ВКонтакте"></div>
 
-        <div class="vk-fallback" id="vkFallback">
-          <p class="vk-fallback__warn">Виджет ВКонтакте не загрузился — возможно, блокировщик рекламы или ограничения сети. Все новости доступны напрямую в сообществе.</p>
+        <div class="vk-fallback is-on" id="vkFallback">
+          <p class="vk-fallback__warn" id="vkFallbackWarn">Виджет ВКонтакте не загрузился — возможно, его блокирует расширение или сеть. Новости всё равно доступны напрямую в сообществе.</p>
           <div class="vk-card">
             <div class="vk-card__cover"><img src="https://lh3.googleusercontent.com/d/1o4h54KKY4_3k_2oA8nRP91jt4dN0M07z" alt="" data-scene="river" data-fallback></div>
             <div class="vk-card__in">
@@ -1135,13 +578,29 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
     </div>
 
     <div class="mapwrap reveal" id="mapWrap">
-      <iframe id="mapFrame" title="Усадьба СКО на Яндекс.Картах" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-        src="https://yandex.ru/map-widget/v1/?text=%D0%A1%D0%BE%D1%87%D0%B8%2C%20%D1%83%D0%BB.%20%D0%92%D0%BE%D0%B9%D0%BA%D0%BE%D0%B2%D0%B0%2C%2068&z=17"></iframe>
+      <iframe id="mapFrame" title="Усадьба СКО на карте 2ГИС" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://widgets.2gis.com/widget?type=firmsonmap&options=%7B%22pos%22%3A%7B%22lat%22%3A43.5879656%2C%22lon%22%3A39.7273196%2C%22zoom%22%3A17%7D%2C%22opt%22%3A%7B%22city%22%3A%22sochi%22%7D%2C%22org%22%3A%22%22%7D"></iframe>
+
+      <!-- Метка в центре карты: карта изначально отцентрована по координатам усадьбы -->
+      <span class="mapwrap__pin" aria-hidden="true">
+        <span class="mapwrap__pulse"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+
+      <div class="mapwrap__bar">
+        <span class="mapwrap__brand">2ГИС</span>
+        <span>ул. Войкова, 68 · усадьба 1905 года</span>
+        <a href="https://2gis.ru/sochi/search/%D0%92%D0%BE%D0%B9%D0%BA%D0%BE%D0%B2%D0%B0%2C%2068" target="_blank" rel="noopener">Открыть <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg></a>
+      </div>
+
       <div class="mapcover" id="mapCover">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
         <b>Усадьба СКО</b>
         <span>ул. Войкова, 68, Сочи · здание 1905 года</span>
-        <a class="btn btn--green btn--sm" href="https://yandex.ru/maps/?text=Сочи,+ул.+Войкова,+68" target="_blank" rel="noopener">Открыть в Яндекс.Картах</a>
+        <div class="mapcover__act">
+          <a class="btn btn--green btn--sm" href="https://2gis.ru/sochi/search/%D0%92%D0%BE%D0%B9%D0%BA%D0%BE%D0%B2%D0%B0%2C%2068" target="_blank" rel="noopener">Открыть в 2ГИС</a>
+          <a class="btn btn--ghost btn--sm" href="https://yandex.ru/maps/?text=Сочи,+ул.+Войкова,+68" target="_blank" rel="noopener">Яндекс.Карты</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1348,13 +807,20 @@ var SITE = {
   phone: '+7 (989) 086-89-76',
   phoneHref: 'tel:+79890868976',
   vk: {
-    /* Виджет СООБЩЕСТВА: обложка, название, описание и лента — а не счётчик подписчиков. */
-    groupId: 'sochi_kraeved',
-    mode: 1,          /* 1 = сообщество с новостями; 0 = только участники (не используем) */
-    height: 620,
-    timeout: 5000
+    /* Виджет СООБЩЕСТВА: обложка, название, описание и лента — а не счётчик подписчиков.
+       groupId — ЧИСЛОВОЙ id сообщества: VK.Widgets.Group делает parseInt и с коротким
+       именем (sochi_kraeved) молча падал. 225791724 = vk.ru/sochi_kraeved. */
+    groupId: 225791724,
+    groupUrl: 'https://vk.ru/sochi_kraeved',
+    /* mode 2 = лента записей сообщества (mode 1 показывает только обложку и
+       счётчик подписчиков — без постов). Ширина виджета ВК — не больше 500 px. */
+    mode: 2,
+    width: 500,
+    height: 640,
+    timeout: 9000
   },
-  meteo: { temp:'+14,2°', humidity:'78%', pressure:'752', windSpeed:'2,4 м/с', windDir:'юго-восток', rain24:'6,1 мм', soilTemp:'+12,8°' }
+  /* Плитки метео. Реальные значения подставляет блок ЭМЕРСИТ; до загрузки — прочерки. */
+  meteo: { temp:'—', humidity:'—', pressure:'—', rain24:'—', dew:'—', tminmax:'—' }
 };
 
 /* ---------- УТИЛИТЫ ---------- */
@@ -2053,17 +1519,17 @@ $('#faq').addEventListener('click', function(e){
    11. МЕТЕОСТАНЦИЯ
    ===================================================================== */
 var METEO_TILES = [
-  {k:'temp',      l:'температура воздуха', ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><path d='M14 14.8V5a2 2 0 1 0-4 0v9.8a4 4 0 1 0 4 0z'/></svg>"},
-  {k:'humidity',  l:'влажность',           ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3s6 6.6 6 10.6A6 6 0 0 1 6 13.6C6 9.6 12 3 12 3z'/></svg>"},
-  {k:'pressure',  l:'давление, мм рт. ст.',ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><circle cx='12' cy='12' r='9'/><path d='M12 12l4-3'/></svg>"},
-  {k:'windSpeed', l:'ветер', sub:'windDir',ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><path d='M3 8h11a3 3 0 1 0-3-3M3 16h14a3 3 0 1 1-3 3M3 12h8'/></svg>"},
-  {k:'rain24',    l:'осадки за сутки',     ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><path d='M7 16a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.3A3.7 3.7 0 0 1 17 16z'/><path d='M9 20l-1 2M13 20l-1 2M17 20l-1 2'/></svg>"},
-  {k:'soilTemp',  l:'температура почвы',   ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><path d='M3 12h18'/><path d='M6 16h4M14 16h4M8 20h8'/><path d='M12 8V3'/></svg>"}
+  {k:'temp',     l:'температура воздуха', ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><path d='M14 14.8V5a2 2 0 1 0-4 0v9.8a4 4 0 1 0 4 0z'/></svg>"},
+  {k:'humidity', l:'влажность',           ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3s6 6.6 6 10.6A6 6 0 0 1 6 13.6C6 9.6 12 3 12 3z'/></svg>"},
+  {k:'pressure', l:'давление',            ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><circle cx='12' cy='12' r='9'/><path d='M12 12l4-3'/></svg>"},
+  {k:'rain24',   l:'осадки за 24 часа',   ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round'><path d='M7 16a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.3A3.7 3.7 0 0 1 17 16z'/><path d='M9 20l-1 2M13 20l-1 2M17 20l-1 2'/></svg>"},
+  {k:'dew',      l:'точка росы',          ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3s6 6.6 6 10.6A6 6 0 0 1 6 13.6C6 9.6 12 3 12 3z'/><path d='M9.5 14.5h5'/></svg>"},
+  {k:'tminmax',  l:'мин / макс за сутки', ic:"<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M7 17V5M4 8l3-3 3 3'/><path d='M17 7v12M14 16l3 3 3-3'/></svg>"}
 ];
 function renderMeteo(d){
   $('#meteoTiles').innerHTML = METEO_TILES.map(function(t){
-    var label = t.l + (t.sub && d[t.sub] ? ', ' + d[t.sub] : '');
-    return '<div class="tile">'+t.ic+'<b>'+(d[t.k] != null ? d[t.k] : '—')+'</b><span>'+label+'</span></div>';
+    var label = t.l;
+    return '<div class="tile">'+t.ic+'<b>'+(d[t.k] != null && d[t.k] !== '' ? d[t.k] : '—')+'</b><span>'+label+'</span></div>';
   }).join('');
 }
 renderMeteo(SITE.meteo);
@@ -2084,337 +1550,496 @@ loadMeteo();
 setInterval(loadMeteo, 5 * 60 * 1000);
 
 /* =====================================================================
-   11b. ГРАФИК ЭМЕРСИТ (клиентская загрузка CSV, без сервера)
+   11b. ЭМЕРСИТ — гидропост №203: график и плитки (один загрузчик)
+   Данные приходят с Cloudflare Worker прокси, CSV: «дата;значение».
    ===================================================================== */
 (function(){
-  var canvas = $('#emerChart');
-  var sel = $('#emerMode');
-  var status = $('#emerStatus');
-  var ctx = canvas ? canvas.getContext('2d') : null;
+  var EM = SITE.emercit;
+  var canvas = $('#emerChart'), ctx = canvas ? canvas.getContext('2d') : null;
+  var sel = $('#emerMode'), statusEl = $('#emerStatus');
+  var refreshBtn = $('#emerRefresh'), updEl = $('#meteoUpdated');
+  if (!ctx || !sel) return;
 
-  if (!canvas || !ctx) return;
+  var cache = {};           /* mode -> {at, points} */
+  var inflight = {};        /* mode -> Promise */
+  var TTL = 5 * 60 * 1000;  /* кеш Worker — 5 минут */
+  var state = { mode: sel.value, points: [], error: '' };
+  var UNITS = {
+    temperature: '°C',
+    precipitation: 'мм',
+    humidity: '%',
+    abs_pressure: 'мм рт. ст.',
+    dew_point: '°C'
+  };
+  var MONTHS = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'];
 
-  /* Разрешение дисплея (retina) */
-  function setRes(){
-    var dpr = window.devicePixelRatio || 1;
-    var rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-  }
-  setRes();
-  window.addEventListener('resize', setRes);
-
-  /* Дата "вчера" и "сегодня" в формате YYYY-MM-DD (локальное время браузера) */
+  function pad2(n){ return n < 10 ? '0' + n : '' + n; }
+  function dayKey(d){ return d.getFullYear() + '-' + pad2(d.getMonth()+1) + '-' + pad2(d.getDate()); }
   function dateRange(){
     var now = new Date();
     var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
-    var fmt = function(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); };
-    return {a: fmt(yesterday), b: fmt(today)};
+    var from = new Date(today); from.setDate(from.getDate() - 1);
+    return { a: dayKey(from), b: dayKey(today) };
   }
-
   function buildUrl(mode){
-    var dr = dateRange();
-    var nocache = Date.now();
-    var p = [
-      'id=' + SITE.emercit.id,
-      'a=' + dr.a,
-      'b=' + dr.b,
-      'mode=' + mode,
-      'encoding=0',
-      'divider=0',
-      'point=0',
-      'nocache=' + nocache
-    ];
-    return SITE.emercit.base + '?' + p.join('&');
+    var r = dateRange();
+    return EM.base + '?id=' + EM.id + '&a=' + r.a + '&b=' + r.b + '&mode=' + mode
+      + '&encoding=0&divider=0&point=0&nocache=' + Date.now();
+  }
+  function fmtStamp(d){
+    return d.getDate() + ' ' + MONTHS[d.getMonth()] + ', ' + pad2(d.getHours()) + ':' + pad2(d.getMinutes());
+  }
+  function fmtNum(v, mode){
+    var dec = mode === 'humidity' ? 0 : 1;
+    return v.toFixed(dec).replace('.', ',');
   }
 
-  /* Парсинг CSV: разделитель ";", десятичная запятая, возможен BOM.
-     Формат emercit: 2 колонки — timestamp;value (value с запятой) */
+  /* CSV emercit: первая строка — заголовок в cp1251 (отбрасываем),
+     строки вида «2026-11-12 20:30:00;12,3». В «осадках» есть 3-я колонка. */
   function parseCsv(text){
-    // Удаляем BOM
+    if (!text) return [];
     if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
-    var lines = text.split(/\r?\n/);
-    var points = [];
-    for (var i = 1; i < lines.length; i++) { // пропускаем заголовок
+    var lines = text.split(/\r?\n/), out = [];
+    for (var i = 0; i < lines.length; i++){
       var line = lines[i].trim();
       if (!line) continue;
       var cols = line.split(';');
       if (cols.length < 2) continue;
-      var ts = cols[0].trim();
-      var raw = cols[1].trim().replace(',', '.'); // значение во 2-й колонке
+      var stamp = cols[0].trim();
+      if (!/^\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}/.test(stamp)) continue;
+      var raw = cols[1].trim().replace(/\s+/g, '').replace(',', '.');
       var v = parseFloat(raw);
-      if (!ts || isNaN(v)) continue;
-      points.push({t: new Date(ts), v: v});
+      var t = new Date(stamp.replace(' ', 'T'));
+      if (isNaN(v) || isNaN(t.getTime())) continue;
+      out.push({ t: t, v: v });
     }
-    points.sort(function(a,b){ return a.t - b.t; });
-    return points;
+    out.sort(function(a, b){ return a.t - b.t; });
+    return out;
   }
 
-  function draw(points, label, unit){
-    var w = canvas.clientWidth, h = canvas.clientHeight;
+  function getSeries(mode, force){
+    var c = cache[mode];
+    if (!force && c && (Date.now() - c.at) < TTL) return Promise.resolve(c.points);
+    if (!force && inflight[mode]) return inflight[mode];
+
+    var p = fetch(buildUrl(mode), { cache: 'no-cache' }).then(function(r){
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.text();
+    }).then(function(text){
+      var pts = parseCsv(text);
+      cache[mode] = { at: Date.now(), points: pts };
+      return pts;
+    });
+    inflight[mode] = p;
+    var clear = function(){ delete inflight[mode]; };
+    p.then(clear, clear);
+    return p;
+  }
+
+  /* ---------- КАНВАС ---------- */
+  function setRes(){
+    var dpr = window.devicePixelRatio || 1;
+    var r = canvas.getBoundingClientRect();
+    var w = Math.max(1, Math.round(r.width || canvas.clientWidth || 600));
+    var h = Math.max(1, Math.round(r.height || canvas.clientHeight || 240));
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { w: w, h: h };
+  }
+
+  function hourly(points){
+    var map = {}, out = [];
+    points.forEach(function(p){
+      var d = new Date(p.t.getTime());
+      d.setMinutes(0, 0, 0);
+      var k = d.getTime();
+      if (!map[k]) { map[k] = { t: d, v: 0 }; out.push(map[k]); }
+      map[k].v += p.v;
+    });
+    out.sort(function(a, b){ return a.t - b.t; });
+    return out;
+  }
+
+  function message(text, dim){
+    var s = setRes();
+    ctx.clearRect(0, 0, s.w, s.h);
+    ctx.fillStyle = dim ? 'rgba(233,241,236,.4)' : 'rgba(233,241,236,.62)';
+    ctx.font = '13px system-ui, -apple-system, Segoe UI, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(text, s.w / 2, s.h / 2);
+  }
+
+  function draw(){
+    var s = setRes();
+    var w = s.w, h = s.h;
     ctx.clearRect(0, 0, w, h);
-    if (!points || points.length === 0){
-      ctx.fillStyle = 'rgba(233,241,236,.5)';
-      ctx.font = '13px system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('Нет данных за выбранный период', w/2, h/2);
-      return;
+
+    var mode = state.mode;
+    var unit = UNITS[mode] || '';
+    if (state.error){ message('Данные недоступны', true); return; }
+    if (!state.points.length){ message('Нет данных за выбранный период', true); return; }
+
+    var pts = mode === 'precipitation' ? hourly(state.points) : state.points;
+    var isBar = mode === 'precipitation';
+
+    if (isBar){
+      var anyRain = state.points.some(function(p){ return p.v > 0; });
+      if (!anyRain){
+        message('Осадков за выбранный период не было', true);
+        return;
+      }
     }
 
-    var pad = {l: 55, r: 10, t: 22, b: 44};
-    var cx = w - pad.l - pad.r, cy = h - pad.t - pad.b;
-    var vals = points.map(function(p){ return p.v; });
+    var pad = { l: 52, r: 12, t: 30, b: 40 };
+    var cw = w - pad.l - pad.r, ch = h - pad.t - pad.b;
+    var vals = pts.map(function(p){ return p.v; });
     var min = Math.min.apply(null, vals), max = Math.max.apply(null, vals);
-    var range = max - min || 1;
-    var padV = range * 0.15;
-    var ymin = min - padV, ymax = max + padV;
 
-    var toX = function(i){ return pad.l + (i / (points.length - 1 || 1)) * cx; };
-    var toY = function(v){ return h - pad.b - ((v - ymin) / (ymax - ymin)) * cy; };
+    var ymin, ymax;
+    if (isBar){
+      ymin = 0;
+      ymax = Math.max(max * 1.18, 0.5);
+    } else {
+      if (max === min){ var d = Math.abs(max) * 0.1 || 1; min -= d; max += d; }
+      var padV = (max - min) * 0.16;
+      ymin = min - padV; ymax = max + padV;
+      if (mode === 'humidity'){ ymin = Math.max(0, ymin); ymax = Math.min(100, ymax); }
+    }
+    if (ymax === ymin) ymax = ymin + 1;
 
-    // Сетка по Y
-    ctx.strokeStyle = 'rgba(255,255,255,.08)';
+    var first = pts[0].t.getTime(), last = pts[pts.length - 1].t.getTime();
+    var span = last - first || 1;
+    var xOf = function(t){ return pad.l + ((t - first) / span) * cw; };
+    var yOf = function(v){ return pad.t + ch - ((v - ymin) / (ymax - ymin)) * ch; };
+
+    /* Сетка и подписи Y */
     ctx.lineWidth = 1;
-    var gridN = 4;
-    for (var g = 0; g <= gridN; g++){
-      var vv = ymin + (g / gridN) * (ymax - ymin);
-      var yy = toY(vv);
+    ctx.font = '10.5px system-ui, -apple-system, Segoe UI, sans-serif';
+    for (var g = 0; g <= 4; g++){
+      var vv = ymin + (g / 4) * (ymax - ymin);
+      var yy = yOf(vv);
+      ctx.strokeStyle = 'rgba(255,255,255,.09)';
       ctx.beginPath();
       ctx.moveTo(pad.l, yy); ctx.lineTo(w - pad.r, yy);
       ctx.stroke();
       ctx.fillStyle = 'rgba(233,241,236,.55)';
-      ctx.font = '11px system-ui, sans-serif';
       ctx.textAlign = 'right';
-      ctx.fillText(vv.toFixed(1), pad.l - 8, yy + 4);
+      ctx.fillText(fmtNum(vv, mode), pad.l - 8, yy + 3.5);
     }
-    ctx.fillStyle = 'rgba(233,241,236,.45)';
-    ctx.font = '10px system-ui, sans-serif';
-    ctx.textAlign = 'right';
-    ctx.fillText(label + ' (' + unit + ')', pad.l - 8, pad.t - 6);
 
-    // Ось X — время
-    var first = points[0].t, last = points[points.length - 1].t;
-    var spanHours = (last - first) / 36e5;
-    var stepHours = spanHours <= 6 ? 1 : (spanHours <= 18 ? 3 : 6);
-    var firstHour = new Date(first);
-    firstHour.setMinutes(0, 0, 0);
-    if (firstHour < first) firstHour.setHours(firstHour.getHours() + stepHours);
-    
-    ctx.fillStyle = 'rgba(233,241,236,.55)';
-    ctx.font = '10px system-ui, sans-serif';
+    /* Подписи X: шаг выбираем так, чтобы не было каши на узких экранах */
+    var spanH = span / 36e5;
+    var maxLabels = Math.max(3, Math.floor(cw / 78));
+    var steps = [1, 2, 3, 6, 12, 24, 48];
+    var step = steps[steps.length - 1];
+    for (var si = 0; si < steps.length; si++){
+      if (spanH / steps[si] <= maxLabels){ step = steps[si]; break; }
+    }
+    var tick = new Date(first);
+    tick.setMinutes(0, 0, 0);
+    if (tick.getTime() < first) tick.setHours(tick.getHours() + 1);
+    tick.setHours(Math.ceil(tick.getHours() / step) * step, 0, 0, 0);
+
+    ctx.fillStyle = 'rgba(233,241,236,.58)';
+    ctx.font = '10px system-ui, -apple-system, Segoe UI, sans-serif';
     ctx.textAlign = 'center';
-    for (var t = firstHour; t <= last; t.setHours(t.getHours() + stepHours)){
-      var ratio = (t - first) / (last - first || 1);
-      if (ratio < 0 || ratio > 1) continue;
-      var x = pad.l + ratio * cx;
-      ctx.fillText(t.getHours() + ':00', x, h - pad.b + 18);
+    var withDate = spanH > 27;
+    for (; tick.getTime() <= last + 1; tick.setHours(tick.getHours() + step)){
+      var tx = xOf(tick.getTime());
+      if (tx < pad.l - 1 || tx > w - pad.r + 1) continue;
+      var label = withDate
+        ? pad2(tick.getDate()) + '.' + pad2(tick.getMonth() + 1) + ' ' + pad2(tick.getHours()) + ':00'
+        : pad2(tick.getHours()) + ':00';
+      ctx.textAlign = tx < pad.l + 26 ? 'left' : (tx > w - pad.r - 26 ? 'right' : 'center');
+      ctx.fillText(label, tx, h - pad.b + 17);
     }
 
-    // Линия графика
-    ctx.beginPath();
-    ctx.strokeStyle = '#7fae97';
-    ctx.lineWidth = 2;
-    ctx.lineJoin = 'round';
-    points.forEach(function(p, i){
-      var x = toX(i), y = toY(p.v);
-      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-    });
-    ctx.stroke();
-
-    // Точки
-    ctx.fillStyle = '#fff';
-    points.forEach(function(p, i){
+    /* График */
+    if (isBar){
+      var bw = Math.max(2, Math.min(18, (cw / pts.length) * 0.68));
+      ctx.fillStyle = 'rgba(127,174,151,.85)';
+      pts.forEach(function(p){
+        var x = xOf(p.t.getTime()) - bw / 2;
+        var y = yOf(p.v);
+        var base = yOf(0);
+        var hh = Math.max(1, base - y);
+        ctx.fillRect(x, y, bw, hh);
+      });
+    } else {
+      /* Лёгкая заливка под линией */
+      var grad = ctx.createLinearGradient(0, pad.t, 0, pad.t + ch);
+      grad.addColorStop(0, 'rgba(127,174,151,.34)');
+      grad.addColorStop(1, 'rgba(127,174,151,0)');
       ctx.beginPath();
-      ctx.arc(toX(i), toY(p.v), 2.2, 0, Math.PI*2);
+      pts.forEach(function(p, i){
+        var x = xOf(p.t.getTime()), y = yOf(p.v);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.lineTo(xOf(last), pad.t + ch);
+      ctx.lineTo(xOf(first), pad.t + ch);
+      ctx.closePath();
+      ctx.fillStyle = grad;
       ctx.fill();
-    });
 
-    // Последнее значение
-    var lastPt = points[points.length - 1];
-    ctx.fillStyle = '#fff';
-    ctx.font = '12px system-ui, sans-serif';
+      ctx.beginPath();
+      ctx.strokeStyle = '#9ed3b6';
+      ctx.lineWidth = 2;
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+      pts.forEach(function(p, i){
+        var x = xOf(p.t.getTime()), y = yOf(p.v);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.stroke();
+
+      if (pts.length <= 64){
+        ctx.fillStyle = '#fff';
+        pts.forEach(function(p){
+          ctx.beginPath();
+          ctx.arc(xOf(p.t.getTime()), yOf(p.v), 2.2, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+    }
+
+    /* Последнее значение */
+    var lastPt = pts[pts.length - 1];
+    var value = fmtNum(lastPt.v, mode) + ' ' + unit;
     ctx.textAlign = 'left';
-    ctx.fillText(lastPt.v.toFixed(1) + ' ' + unit, pad.l + 8, pad.t + 16);
-    ctx.fillStyle = 'rgba(233,241,236,.6)';
-    ctx.font = '10px system-ui, sans-serif';
-    ctx.fillText(lastPt.t.toLocaleString('ru-RU', {hour:'2-digit',minute:'2-digit'}), pad.l + 8, pad.t + 30);
+    ctx.fillStyle = '#fff';
+    ctx.font = '700 14px system-ui, -apple-system, Segoe UI, sans-serif';
+    ctx.fillText(value, pad.l + 2, 17);
+    ctx.fillStyle = 'rgba(233,241,236,.55)';
+    ctx.font = '10.5px system-ui, -apple-system, Segoe UI, sans-serif';
+    ctx.fillText('пик ' + fmtNum(max, mode) + ' · мин ' + fmtNum(min, mode), pad.l + 2, 27);
+    ctx.textAlign = 'right';
+    ctx.fillText(fmtStamp(lastPt.t), w - pad.r, 17);
   }
 
   function setStatus(msg, cls){
-    status.textContent = msg;
-    status.className = 'emer-status ' + (cls || '');
+    if (!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.className = 'emer-status ' + (cls || '');
   }
 
-  function load(mode){
-    setStatus('Загрузка данных…', '');
-    var url = buildUrl(mode);
-    fetch(url, {cache: 'no-cache', mode: 'cors'}).then(function(r){
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.text();
-    }).then(function(text){
-      var points = parseCsv(text);
-      var meta = SITE.emercit.modes[mode] || mode;
-      var unit = mode === 'precipitation' ? 'мм' : (mode === 'abs_pressure' ? 'мм рт.ст.' : (mode === 'humidity' ? '%' : (mode === 'dew_point' ? '°' : '°C')));
-      draw(points, meta, unit);
-      setStatus(points.length ? points.length + ' точек за сутки' : 'Нет данных за сутки', points.length ? 'ok' : '');
-    }).catch(function(e){
-      draw([], '', '');
-      var msg = 'Ошибка загрузки: ' + (e.message || e);
-      if (e.message && e.message.indexOf('CORS') >= 0 || e.name === 'TypeError') {
-        msg = 'CORS ошибка: emercit.com не отдаёт Access-Control-Allow-Origin. Добавьте заголовок на сервере или используйте прокси.';
-      }
-      setStatus(msg, 'err');
-    });
-  }
-
-  if (sel) {
-    sel.addEventListener('change', function(){ load(sel.value); });
-    load(sel.value);
-  }
-})();
-
-/* =====================================================================
-   11c. ПОДГРУЗКА РЕАЛЬНЫХ ДАННЫХ ЭМЕРСИТ В КАРТОЧКИ МЕТЕОСТАНЦИИ
-   ===================================================================== */
-(function(){
-  var base = SITE.emercit.base;
-  var id = SITE.emercit.id;
-  var modes = SITE.emercit.modes;
-
-  function buildUrl(mode){
-    var now = new Date();
-    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    var yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
-    var fmt = function(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); };
-    return base + '?id=' + id + '&a=' + fmt(yesterday) + '&b=' + fmt(today) + '&mode=' + mode + '&encoding=0&divider=0&point=0&nocache=' + Date.now();
-  }
-
-  function parseCsvForLast(text){
-    if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
-    var lines = text.split(/\r?\n/);
-    var lastVal = null, lastTime = null;
-    for (var i = 1; i < lines.length; i++){
-      var line = lines[i].trim();
-      if (!line) continue;
-      var cols = line.split(';');
-      if (cols.length < 2) continue;
-      var ts = cols[0].trim();
-      var raw = cols[1].trim().replace(',', '.');
-      var v = parseFloat(raw);
-      if (!ts || isNaN(v)) continue;
-      lastVal = v;
-      lastTime = new Date(ts);
+  function updateStatus(){
+    if (state.error){
+      setStatus('Не удалось загрузить данные: ' + state.error + '. Проверьте соединение и нажмите «Обновить».', 'err');
+      return;
     }
-    return {val: lastVal, time: lastTime};
+    if (!state.points.length){
+      setStatus('За выбранный период данных нет.', '');
+      return;
+    }
+    var mode = state.mode;
+    var pts = state.points;
+    var first = pts[0].t, last = pts[pts.length - 1].t;
+    var extra = '';
+    if (mode === 'precipitation'){
+      var sum = pts.reduce(function(a, p){ return a + p.v; }, 0);
+      extra = ' · сумма ' + fmtNum(sum, mode) + ' ' + UNITS[mode];
+    }
+    setStatus((EM.modes[mode] || mode) + ' · ' + pts.length + ' точек · '
+      + fmtStamp(first) + ' — ' + fmtStamp(last) + extra, 'ok');
   }
 
-  function fmtTemp(v){ return (v >= 0 ? '+' : '') + v.toFixed(1) + '°'; }
-  function fmtHum(v){ return v.toFixed(0) + '%'; }
-  function fmtPress(v){ return v.toFixed(1) + ' мм рт. ст.'; }
-  function fmtRain(v){ return v.toFixed(1) + ' мм'; }
-  function fmtDew(v){ return (v >= 0 ? '+' : '') + v.toFixed(1) + '°'; }
-
-  var formatters = {
-    temperature: fmtTemp,
-    humidity: fmtHum,
-    abs_pressure: fmtPress,
-    precipitation: fmtRain,
-    dew_point: fmtDew
-  };
-
-  function loadAllMeteo(){
-    var promises = Object.keys(modes).map(function(mode){
-      return fetch(buildUrl(mode), {cache: 'no-cache', mode: 'cors'})
-        .then(function(r){ return r.ok ? r.text() : ''; })
-        .then(function(text){
-          var r = parseCsvForLast(text);
-          return {mode: mode, val: r.val, time: r.time};
-        })
-        .catch(function(){ return {mode: mode, val: null, time: null}; });
+  function loadChart(force){
+    var mode = sel.value;
+    setStatus('Загрузка данных…', '');
+    return getSeries(mode, force).then(function(points){
+      var cutoff = Date.now() - 48 * 36e5;
+      state.mode = mode;
+      state.points = points.filter(function(p){ return p.t.getTime() >= cutoff; });
+      state.error = '';
+      draw();
+      updateStatus();
+    }).catch(function(e){
+      state.mode = mode;
+      state.points = [];
+      state.error = (e && e.message) ? e.message : 'сеть недоступна';
+      draw();
+      updateStatus();
     });
-    Promise.all(promises).then(function(results){
-      var data = {};
+  }
+
+  /* ---------- ПЛИТКИ ---------- */
+  function fmtTemp(v){ return (v >= 0 ? '+' : '') + v.toFixed(1).replace('.', ',') + '°'; }
+  function fmtHum(v){ return Math.round(v) + '%'; }
+  function fmtPress(v){ return v.toFixed(1).replace('.', ','); }
+  function fmtRain(v){ return v.toFixed(1).replace('.', ',') + ' мм'; }
+
+  function loadTiles(force){
+    var modes = Object.keys(EM.modes);
+    return Promise.all(modes.map(function(mode){
+      return getSeries(mode, force)
+        .then(function(pts){ return { mode: mode, pts: pts }; })
+        .catch(function(){ return { mode: mode, pts: null }; });
+    })).then(function(results){
+      var d = { temp: '—', humidity: '—', pressure: '—', rain24: '—', dew: '—', tminmax: '—' };
+      var okAny = false, failed = false, lastTime = null;
+      var cut24 = Date.now() - 24 * 36e5;
+
       results.forEach(function(r){
-        if (r.val !== null && formatters[r.mode]){
-          data[r.mode] = formatters[r.mode](r.val);
+        if (!r.pts || !r.pts.length){ failed = true; return; }
+        okAny = true;
+        var last = r.pts[r.pts.length - 1];
+        if (!lastTime || last.t > lastTime) lastTime = last.t;
+
+        if (r.mode === 'temperature'){
+          d.temp = fmtTemp(last.v);
+          var t24 = r.pts.filter(function(p){ return p.t.getTime() >= cut24; });
+          if (t24.length){
+            var vals = t24.map(function(p){ return p.v; });
+            d.tminmax = fmtTemp(Math.min.apply(null, vals)) + ' / ' + fmtTemp(Math.max.apply(null, vals));
+          }
+        } else if (r.mode === 'humidity'){
+          d.humidity = fmtHum(last.v);
+        } else if (r.mode === 'abs_pressure'){
+          d.pressure = fmtPress(last.v);
+        } else if (r.mode === 'precipitation'){
+          var sum = 0;
+          r.pts.forEach(function(p){ if (p.t.getTime() >= cut24) sum += p.v; });
+          d.rain24 = fmtRain(sum);
+        } else if (r.mode === 'dew_point'){
+          d.dew = fmtTemp(last.v);
         }
       });
-      // Обновляем SITE.meteo и перерисовываем плитки
-      Object.keys(data).forEach(function(k){ SITE.meteo[k] = data[k]; });
-      renderMeteo(SITE.meteo);
-      stamp();
+
+      Object.keys(d).forEach(function(k){ SITE.meteo[k] = d[k]; });
+      renderMeteo(d);
+
+      if (updEl){
+        if (okAny && lastTime){
+          updEl.textContent = 'Данные на ' + fmtStamp(lastTime) + ' · гидропост №203, emercit.com'
+            + (failed ? ' · часть показателей недоступна' : '');
+        } else {
+          updEl.textContent = 'Данные гидропоста сейчас недоступны — проверьте соединение.';
+        }
+      }
     });
   }
 
-  // Загружаем сразу и потом каждые 10 минут
-  loadAllMeteo();
-  setInterval(loadAllMeteo, 10 * 60 * 1000);
+  /* ---------- УПРАВЛЕНИЕ ---------- */
+  function refreshAll(force){
+    if (refreshBtn) refreshBtn.disabled = true;
+    return Promise.all([loadChart(force), loadTiles(force)]).then(function(){
+      if (refreshBtn) refreshBtn.disabled = false;
+    });
+  }
+
+  sel.addEventListener('change', function(){ loadChart(true); });
+  if (refreshBtn){
+    refreshBtn.addEventListener('click', function(){ refreshAll(true); });
+  }
+
+  var rz;
+  window.addEventListener('resize', function(){
+    clearTimeout(rz);
+    rz = setTimeout(function(){ draw(); }, 160);
+  });
+
+  /* Первичная загрузка + автообновление раз в 10 минут */
+  refreshAll(false);
+  setInterval(function(){ refreshAll(true); }, 10 * 60 * 1000);
 })();
 
 /* =====================================================================
-   12. ВИДЖЕТ ВКОНТАКТЕ — ПОКАЗЫВАЕМ САМО СООБЩЕСТВО  (ИСПРАВЛЕНИЕ №3)
+   12. ВИДЖЕТ ВКОНТАКТЕ — СООБЩЕСТВО (исправлен числовой group_id)
+   ВАЖНО: VK.Widgets.Group делает parseInt(groupId) и с коротким именем
+   «sochi_kraeved» бросал исключение — виджет не работал вообще.
    ===================================================================== */
 (function(){
-  var host = $('#vk-community-widget'), fb = $('#vkFallback'), spin = $('#vkSpin'), title = $('#vkStageTitle');
-  var done = false;
-  function ok(){
-    done = true; spin.style.display = 'none';
-    title.textContent = 'Сообщество СКО ВКонтакте';
-    fb.classList.remove('is-on');
-  }
-  function fail(){
-    if (done) return;
-    done = true; spin.style.display = 'none';
-    title.textContent = 'Сообщество СКО ВКонтакте';
-    host.style.display = 'none';
+  var host = $('#vk-community-widget'), fb = $('#vkFallback');
+  var spin = $('#vkSpin'), title = $('#vkStageTitle');
+  if (!host || !fb) return;
+
+  var done = false, timeout = null;
+
+  function revealFallback(failed){
+    if (done && host.classList.contains('is-on')) return;
+    done = true;
+    if (timeout) clearTimeout(timeout);
+    if (spin) spin.style.display = 'none';
+    if (title) title.textContent = 'Сообщество СКО ВКонтакте';
+    host.classList.remove('is-on');
     fb.classList.add('is-on');
-    $$('.vk-fallback [data-count]').forEach(function(c){ if(!c.dataset.done){c.dataset.done='1'; animateCount(c);} });
+    fb.classList.toggle('is-failed', !!failed);
+    $$('.vk-fallback [data-count]').forEach(function(c){
+      if (!c.dataset.done){ c.dataset.done = '1'; animateCount(c); }
+    });
     bindImages();
   }
-  setTimeout(fail, SITE.vk.timeout);
 
-  var s = document.createElement('script');
-  s.src = 'https://vk.com/js/api/openapi.js?169';
-  s.async = true;
-  s.onload = function(){
+  function ok(){
+    done = true;
+    if (timeout) clearTimeout(timeout);
+    if (spin) spin.style.display = 'none';
+    if (title) title.textContent = 'Сообщество СКО ВКонтакте';
+    host.classList.add('is-on');
+    fb.classList.remove('is-on');
+    fb.classList.remove('is-failed');
+  }
+
+  /* Страховка: карточка сообщества видна с первой секунды, поэтому пустого
+     белого блока не бывает даже при заблокированном vk.com. */
+  timeout = setTimeout(function(){ revealFallback(true); }, SITE.vk.timeout);
+
+  function init(){
     try {
-      if (!window.VK || !VK.Widgets || !VK.Widgets.Group) { fail(); return; }
+      if (!window.VK || !VK.Widgets || !VK.Widgets.Group){ revealFallback(true); return; }
+      /* Виджет принимает только числовую ширину 120–500 px: «100%» он
+         превращает в 120 px. Считаем ширину по контейнеру, чтобы на
+         телефоне лента не обрезалась справа. */
+      var box = (host.parentElement && host.parentElement.clientWidth) || 500;
+      var w = Math.min(SITE.vk.width, Math.max(240, Math.round(box)));
       VK.Widgets.Group('vk-community-widget', {
-        mode: SITE.vk.mode,      /* 1 — сообщество с лентой новостей (обложка, название, посты) */
-        width: '100%',
+        mode: SITE.vk.mode,      /* 2 — лента записей сообщества */
+        width: w,
         height: SITE.vk.height,
-        no_cover: 0,             /* показываем обложку сообщества */
-        no_header: 0,            /* показываем шапку сообщества */
+        no_cover: 0,
+        no_header: 0,
         wide: 1,
         color1: 'FFFFFF',
         color2: '151F1B',
         color3: '1C4B39'
       }, SITE.vk.groupId);
-      /* Ждём появления iframe виджета */
+
       var tries = 0;
       var timer = setInterval(function(){
         tries++;
-        if (host.querySelector('iframe') || host.innerHTML.length > 200) { clearInterval(timer); ok(); }
-        else if (tries > 24) { clearInterval(timer); fail(); }
+        if (host.querySelector('iframe')){ clearInterval(timer); ok(); }
+        else if (tries > 40){ clearInterval(timer); revealFallback(true); }
       }, 250);
-    } catch (err) { fail(); }
-  };
-  s.onerror = fail;
-  document.head.appendChild(s);
+    } catch (err) { revealFallback(true); }
+  }
+
+  function loadScript(src, onLoad, onError){
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = true;
+    s.onload = onLoad;
+    s.onerror = onError;
+    document.head.appendChild(s);
+  }
+
+  /* Основной CDN + запасной домен vk.ru, если vk.com недоступен */
+  loadScript('https://vk.com/js/api/openapi.js?169', init, function(){
+    loadScript('https://vk.ru/js/api/openapi.js?169', init, function(){
+      revealFallback(true);
+    });
+  });
 })();
 
 /* =====================================================================
-   13. ЯНДЕКС.КАРТА (с заглушкой, если виджет не загрузился)
+   13. КАРТА 2ГИС (с заглушкой, если iframe не загрузился)
    ===================================================================== */
 (function(){
   var f = $('#mapFrame'), c = $('#mapCover'), loaded = false;
-  if (!f) return;
+  if (!f || !c) return;
   f.addEventListener('load', function(){ loaded = true; c.classList.add('is-off'); });
-  setTimeout(function(){ if (!loaded) c.classList.remove('is-off'); }, 6000);
+  f.addEventListener('error', function(){ loaded = false; c.classList.remove('is-off'); });
+  setTimeout(function(){ if (!loaded) c.classList.remove('is-off'); }, 12000);
 })();
 
 /* =====================================================================

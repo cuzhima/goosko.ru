@@ -1,113 +1,406 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Медиатека | СКО</title>
-    <link rel="icon" href="https://lh3.googleusercontent.com/d/1CQIxNrm-CXsf4BWOlO2GdbK85vLv34pB" type="image/png" />
-    <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0e2b20">
+<title>Медиатека — СКО | Сочинское Краеведческое Общество</title>
+<meta name="description" content="Фотогалерея Сочинского Краеведческого Общества: экспедиции, полевые исследования, архивные находки и усадьба на ул. Войкова, 68.">
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1CQIxNrm-CXsf4BWOlO2GdbK85vLv34pB" type="image/png">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.20/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.20/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.20/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.20/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.20/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.20/700.css">
+
+<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="media.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-    <!-- ===== ШАПКА (копия из index.html) ===== -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="https://lh3.googleusercontent.com/d/1PmjriBGvJFAJCrQesojWT7oEwFiP4Kl-" alt="Логотип СКО" class="logo-img" loading="lazy" />
-                    <div class="logo-text">
-                        <h1>СКО</h1>
-                        <p>Сочинское Краеведческое Общество</p>
-                    </div>
-                </div>
-                <button class="nav-toggle" aria-label="Открыть меню">
-                    <span></span><span></span><span></span>
-                </button>
-                <ul class="nav-menu">
-                    <li><a href="index.html#top">Главная</a></li>
-                    <li><a href="index.html#about">О нас</a></li>
-                    <li><a href="index.html#expeditions">Экспедиции</a></li>
-                    <li><a href="index.html#safety">Безопасность</a></li>
-                    <li><a href="media.html" class="active">Галерея</a></li>
-                    <li><a href="index.html#contacts">Контакты</a></li>
-                    <li><a href="index.html#join" class="btn-join">Вступить</a></li>
-                    <li><a href="https://goosko.online" target="_blank" class="btn-login">Вход</a></li>
-                </ul>
-            </div>
+<a class="skip" href="#main">Перейти к содержимому</a>
+
+<!-- ШАПКА -->
+<header class="header" id="header">
+  <div class="wrap header__in">
+    <a class="brand" href="index.html#top" aria-label="СКО — на главную">
+      <span class="brand__mark"><img src="https://lh3.googleusercontent.com/d/1PmjriBGvJFAJCrQesojWT7oEwFiP4Kl-" alt="Эмблема СКО" data-fallback></span>
+      <span class="brand__txt">
+        <span class="brand__name">СКО</span>
+        <span class="brand__sub">Сочинское Краеведческое Общество</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a href="index.html#about">О нас</a>
+      <a href="index.html#directions">Направления</a>
+      <a href="index.html#plan">План походов</a>
+      <a href="index.html#safety">Безопасность</a>
+      <a href="media.html" class="is-active" aria-current="page">Галерея</a>
+      <a href="index.html#contacts">Контакты</a>
+    </nav>
+
+    <div class="header__act">
+      <a class="btn btn--ghost btn--sm btn--login" href="https://goosko.online" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5"/><path d="M15 12H3"/></svg>
+        Вход
+      </a>
+      <a class="btn btn--sm" href="index.html#join">Вступить</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- МОБИЛЬНОЕ МЕНЮ -->
+<div class="mnav" id="mnav" aria-hidden="true">
+  <a href="index.html#about">О нас <small>Общество и миссия</small></a>
+  <a href="index.html#directions">Направления <small>Шесть направлений работы</small></a>
+  <a href="index.html#plan">План походов <small>Расписание выходов</small></a>
+  <a href="index.html#safety">Безопасность <small>Правила и чек-лист</small></a>
+  <a href="media.html" aria-current="page">Галерея <small>Медиатека СКО</small></a>
+  <a href="index.html#contacts">Контакты <small>Усадьба и связь</small></a>
+  <div class="mnav__act">
+    <a class="btn" href="index.html#join">Вступить в СКО</a>
+    <a class="btn btn--ghost" href="https://goosko.online" target="_blank" rel="noopener">Личный вход</a>
+  </div>
+  <div class="mnav__contacts">
+    <a href="tel:+79890868976">+7 (989) 086-89-76</a>
+    <a href="mailto:cuzhima@yandex.ru">cuzhima@yandex.ru</a>
+    <span>ул. Войкова, 68, Сочи</span>
+  </div>
+</div>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ОБЛОЖКА РАЗДЕЛА -->
+<section class="page-hero" aria-label="Медиатека СКО">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Хлебные крошки">
+      <a href="index.html">Главная</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      <span aria-current="page">Медиатека</span>
+    </nav>
+
+    <div class="page-hero__grid">
+      <div>
+        <span class="eyebrow">Медиатека СКО</span>
+        <h1>Фотогалерея<br><em>экспедиций и архива</em></h1>
+        <p class="page-hero__lead">Мгновения полевых выходов, работа с документами, быт усадьбы и люди, которые всё это делают. Нажмите на снимок, чтобы открыть его крупно.</p>
+        <div class="page-hero__act">
+          <a class="btn" href="#gallery">Смотреть фотографии
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--light" href="https://vk.ru/sochi_kraeved" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.8 17.1c-5.2 0-8.6-3.7-8.7-9.8h2.6c.1 4.5 2.1 6.4 3.7 6.8V7.3h2.5v3.9c1.5-.2 3.1-2 3.6-3.9h2.5c-.4 2.2-2 4-3.2 4.8 1.2.6 3 2.2 3.7 4.9h-2.8c-.6-1.9-2-3.3-4-3.6v3.7h-.9z"/></svg>
+            Больше в ВКонтакте
+          </a>
         </div>
-    </header>
+      </div>
 
-    <!-- ===== ГАЛЕРЕЯ ===== -->
-    <section class="section" style="padding-top: 120px;">
-        <div class="container">
-            <h2 class="section-title">Фотогалерея СКО</h2>
-            <p class="section-subtitle">Мгновения наших экспедиций, архивные находки и атмосфера усадьбы</p>
+      <div class="page-hero__stats" aria-label="Медиатека в цифрах">
+        <div class="mstat"><b>9</b><span>снимков в подборке</span></div>
+        <div class="mstat"><b>4</b><span>темы: походы, архив, люди, усадьба</span></div>
+        <div class="mstat"><b>47</b><span>экспедиций и походов</span></div>
+        <div class="mstat"><b>1905</b><span>год постройки усадьбы</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="gallery-grid">
-                <!-- Все фото из папки result, повторяем для наполнения -->
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/17a46ig5D5SDTJCnBxVQYMDd7mLZD2VJQ">
-                    <img src="https://lh3.googleusercontent.com/d/17a46ig5D5SDTJCnBxVQYMDd7mLZD2VJQ" alt="Команда СКО" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/1o4h54KKY4_3k_2oA8nRP91jt4dN0M07z">
-                    <img src="https://lh3.googleusercontent.com/d/1o4h54KKY4_3k_2oA8nRP91jt4dN0M07z" alt="Поход в горы" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/16Ejv9bwSM84GWSB8oyjpNRLFRkwSeVl1">
-                    <img src="https://lh3.googleusercontent.com/d/16Ejv9bwSM84GWSB8oyjpNRLFRkwSeVl1" alt="Исследование рек" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/1cCJxMMSbeeRGsvA1HLJrq9QJPmSKg2o4">
-                    <img src="https://lh3.googleusercontent.com/d/1cCJxMMSbeeRGsvA1HLJrq9QJPmSKg2o4" alt="Архивные материалы" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/1H-WDgIXsupFDg37rG9dAj-6M5vmYMOGH">
-                    <img src="https://lh3.googleusercontent.com/d/1H-WDgIXsupFDg37rG9dAj-6M5vmYMOGH" alt="Метеостанция" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/1PmjriBGvJFAJCrQesojWT7oEwFiP4Kl-">
-                    <img src="https://lh3.googleusercontent.com/d/1PmjriBGvJFAJCrQesojWT7oEwFiP4Kl-" alt="Логотип СКО" loading="lazy" />
-                </div>
-                <!-- Добавляем дубли с разными подписями для красоты -->
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/17a46ig5D5SDTJCnBxVQYMDd7mLZD2VJQ">
-                    <img src="https://lh3.googleusercontent.com/d/17a46ig5D5SDTJCnBxVQYMDd7mLZD2VJQ" alt="Команда в походе" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/1o4h54KKY4_3k_2oA8nRP91jt4dN0M07z">
-                    <img src="https://lh3.googleusercontent.com/d/1o4h54KKY4_3k_2oA8nRP91jt4dN0M07z" alt="Водопады Сочи" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/16Ejv9bwSM84GWSB8oyjpNRLFRkwSeVl1">
-                    <img src="https://lh3.googleusercontent.com/d/16Ejv9bwSM84GWSB8oyjpNRLFRkwSeVl1" alt="Полевые исследования" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/1H-WDgIXsupFDg37rG9dAj-6M5vmYMOGH">
-                    <img src="https://lh3.googleusercontent.com/d/1H-WDgIXsupFDg37rG9dAj-6M5vmYMOGH" alt="Научное оборудование" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/1cCJxMMSbeeRGsvA1HLJrq9QJPmSKg2o4">
-                    <img src="https://lh3.googleusercontent.com/d/1cCJxMMSbeeRGsvA1HLJrq9QJPmSKg2o4" alt="Старые карты" loading="lazy" />
-                </div>
-                <div class="gallery-item lightbox-trigger" data-src="https://lh3.googleusercontent.com/d/1PmjriBGvJFAJCrQesojWT7oEwFiP4Kl-">
-                    <img src="https://lh3.googleusercontent.com/d/1PmjriBGvJFAJCrQesojWT7oEwFiP4Kl-" alt="Эмблема общества" loading="lazy" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== ПОДВАЛ (копия из index.html) ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="logo"><img src="https://lh3.googleusercontent.com/d/1PmjriBGvJFAJCrQesojWT7oEwFiP4Kl-" alt="Логотип СКО" class="logo-img" loading="lazy" /><div class="logo-text"><h3>СКО</h3><p>Сочинское Краеведческое Общество</p></div></div>
-                    <p class="footer-motto">Изучаем, сохраняем, популяризируем наследие Сочи</p>
-                </div>
-                <div class="footer-column"><h4>Навигация</h4><ul><li><a href="index.html#top">Главная</a></li><li><a href="index.html#about">О нас</a></li><li><a href="index.html#expeditions">Экспедиции</a></li><li><a href="media.html">Галерея</a></li></ul></div>
-                <div class="footer-column"><h4>Документы</h4><ul><li><a href="charter.pdf" target="_blank">Устав СКО</a></li><li><a href="index.html#safety">Правила безопасности</a></li><li><a href="index.html#join">Анкета для вступления</a></li></ul></div>
-                <div class="footer-column"><h4>Контакты</h4><ul><li>ул. Войкова, 68, Сочи</li><li>+7 (989) 086-89-76</li><li>cuzhima@yandex.ru</li></ul></div>
-            </div>
-            <div class="footer-bottom"><p>&copy; 2024-2026 Сочинское Краеведческое Общество. Все права защищены.<br />Сайт разработан активом СКО</p></div>
-        </div>
-    </footer>
-
-    <!-- ===== ЛАЙТБОКС ===== -->
-    <div class="lightbox-overlay" id="lightbox">
-        <span class="lightbox-close">&times;</span>
-        <img src="" alt="Увеличенное изображение" id="lightbox-img" />
+<!-- ГАЛЕРЕЯ -->
+<section class="section" id="gallery">
+  <div class="wrap">
+    <div class="head head--row reveal">
+      <div style="max-width:66ch">
+        <span class="eyebrow">Фотоархив</span>
+        <h2>Что остаётся после маршрута</h2>
+        <p>Снимки из экспедиций и встреч в усадьбе. Часть кадров сделана участниками СКО, часть — из архивных фондов.</p>
+      </div>
+      <span class="pill" id="galCount" style="margin-left:auto">9 фотографий</span>
     </div>
 
-    <script src="script.js"></script>
+    <div class="toolbar reveal">
+      <div class="filters" id="galFilters" role="group" aria-label="Фильтр фотографий">
+        <button class="fbtn is-on" type="button" data-cat="all">Все</button>
+        <button class="fbtn" type="button" data-cat="exp">Экспедиции</button>
+        <button class="fbtn" type="button" data-cat="archive">Архив</button>
+        <button class="fbtn" type="button" data-cat="estate">Усадьба</button>
+        <button class="fbtn" type="button" data-cat="people">Люди</button>
+      </div>
+    </div>
+
+    <div class="mgrid reveal" id="mgrid" data-d="1"></div>
+    <div class="empty" id="galEmpty">В этой подборке пока нет фотографий — загляните в другую категорию.</div>
+
+    <div class="note-card reveal">
+      <span class="note-card__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 8"/></svg></span>
+      <div>
+        <h3>Хотите попасть в галерею?</h3>
+        <p>Присылайте фотографии с походов и архивные снимки председателю — лучшие кадры публикуем здесь и в сообществе ВКонтакте.</p>
+      </div>
+      <a class="btn btn--green btn--sm" href="mailto:cuzhima@yandex.ru?subject=Фотографии%20для%20медиатеки%20СКО">Предложить фото</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ФУТЕР -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a class="brand" href="index.html#top">
+          <span class="brand__mark"><img src="https://lh3.googleusercontent.com/d/1PmjriBGvJFAJCrQesojWT7oEwFiP4Kl-" alt="Эмблема СКО" data-fallback></span>
+          <span class="brand__txt"><span class="brand__name">СКО</span><span class="brand__sub">Сочинское Краеведческое Общество</span></span>
+        </a>
+        <p>Изучаем, сохраняем и популяризируем наследие Сочи</p>
+        <div class="footer__soc">
+          <a href="https://vk.ru/sochi_kraeved" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.8 17.1c-5.2 0-8.6-3.7-8.7-9.8h2.6c.1 4.5 2.1 6.4 3.7 6.8V7.3h2.5v3.9c1.5-.2 3.1-2 3.6-3.9h2.5c-.4 2.2-2 4-3.2 4.8 1.2.6 3 2.2 3.7 4.9h-2.8c-.6-1.9-2-3.3-4-3.6v3.7h-.9z"/></svg> ВКонтакте</a>
+          <a href="https://t.me/sochi_kraeved" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3L18.9 19c-.2 1-.8 1.2-1.7.8l-4.5-3.3-2.2 2.1c-.2.2-.5.5-1 .5l.4-5 8.6-7.8c.4-.3-.1-.5-.6-.2L6.6 12.9 2.2 11.5c-1-.3-1-1 .2-1.4l18-6.9c.8-.3 1.6.2 1.5.9z"/></svg> Telegram</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Навигация</h4>
+        <ul>
+          <li><a href="index.html#about">О нас</a></li>
+          <li><a href="index.html#directions">Направления</a></li>
+          <li><a href="index.html#expeditions">Экспедиции</a></li>
+          <li><a href="index.html#plan">План походов</a></li>
+          <li><a href="media.html">Галерея</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Документы</h4>
+        <ul>
+          <li><a href="charter.pdf" target="_blank" rel="noopener">Устав СКО</a></li>
+          <li><a href="index.html#safety">Правила безопасности</a></li>
+          <li><a href="index.html#join">Анкета для вступления</a></li>
+          <li><a href="index.html#docs">Открытые материалы</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li>ул. Войкова, 68, Сочи</li>
+          <li><a href="tel:+79890868976">+7 (989) 086-89-76</a></li>
+          <li><a href="mailto:cuzhima@yandex.ru">cuzhima@yandex.ru</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bot">
+      <span>© 2026 Сочинское Краеведческое Общество. Все права защищены.</span>
+      <span>Сайт разработан активом СКО</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="Наверх">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ЛАЙТБОКС -->
+<div class="overlay lb" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
+  <div class="overlay__bd" data-close></div>
+  <div class="overlay__in">
+    <div class="lb__stage">
+      <img id="lbImg" src="" alt="">
+      <button class="xbtn" type="button" data-close aria-label="Закрыть" style="position:absolute; top:10px; right:10px; background:rgba(255,255,255,.92)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="lb__bar">
+      <div class="lb__cap"><b id="lbTitle"></b><span id="lbDesc"></span></div>
+      <div class="lb__nav">
+        <button class="lb__btn" type="button" id="lbPrev" aria-label="Предыдущее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="lb__btn" type="button" id="lbNext" aria-label="Следующее фото"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      </div>
+      <span class="lb__count" id="lbCount">1 / 9</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var Drive = 'https://lh3.googleusercontent.com/d/';
+
+  /* ---------- ДАННЫЕ ГАЛЕРЕИ ---------- */
+  var GALLERY = [
+    { id:'17a46ig5D5SDTJCnBxVQYMDd7mLZD2VJQ', cat:'people',  tag:'Люди',       t:'Команда на выезде', d:'Участники СКО на маршруте в окрестностях Сочи.' },
+    { id:'1o4h54KKY4_3k_2oA8nRP91jt4dN0M07z', cat:'exp',     tag:'Экспедиции', t:'Малые реки Сочи', d:'Замеры и описание русла в горной части города.' },
+    { id:'16Ejv9bwSM84GWSB8oyjpNRLFRkwSeVl1', cat:'exp',     tag:'Экспедиции', t:'Полевые исследования', d:'Отбор проб и работа с картой прямо на маршруте.' },
+    { id:'1cCJxMMSbeeRGsvA1HLJrq9QJPmSKg2o4', cat:'archive', tag:'Архив',      t:'Архивные материалы', d:'Документы и фотографии из фондов общества.' },
+    { id:'1H-WDgIXsupFDg37rG9dAj-6M5vmYMOGH', cat:'estate',  tag:'Усадьба',    t:'Метеостанция', d:'Монтаж оборудования на территории усадьбы.' },
+    { id:'1_tEl7VuiAODLoNPBj_zaz3qzeCPGqdyW', cat:'exp',     tag:'Экспедиции', t:'Горная тропа', d:'Выход к водопадам Центрального района Сочи.' },
+    { id:'1kk85Vbv-VslTUOKKTSXKEEao__FAhUFd', cat:'people',  tag:'Люди',       t:'Команда СКО', d:'После субботника и рабочей встречи в усадьбе.' },
+    { id:'1QVMfmKiXYY5VZrEXlJ41qxRNuIid6yaC', cat:'archive', tag:'Архив',      t:'Архив общества', d:'Старая эмблема и материалы первых встреч.' },
+    { id:'1vFknYtPPMKRvHG4OuOqXusQsB-LZbEa1', cat:'estate',  tag:'Усадьба',    t:'Усадьба на Войкова, 68', d:'Историческое здание 1905 года постройки.' }
+  ];
+
+  function thumb(id){ return Drive + id + '=w900'; }
+  function full(id){ return Drive + id + '=w2400'; }
+
+  var grid = $('#mgrid');
+  var countEl = $('#galCount');
+  var emptyEl = $('#galEmpty');
+
+  grid.innerHTML = GALLERY.map(function(g, i){
+    return '<button class="mcard' + (i === 0 ? ' mcard--feat' : '') + '" type="button" data-i="' + i + '" data-cat="' + g.cat + '" aria-label="Открыть фото: ' + g.t + '">'
+      + '<img src="' + thumb(g.id) + '" alt="' + g.t + '" loading="' + (i < 3 ? 'eager' : 'lazy') + '" decoding="async">'
+      + '<span class="mcard__tag">' + g.tag + '</span>'
+      + '<span class="mcard__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6M11 8v6M8 11h6"/></svg></span>'
+      + '<span class="mcard__cap"><b>' + g.t + '</b><span>' + g.d + '</span></span>'
+      + '</button>';
+  }).join('');
+
+  /* Плавное появление и запасной фон, если Drive не отдал файл */
+  $$('.mcard img', grid).forEach(function(img){
+    var ready = function(){ img.classList.add('is-loaded'); };
+    if (img.complete) ready();
+    img.addEventListener('load', ready);
+    img.addEventListener('error', function(){
+      img.classList.add('is-loaded');
+      img.classList.add('img-ph');
+    });
+  });
+
+  /* ---------- ФИЛЬТР ---------- */
+  var current = 'all';
+  function applyFilter(cat){
+    current = cat;
+    var shown = 0;
+    $$('.mcard', grid).forEach(function(card){
+      var on = cat === 'all' || card.getAttribute('data-cat') === cat;
+      card.classList.toggle('is-hidden', !on);
+      if (on) shown++;
+    });
+    countEl.textContent = shown + ' ' + (shown % 10 === 1 && shown % 100 !== 11 ? 'фотография' : (shown % 10 >= 2 && shown % 10 <= 4 && (shown % 100 < 10 || shown % 100 >= 20) ? 'фотографии' : 'фотографий'));
+    emptyEl.classList.toggle('is-on', shown === 0);
+  }
+  $('#galFilters').addEventListener('click', function(e){
+    var b = e.target.closest('.fbtn');
+    if (!b) return;
+    $$('.fbtn', this).forEach(function(x){ x.classList.remove('is-on'); });
+    b.classList.add('is-on');
+    applyFilter(b.getAttribute('data-cat'));
+  });
+
+  /* ---------- ЛАЙТБОКС ---------- */
+  var lb = $('#lbOverlay');
+  var lbImg = $('#lbImg');
+  var lbTitle = $('#lbTitle');
+  var lbDesc = $('#lbDesc');
+  var lbCount = $('#lbCount');
+  var lbIdx = 0;
+
+  function lbShow(i){
+    lbIdx = (i + GALLERY.length) % GALLERY.length;
+    var g = GALLERY[lbIdx];
+    lbImg.alt = g.t;
+    lbImg.src = full(g.id);
+    lbImg.classList.remove('img-ph');
+    lbTitle.textContent = g.t;
+    lbDesc.textContent = g.tag + ' · ' + g.d;
+    lbCount.textContent = (lbIdx + 1) + ' / ' + GALLERY.length;
+  }
+  function lbOpen(i){
+    lbShow(i);
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    var x = $('.xbtn', lb);
+    if (x) x.focus();
+  }
+  function lbClose(){
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  grid.addEventListener('click', function(e){
+    var card = e.target.closest('.mcard');
+    if (!card) return;
+    lbOpen(parseInt(card.getAttribute('data-i'), 10));
+  });
+  $$('[data-close]', lb).forEach(function(el){ el.addEventListener('click', lbClose); });
+  $('#lbPrev').addEventListener('click', function(){ lbShow(lbIdx - 1); });
+  $('#lbNext').addEventListener('click', function(){ lbShow(lbIdx + 1); });
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('is-open')) return;
+    if (e.key === 'Escape') lbClose();
+    if (e.key === 'ArrowLeft') lbShow(lbIdx - 1);
+    if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+  });
+  lbImg.addEventListener('error', function(){ lbImg.classList.add('img-ph'); });
+
+  var swipeX = null;
+  lb.addEventListener('touchstart', function(e){ swipeX = e.touches[0].clientX; }, {passive:true});
+  lb.addEventListener('touchend', function(e){
+    if (swipeX === null) return;
+    var dx = e.changedTouches[0].clientX - swipeX;
+    swipeX = null;
+    if (Math.abs(dx) < 45) return;
+    lbShow(lbIdx + (dx < 0 ? 1 : -1));
+  }, {passive:true});
+
+  /* ---------- ШАПКА / МЕНЮ / АНИМАЦИИ ---------- */
+  var header = $('#header');
+  var burger = $('#burger');
+  var mnav = $('#mnav');
+
+  function setMenu(open){
+    document.body.classList.toggle('menu-open', open);
+    mnav.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mnav.setAttribute('aria-hidden', open ? 'false' : 'true');
+  }
+  burger.addEventListener('click', function(){ setMenu(!mnav.classList.contains('is-open')); });
+  $$('#mnav a').forEach(function(a){ a.addEventListener('click', function(){ setMenu(false); }); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setMenu(false); });
+
+  function onScroll(){
+    header.classList.toggle('is-stuck', window.scrollY > 12);
+    $('#toTop').classList.toggle('is-on', window.scrollY > 700);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  $('#toTop').addEventListener('click', function(){ window.scrollTo({ top:0, behavior:'smooth' }); });
+
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { threshold:0.08, rootMargin:'0px 0px -40px 0px' });
+    $$('.reveal').forEach(function(el){ io.observe(el); });
+    /* Страховка: если что-то не пронаблюдалось — показываем через секунду */
+    setTimeout(function(){ $$('.reveal').forEach(function(el){ el.classList.add('is-in'); }); }, 1400);
+  } else {
+    $$('.reveal').forEach(function(el){ el.classList.add('is-in'); });
+  }
+
+  /* Плавный скролл к якорю с учётом липкой шапки */
+  $$('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if (id === '#') return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.scrollY - 82;
+      window.scrollTo({ top:y, behavior:'smooth' });
+    });
+  });
+
+  applyFilter('all');
+})();
+</script>
 </body>
 </html>
