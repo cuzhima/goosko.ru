@@ -113,7 +113,7 @@ body.menu-open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
   .brand__sub{display:none}
 }
 @media (max-width:1080px){
-  .nav,.header__act .btn--login{display:none}
+  .nav{display:none}
   .burger{display:flex}
 }
 @media (max-width:520px){
@@ -149,14 +149,34 @@ body.menu-open .burger span::after{transform:translateY(-6px) rotate(-45deg)}
 .hero__lead{max-width:64ch; margin-top:18px; font-size:clamp(15.5px,1.5vw,18.5px); color:rgba(255,255,255,.86)}
 .hero__cta{display:flex; flex-wrap:wrap; gap:12px; margin-top:10px}
 .hero__stats{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px; margin-top:14px;
-  background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.16); border-radius:var(--r-lg); overflow:hidden;
-  backdrop-filter:blur(10px);
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:14px;
+  border-radius:var(--r-lg); overflow:hidden;
+  box-shadow: var(--sh-2);
+  background: linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,255,255,.18);
 }
-.hstat{background:rgba(9,26,19,.5); padding:18px 20px}
-.hstat b{display:block; font-family:var(--display); font-size:clamp(26px,3.4vw,40px); line-height:1; color:#fff}
-.hstat span{display:block; margin-top:7px; font-size:12.8px; color:rgba(255,255,255,.72); font-weight:600; letter-spacing:.02em}
-@media (max-width:860px){ .hero__stats{grid-template-columns:repeat(2,1fr)} }
+.hstat{
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  padding: clamp(16px, 2.5vw, 22px) clamp(12px, 2vw, 20px);
+  border-right: 1px solid rgba(255,255,255,.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+}
+.hstat:last-child { border-right: none; }
+.hstat b{
+  display:block; font-family:var(--display); font-size:clamp(28px, 4vw, 44px); line-height:1; color:#fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+.hstat span{
+  display:block; font-size:clamp(11.5px, 1.3vw, 13.5px); color:rgba(255,255,255,.85); font-weight:600; letter-spacing:.02em;
+  max-width: 100%;
+}
+@media (max-width:1000px){ .hero__stats{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:1000px){ .hstat:nth-child(odd){border-right:1px solid rgba(255,255,255,.12)} .hstat:nth-child(even){border-right:none} }
+@media (max-width:520px){ .hero__stats{grid-template-columns:1fr} .hstat{border-right:none; border-bottom:1px solid rgba(255,255,255,.12)} .hstat:last-child{border-bottom:none} }
 
 /* ============ СЕКЦИИ ============ */
 section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) + 10px)}
@@ -208,7 +228,12 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
   display:flex; flex-direction:column; gap:12px; box-shadow:var(--sh-1);
   transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s;
   position:relative; overflow:hidden;
+  /* Fallback: visible by default, animation only with .js class */
+  opacity: 1;
+  transform: none;
 }
+.js .dir{opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.js .dir.is-in{opacity:1; transform:none}
 .dir::after{content:""; position:absolute; right:-40px; top:-40px; width:130px; height:130px; border-radius:50%; background:var(--green-100); opacity:.55; transition:transform .4s var(--ease)}
 .dir:hover{transform:translateY(-5px); box-shadow:var(--sh-2); border-color:rgba(47,122,92,.3)}
 .dir:hover::after{transform:scale(1.25)}
@@ -217,6 +242,12 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
 .dir h3{font-size:20.5px; position:relative; z-index:1}
 .dir p{font-size:15px; color:var(--ink-2); position:relative; z-index:1}
 .tag{display:inline-flex; align-items:center; gap:7px; align-self:flex-start; padding:5px 12px; border-radius:999px; background:var(--clay-100); color:var(--clay-600); font-size:11.6px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; position:relative; z-index:1}
+
+/* Ensure all reveal elements have fallback visibility */
+.reveal{opacity:1; transform:none}
+.js .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease), transform .7s var(--ease)}
+.js .reveal.is-in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){ .js .reveal{opacity:1; transform:none; transition:none} }
 
 /* ============ ЭКСПЕДИЦИИ / ГАЛЕРЕЯ ============ */
 .gal{display:grid; grid-template-columns:1.25fr 1fr 1fr; gap:16px}
@@ -448,6 +479,30 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
 .form-foot{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-top:26px}
 .btn-submit{width:auto; min-width:230px; max-width:340px; flex:0 1 auto; padding:15px 30px; font-size:15.5px}
 @media (max-width:560px){ .btn-submit{width:100%; max-width:none} .form-foot{gap:12px} }
+
+/* Исправление видимости текста на кнопках в контексте .memo и других блоков */
+.memo .btn,
+.memo__cta .btn,
+.sidebox .btn,
+.checkcard .btn {
+  color: var(--fg) !important;
+}
+.memo .btn--green,
+.memo__cta .btn--green {
+  --fg: #fff !important;
+  background: var(--green-700) !important;
+}
+.memo .btn--ghost,
+.memo__cta .btn--ghost {
+  --fg: var(--green-700) !important;
+  border-color: var(--green-700) !important;
+  background: transparent !important;
+}
+.memo .btn--ghost:hover,
+.memo__cta .btn--ghost:hover {
+  background: var(--green-100) !important;
+}
+
 .draft{font-size:12.8px; color:var(--ink-3); display:flex; align-items:center; gap:7px}
 .draft svg{width:15px; height:15px}
 .steps{display:grid; gap:0; counter-reset:s}
@@ -584,3 +639,155 @@ section{padding:clamp(58px,7vw,104px) 0; scroll-margin-top:calc(var(--header-h) 
 .img-ph{background:linear-gradient(150deg,#dfeee5,#c7dccc 55%,#e7e1d0)!important}
 .toast{position:fixed; left:50%; bottom:26px; transform:translate(-50%,20px); z-index:200; background:var(--green-900); color:#fff; padding:13px 22px; border-radius:999px; font-size:14.4px; font-weight:700; box-shadow:var(--sh-3); opacity:0; pointer-events:none; transition:.3s var(--ease)}
 .toast.is-on{opacity:1; transform:translate(-50%,0)}
+
+/* ============ ДОПОЛНИТЕЛЬНЫЕ УЛУЧШЕНИЯ ============ */
+
+/* Улучшенная типографика для мобильных */
+@media (max-width: 640px) {
+  body { font-size: 15.5px; line-height: 1.65; }
+  .wrap { padding: 0 18px; }
+  section { padding: clamp(44px, 6vw, 72px) 0; }
+  .head { margin-bottom: clamp(24px, 3.5vw, 40px); }
+  .eyebrow { font-size: 11px; }
+  .hero__in { padding: clamp(48px, 8vw, 80px) 0 clamp(32px, 5vw, 56px); }
+  .hero__lead { font-size: clamp(14.5px, 1.4vw, 17px); }
+  .hero__cta .btn { padding: 12px 20px; font-size: 14.5px; }
+  .hstat { padding: 14px 12px; }
+  .hstat b { font-size: clamp(24px, 5vw, 36px); }
+  .hstat span { font-size: 11.5px; }
+  .mini-stats { grid-template-columns: 1fr; gap: 8px; }
+  .mini-stats div { padding: 12px 14px; }
+  .mini-stats b { font-size: 22px; }
+  .mini-stats span { font-size: 11.8px; }
+}
+
+/* Улучшения для планшетов */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .wrap { padding: 0 20px; }
+  .hero__stats { grid-template-columns: repeat(2, 1fr); }
+  .hstat:nth-child(odd) { border-right: 1px solid rgba(255,255,255,.12); }
+  .hstat:nth-child(even) { border-right: none; }
+  .hstat:last-child { border-right: none; }
+  .hstat:nth-child(3) { border-bottom: 1px solid rgba(255,255,255,.12); }
+  .hstat:nth-child(4) { border-bottom: 1px solid rgba(255,255,255,.12); }
+}
+
+/* Улучшения для больших экранов */
+@media (min-width: 1440px) {
+  .hero h1 { max-width: 18ch; }
+  .hero__lead { max-width: 70ch; }
+  .about { gap: 60px; }
+  .dir-grid { gap: 24px; }
+  .events { gap: 24px; }
+}
+
+/* Улучшенная видимость фокуса */
+*:focus-visible {
+  outline: 3px solid var(--green-500);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Плавная прокрутка для якорных ссылок */
+html {
+  scroll-padding-top: calc(var(--header-h) + 20px);
+}
+
+/* Улучшения для карточек направлений */
+.dir {
+  min-height: 200px;
+}
+.dir__ic {
+  flex-shrink: 0;
+}
+
+/* Улучшения для галереи */
+.gcard img {
+  will-change: transform;
+}
+
+/* Улучшения для модалок на мобильных */
+@media (max-width: 480px) {
+  .overlay { padding: 14px; }
+  .overlay__in { border-radius: var(--r-lg); margin: 2vh auto; }
+  .overlay__hd { padding: 18px 20px 12px; }
+  .overlay__hd h3 { font-size: 19px; }
+  .overlay__bd-in { padding: 18px 20px 22px; max-height: min(80vh, 700px); }
+  .overlay__ft { padding: 14px 20px 18px; }
+  .btn { padding: 12px 20px; font-size: 14.5px; }
+  .form-foot { flex-direction: column; align-items: stretch; gap: 10px; }
+  .btn-submit { width: 100%; min-width: 0; max-width: none; }
+  .draft { order: -1; justify-content: center; }
+}
+
+/* Улучшения для чек-листа */
+.check label {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* Улучшения для FAQ */
+.faq { gap: 8px; }
+.q__btn { padding: 16px 20px; font-size: 15.5px; }
+.q__a p { padding: 0 20px 18px; font-size: 14.8px; }
+
+/* Улучшения для планов мероприятий */
+.evt__top { flex-wrap: wrap; }
+.date { flex: 0 0 76px; }
+.evt__body { min-width: 200px; }
+.meta { gap: 6px; }
+.pill { font-size: 12px; padding: 4px 10px; }
+.evt__act { flex-wrap: wrap; gap: 8px; }
+.linkbtn { font-size: 13.5px; }
+
+/* Улучшения для футера на мобильных */
+@media (max-width: 480px) {
+  .footer { padding: clamp(36px, 5vw, 52px) 0 20px; }
+  .footer__grid { gap: 24px; }
+  .footer__soc a { padding: 8px 12px; font-size: 13px; }
+  .footer__bot { flex-direction: column; gap: 8px; text-align: center; }
+}
+
+/* Анимация загрузки изображений */
+img[data-fallback] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+img[data-fallback].img-ph,
+img[data-fallback][src^="data:"] {
+  opacity: 1;
+}
+
+/* Улучшенная сетка мини-статов в hero */
+@media (max-width: 520px) {
+  .hero__stats { grid-template-columns: 1fr; }
+  .hstat { border-right: none; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .hstat:last-child { border-bottom: none; }
+}
+
+/* Исправление для VK fallback карточки */
+.vk-card__stats { gap: 16px; flex-wrap: wrap; }
+.vk-card__stats div { text-align: center; min-width: 70px; }
+.vk-card__stats b { font-size: 20px; }
+.vk-card__stats span { font-size: 11.5px; }
+
+/* Улучшения для формы вступления */
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  box-shadow: 0 0 0 4px rgba(47,122,92,.15);
+}
+
+/* Улучшения для кнопок в hero */
+.hero__cta .btn {
+  min-width: 180px;
+}
+@media (max-width: 480px) {
+  .hero__cta .btn {
+    min-width: 0;
+    flex: 1;
+  }
+  .hero__cta {
+    width: 100%;
+  }
+}
