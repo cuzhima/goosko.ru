@@ -1057,19 +1057,29 @@
   /* ------------------------------ События ------------------------------ */
   function bind() {
     var form = $('#epanel');
-    form.addEventListener('submit', function (e) { e.preventDefault(); load(); });
+    if (form) form.addEventListener('submit', function (e) { e.preventDefault(); load(); });
 
-    var search = $('#stSearch');
-    search.addEventListener('input', function () {
-      var list = filterStations(search.value);
-      fillStationSelect(list, null);
-      if (list.length) {
-        var s = STATION_BY_ID[$('#stSelect').value];
-        if (s && (!state.station || state.station.id !== s.id)) setStation(s);
-      } else {
-        $('#stMeta').textContent = 'По запросу «' + search.value.trim() + '» ничего не найдено';
+    var attachSearchListener = function () {
+      var search = $('#stSearch');
+      if (!search) {
+        // Элемент ещё не готов — пробуем через 50 мс
+        setTimeout(attachSearchListener, 50);
+        return;
       }
-    });
+      if (search._listenerAttached) return;
+      search._listenerAttached = true;
+      search.addEventListener('input', function () {
+        var list = filterStations(search.value);
+        fillStationSelect(list, null);
+        if (list.length) {
+          var s = STATION_BY_ID[$('#stSelect').value];
+          if (s && (!state.station || state.station.id !== s.id)) setStation(s);
+        } else {
+          $('#stMeta').textContent = 'По запросу «' + search.value.trim() + '» ничего не найдено';
+        }
+      };
+    };
+    attachSearchListener();
 
     $('#stSelect').addEventListener('change', function () {
       var s = STATION_BY_ID[this.value];
