@@ -124,7 +124,7 @@
       <div style="max-width:66ch">
         <span class="eyebrow">Выборка и выгрузка</span>
         <h2>Пост, параметр и сроки</h2>
-        <p>Данные берутся напрямую с emercit.com через прокси и не хранятся на сайте. График строится в браузере, CSV формируется из тех же строк, что видны на экране.</p>
+        <p>Данные берутся с <code>emercit.com</code> (классический CSV) или <code>pub.emercit.ru</code> (новое API МЧС) через прокси и не хранятся на сайте. График строится в браузере, CSV формируется из тех же строк, что видны на экране.</p>
       </div>
       <span class="pill" id="catalogPill">Каталог загружается…</span>
     </div>
@@ -139,13 +139,21 @@
 
         <div class="efield">
           <label for="stSearch">Поиск гидропоста</label>
-          <input class="einput" id="stSearch" type="search" placeholder="АГК-0174, 174 или ЭМЕРСИТ" autocomplete="off" spellcheck="false">
+          <input class="einput" id="stSearch" type="search" placeholder="АГК-0174, 174, Кубань, Восточный Дагомыс..." autocomplete="off" spellcheck="false">
         </div>
 
         <div class="efield">
           <label for="stSelect">Гидропост <span class="req">*</span></label>
           <select class="eselect" id="stSelect" size="1" aria-describedby="stMeta"></select>
           <p class="estation-meta" id="stMeta">—</p>
+        </div>
+
+        <div class="efield">
+          <label for="apiSelect">Источник данных <span class="req">*</span></label>
+          <select class="eselect" id="apiSelect">
+            <option value="pub">pub.emercit.ru (новое API МЧС)</option>
+            <option value="old">emercit.com (классический CSV)</option>
+          </select>
         </div>
 
         <div class="efield">
@@ -270,16 +278,23 @@
     <div class="head reveal">
       <span class="eyebrow">Как это работает</span>
       <h2>Откуда берутся цифры</h2>
-      <p>Раздел использует открытый экспорт emercit.com — системы автоматического мониторинга, которую применяют на водпостах Краснодарского края и соседних регионов.</p>
+      <p>Раздел использует открытый экспорт <code>emercit.com</code> (классический CSV) и <code>pub.emercit.ru</code> (новое API МЧС) — системы автоматического мониторинга, которые применяют на водпостах Краснодарского края и соседних регионов.</p>
     </div>
 
     <div class="einfo reveal">
       <div class="einfo__card">
         <h3>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
-          Источник и обновление
+          Источники данных
         </h3>
-        <p>Данные отдаёт <code>csv.php</code> сайта emercit.com. Каждый пост присылает измерения примерно раз в 10 минут. Запросы кем-то не изменяются: сайт только читает и перестраивает ряды.</p>
+        <p>Доступны два источника:
+        <ul>
+          <li><b>emercit.com</b> (классический CSV) — все параметры: уровень воды, осадки, температура, влажность, давление, точка росы, ветер, расход, волнение, радиация, солнечная радиация, почвенные датчики, напряжение, технический сигнал, газы.</li>
+          <li><b>pub.emercit.ru</b> (новое API МЧС) — ограниченный набор: уровень воды (<code>waterlevel</code>), осадки (<code>precipitationduo</code>), температура, влажность, давление, ветер/порывы. Требует JWT-авторизацию (анонимный доступ через <code>anon_pub</code>).
+</li>
+        </ul>
+        Оба источника обновляются каждые ~10 минут. Выбор источника доступен в панели управления («Источник данных»).
+</p>
       </div>
       <div class="einfo__card">
         <h3>

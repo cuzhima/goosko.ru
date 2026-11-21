@@ -27,83 +27,98 @@
       cols: [
         { label: 'Уровень воды (по датчику)', unit: 'м', dec: 3 },
         { label: 'Уровень воды (по БСВ)', unit: 'м', dec: 3 }
-      ]
+      ],
+      apis: ['old', 'pub']
     },
     precipitation: {
       label: 'Осадки', bar: true, multi: false,
-      cols: [{ label: 'Осадки за интервал', unit: 'мм', dec: 2 }]
+      cols: [{ label: 'Осадки за интервал', unit: 'мм', dec: 2 }],
+      apis: ['old', 'pub']
     },
     temperature: {
       label: 'Температура воздуха', multi: false,
-      cols: [{ label: 'Температура', unit: '°C', dec: 1 }]
+      cols: [{ label: 'Температура', unit: '°C', dec: 1 }],
+      apis: ['old', 'pub']
     },
     humidity: {
       label: 'Относительная влажность', multi: false,
-      cols: [{ label: 'Влажность', unit: '%', dec: 1 }]
+      cols: [{ label: 'Влажность', unit: '%', dec: 1 }],
+      apis: ['old', 'pub']
     },
     abs_pressure: {
       label: 'Атмосферное давление', multi: false,
-      cols: [{ label: 'Давление', unit: 'мм рт. ст.', dec: 1 }]
+      cols: [{ label: 'Давление', unit: 'мм рт. ст.', dec: 1 }],
+      apis: ['old', 'pub']
     },
     dew_point: {
       label: 'Точка росы', multi: false,
-      cols: [{ label: 'Точка росы', unit: '°C', dec: 1 }]
+      cols: [{ label: 'Точка росы', unit: '°C', dec: 1 }],
+      apis: ['old']
     },
     wind: {
       label: 'Ветер', multi: false,
       cols: [
         { label: 'Скорость ветра', unit: 'м/с', dec: 1 },
         { label: 'Направление ветра', unit: '°', dec: 0 }
-      ]
+      ],
+      apis: ['old', 'pub']
     },
     discharge: {
       label: 'Расход воды', multi: false,
-      cols: [{ label: 'Расход воды', unit: 'м³/с', dec: 2 }]
+      cols: [{ label: 'Расход воды', unit: 'м³/с', dec: 2 }],
+      apis: ['old']
     },
     waves: {
       label: 'Волнение моря', multi: true,
       cols: [
         { label: 'Высота волны', unit: 'м', dec: 2 },
         { label: 'Высота волны (макс.)', unit: 'м', dec: 2 }
-      ]
+      ],
+      apis: ['old']
     },
     meds: {
       label: 'Радиация (МЭД)', multi: false,
-      cols: [{ label: 'Мощность дозы', unit: 'мкР/ч', dec: 3 }]
+      cols: [{ label: 'Мощность дозы', unit: 'мкР/ч', dec: 3 }],
+      apis: ['old']
     },
     global_radiation: {
       label: 'Солнечная радиация', multi: false,
-      cols: [{ label: 'Солнечная радиация', unit: 'Вт/м²', dec: 1 }]
+      cols: [{ label: 'Солнечная радиация', unit: 'Вт/м²', dec: 1 }],
+      apis: ['old']
     },
     soil_humidity: {
       label: 'Влажность почвы', multi: true, byDepth: true,
       cols: [
         { label: 'Влажность почвы', unit: '%', dec: 2 },
         { label: 'Глубина', unit: 'см', dec: 0 }
-      ]
+      ],
+      apis: ['old']
     },
     soil_temperature: {
       label: 'Температура почвы', multi: true, byDepth: true,
       cols: [
         { label: 'Температура почвы', unit: '°C', dec: 2 },
         { label: 'Глубина', unit: 'см', dec: 0 }
-      ]
+      ],
+      apis: ['old']
     },
     voltage: {
       label: 'Напряжение АКБ', multi: false,
-      cols: [{ label: 'Напряжение', unit: 'В', dec: 2 }]
+      cols: [{ label: 'Напряжение', unit: 'В', dec: 2 }],
+      apis: ['old']
     },
     tech_signal: {
       label: 'Технический сигнал (дисперсия)', multi: false,
-      cols: [{ label: 'Дисперсия', unit: '', dec: 2 }]
+      cols: [{ label: 'Дисперсия', unit: '', dec: 2 }],
+      apis: ['old']
     },
-    'gas:2': { label: 'Хлор (Cl₂)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }] },
-    'gas:4': { label: 'Аммиак (NH₃)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }] },
-    'gas:7': { label: 'Сумма углеводородов', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }] },
-    'gas:8': { label: 'Угарный газ (CO)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }] },
-    'gas:9': { label: 'Сернистый газ (SO₂)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }] },
-    'gas:10': { label: 'Диоксид азота (NO₂)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }] },
-    'gas:11': { label: 'Оксид азота (NO)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }] }
+    'gas:2': { label: 'Хлор (Cl₂)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }], apis: ['old'] },
+    'gas:4': { label: 'Аммиак (NH₃)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }], apis: ['old'] },
+    'gas:7': { label: 'Сумма углеводородов', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }], apis: ['old'] },
+    'gas:8': { label: 'Угарный газ (CO)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }], apis: ['old'] },
+    'gas:9': { label: 'Сернистый газ (SO₂)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }], apis: ['old'] },
+    'gas:10': { label: 'Диоксид азота (NO₂)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }], apis: ['old'] },
+    'gas:11': { label: 'Оксид азота (NO)', multi: false, cols: [{ label: 'Концентрация', unit: 'мкг/м³', dec: 2 }], apis: ['old'] }
   };
   var MODE_ORDER = [
     'river_level', 'precipitation', 'temperature', 'humidity', 'abs_pressure',
@@ -118,6 +133,7 @@
   var state = {
     station: null,
     mode: 'river_level',
+    api: 'pub',  // 'pub' для pub.emercit.ru, 'old' для emercit.com
     from: null,
     to: null,
     rows: [],
@@ -190,6 +206,7 @@
     return STATIONS.filter(function (s) {
       var n = s.name.toLowerCase();
       if (n.indexOf(q) !== -1) return true;
+      if (s.river && s.river.toLowerCase().indexOf(q) !== -1) return true;
       if (digits) {
         var nd = s.name.replace(/\D/g, '');
         if (nd === digits) return true;
@@ -241,16 +258,16 @@
     }
     $('#stMeta').innerHTML = html;
   }
-  function availableModes(s) {
+  function availableModes(s, api) {
     var set = {};
     (s && s.sensors ? s.sensors : '').split(';').forEach(function (k) { if (k) set[k] = 1; });
-    var keys = MODE_ORDER.filter(function (k) { return set[k]; });
-    if (!keys.length) keys = MODE_ORDER.slice();
+    var keys = MODE_ORDER.filter(function (k) { return set[k] && MODES[k].apis && MODES[k].apis.indexOf(api) !== -1; });
+    if (!keys.length) keys = MODE_ORDER.filter(function (k) { return MODES[k].apis && MODES[k].apis.indexOf(api) !== -1; });
     return keys;
   }
   function rebuildModes(prefer) {
     var sel = $('#modeSelect');
-    var keys = availableModes(state.station);
+    var keys = availableModes(state.station, state.api);
     sel.innerHTML = keys.map(function (k) {
       return '<option value="' + k + '">' + esc(MODES[k].label) + '</option>';
     }).join('');
@@ -348,11 +365,18 @@
       throw err;
     });
   }
-  function fetchChunkSmart(id, mode, a, b, signal, depth) {
+  function fetchChunkSmart(id, mode, a, b, signal, depth, api) {
     depth = depth || 0;
-    var url = getProxy() + '?id=' + encodeURIComponent(id) +
-      '&a=' + a + '&b=' + b + '&mode=' + encodeURIComponent(mode) +
-      '&encoding=0&divider=0&point=0&nocache=' + Date.now();
+    var url;
+    if (api === 'pub') {
+      url = getProxy() + '?id=' + encodeURIComponent(id) +
+        '&a=' + a + '&b=' + b + '&mode=' + encodeURIComponent(mode) +
+        '&encoding=0&divider=0&point=0&nocache=' + Date.now() + '&api=pub';
+    } else {
+      url = getProxy() + '?id=' + encodeURIComponent(id) +
+        '&a=' + a + '&b=' + b + '&mode=' + encodeURIComponent(mode) +
+        '&encoding=0&divider=0&point=0&nocache=' + Date.now() + '&api=old';
+    }
     return fetchOnce(url, signal).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       var trimmed = r.text.trim();
@@ -368,12 +392,12 @@
         var mid = addDays(d0, Math.floor(span / 2));
         var a2 = ymd(addDays(mid, 1));
         return Promise.all([
-          fetchChunkSmart(id, mode, a, ymd(mid), signal, depth + 1),
-          fetchChunkSmart(id, mode, a2, b, signal, depth + 1)
+          fetchChunkSmart(id, mode, a, ymd(mid), signal, depth + 1, api),
+          fetchChunkSmart(id, mode, a2, b, signal, depth + 1, api)
         ]).then(function (arr) { return arr[0].concat(arr[1]); });
       }
       return delay(1200 + depth * 900).then(function () {
-        return fetchChunkSmart(id, mode, a, b, signal, depth + 1);
+        return fetchChunkSmart(id, mode, a, b, signal, depth + 1, api);
       });
     });
   }
@@ -387,8 +411,8 @@
     out.sort(function (a, b) { return a.t - b.t; });
     return out;
   }
-  function fetchAll(id, mode, from, to, onProgress, signal) {
-    var key = id + '|' + mode + '|' + ymd(from) + '|' + ymd(to);
+  function fetchAll(id, mode, from, to, onProgress, signal, api) {
+    var key = id + '|' + mode + '|' + ymd(from) + '|' + ymd(to) + '|' + api;
     var c = cache[key];
     if (c && (Date.now() - c.at) < CACHE_TTL) {
       onProgress(1, 1);
@@ -400,7 +424,7 @@
     function step() {
       if (next >= parts.length) return Promise.resolve();
       var idx = next++;
-      return fetchChunkSmart(id, mode, parts[idx].a, parts[idx].b, signal, 0).then(function (rows) {
+      return fetchChunkSmart(id, mode, parts[idx].a, parts[idx].b, signal, 0, api).then(function (rows) {
         results[idx] = rows;
       }, function (err) {
         if (signal && signal.aborted) throw err;
@@ -875,12 +899,13 @@
 
   /* ------------------------------ Загрузка UI ------------------------------ */
   function currentKey() {
-    return state.station ? (state.station.id + '|' + state.mode + '|' + ymd(state.from) + '|' + ymd(state.to)) : '';
+    return state.station ? (state.station.id + '|' + state.mode + '|' + ymd(state.from) + '|' + ymd(state.to) + '|' + state.api) : '';
   }
   function updateUrl() {
     if (!state.station) return;
     var q = '?station=' + encodeURIComponent(state.station.name) +
       '&mode=' + encodeURIComponent(state.mode) +
+      '&api=' + encodeURIComponent(state.api) +
       '&from=' + ymd(state.from) + '&to=' + ymd(state.to);
     try { history.replaceState(null, '', q); } catch (e) { /* ignore */ }
   }
@@ -917,7 +942,8 @@
     state.error = '';
     setProgress(0, 0);
     draw();
-    setStatus('Запрос к pub.emercit.ru: ' + station.name + (station.river ? ' (' + station.river + ')' : '') + ' · ' + MODES[mode].label + ' · ' + fmtDateShort(from) + ' — ' + fmtDateShort(to) + '…');
+    var apiLabel = state.api === 'pub' ? 'pub.emercit.ru' : 'emercit.com';
+    setStatus('Запрос к ' + apiLabel + ': ' + station.name + (station.river ? ' (' + station.river + ')' : '') + ' · ' + MODES[mode].label + ' · ' + fmtDateShort(from) + ' — ' + fmtDateShort(to) + '…');
     updateChartHeaderIdle();
     $('#chartSub').textContent = 'Загрузка…';
 
@@ -925,7 +951,7 @@
       if (state.controller !== myController) return;
       setProgress(done, total);
       if (total > 1 && done < total) setStatus('Загружено частей: ' + done + ' из ' + total + '…');
-    }, myController.signal).then(function (rows) {
+    }, myController.signal, state.api).then(function (rows) {
       if (state.controller !== myController) return false;
       state.rows = rows;
       state.error = '';
@@ -936,8 +962,9 @@
       renderStats();
       renderTable();
       draw();
+      var apiLabel = state.api === 'pub' ? 'pub.emercit.ru' : 'emercit.com';
       $('#chartSub').textContent = fmtDateShort(from) + ' — ' + fmtDateShort(to) + ' · ' +
-        (rows.length ? rows.length + ' измерений' : 'данных нет') + ' · pub.emercit.ru';
+        (rows.length ? rows.length + ' измерений' : 'данных нет') + ' · ' + apiLabel;
       $('#chartMeta').textContent = MODES[mode].cols[0].unit || '—';
       if (!rows.length) {
         setStatus('За выбранный период данных нет. Попробуйте другие сроки — возможно, пост не передавал показания.', 'err');
@@ -1055,6 +1082,16 @@
       $('#chartSub').textContent = 'Нажмите «Построить график», чтобы обновить данные';
     });
 
+    $('#apiSelect').addEventListener('change', function () {
+      state.api = this.value;
+      rebuildModes();
+      updateUrl();
+      // Перезагрузить данные при смене API
+      if (state.station && state.rows.length) {
+        load();
+      }
+    });
+
     $('#presets').addEventListener('click', function (e) {
       var b = e.target.closest('.epreset');
       if (!b) return;
@@ -1072,7 +1109,7 @@
         setStatus('Выберите пост и корректные даты, затем повторите.', 'err');
         return;
       }
-      var key = state.station.id + '|' + state.mode + '|' + ymd(from) + '|' + ymd(to);
+      var key = state.station.id + '|' + state.mode + '|' + ymd(from) + '|' + ymd(to) + '|' + state.api;
       if (key !== state.loadedKey || !state.rows.length) load({ download: true });
       else downloadCsv();
     });
@@ -1153,13 +1190,21 @@
     var levelCount = STATIONS.filter(function (s) { return (s.sensors || '').indexOf('river_level') !== -1; }).length;
     $('#statStations').textContent = STATIONS.length;
     $('#statLevel').textContent = levelCount;
-    $('#catalogPill').textContent = STATIONS.length + ' постов · каталог pub.emercit.ru';
+    var apiLabel = state.api === 'pub' ? 'pub.emercit.ru' : 'emercit.com';
+    $('#catalogPill').textContent = STATIONS.length + ' постов · каталог ' + apiLabel;
 
     fillStationSelect(STATIONS, null);
 
     var q = new URLSearchParams(window.location.search);
     var stName = q.get('station');
     var stId = q.get('id');
+    var apiParam = q.get('api');
+    if (apiParam === 'pub' || apiParam === 'old') {
+      state.api = apiParam;
+      $('#apiSelect').value = apiParam;
+      apiLabel = state.api === 'pub' ? 'pub.emercit.ru' : 'emercit.com';
+      $('#catalogPill').textContent = STATIONS.length + ' постов · каталог ' + apiLabel;
+    }
     var st = null;
     if (stName) {
       var needle = stName.trim().toLowerCase();
