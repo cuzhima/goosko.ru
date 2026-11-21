@@ -1,6 +1,6 @@
 /* ==========================================================================
    goosko.ru/emercit/ — логика страницы: каталог постов, загрузка CSV
-   с emercit.com через прокси, график на canvas, сводка, таблица, экспорт.
+   с pub.emercit.ru через прокси, график на canvas, сводка, таблица, экспорт.
    Без внешних библиотек.
    ========================================================================== */
 (function () {
@@ -231,6 +231,7 @@
       return MODES[k] ? MODES[k].label : k;
     });
     var bits = ['ID ' + s.id];
+    if (s.river) bits.push('Река: ' + s.river);
     if (isFinite(s.lat) && isFinite(s.lon)) bits.push(s.lat.toFixed(4) + '° N, ' + s.lon.toFixed(4) + '° E');
     if (s.archived) bits.push('<b>архивный пост</b>');
     var html = esc(bits.join(' · '));
@@ -765,7 +766,8 @@
   function updateChartHeaderIdle() {
     var s = state.station, meta = MODES[state.mode];
     if (!s || !meta) return;
-    $('#chartTitle').textContent = s.name + ' · ' + meta.label;
+    var title = s.name + (s.river ? ' (' + s.river + ')' : '') + ' · ' + meta.label;
+    $('#chartTitle').textContent = title;
     $('#chartSub').textContent = 'Задайте сроки и нажмите «Построить график»';
     $('#chartMeta').textContent = meta.cols[0].unit || '—';
   }
@@ -915,9 +917,8 @@
     state.error = '';
     setProgress(0, 0);
     draw();
-    setStatus('Запрос к emercit.com: ' + station.name + ' · ' + MODES[mode].label + ' · ' + fmtDateShort(from) + ' — ' + fmtDateShort(to) + '…');
+    setStatus('Запрос к pub.emercit.ru: ' + station.name + (station.river ? ' (' + station.river + ')' : '') + ' · ' + MODES[mode].label + ' · ' + fmtDateShort(from) + ' — ' + fmtDateShort(to) + '…');
     updateChartHeaderIdle();
-    $('#chartTitle').textContent = station.name + ' · ' + MODES[mode].label;
     $('#chartSub').textContent = 'Загрузка…';
 
     return fetchAll(station.id, mode, from, to, function (done, total) {
@@ -936,7 +937,7 @@
       renderTable();
       draw();
       $('#chartSub').textContent = fmtDateShort(from) + ' — ' + fmtDateShort(to) + ' · ' +
-        (rows.length ? rows.length + ' измерений' : 'данных нет') + ' · emercit.com';
+        (rows.length ? rows.length + ' измерений' : 'данных нет') + ' · pub.emercit.ru';
       $('#chartMeta').textContent = MODES[mode].cols[0].unit || '—';
       if (!rows.length) {
         setStatus('За выбранный период данных нет. Попробуйте другие сроки — возможно, пост не передавал показания.', 'err');
@@ -1152,7 +1153,7 @@
     var levelCount = STATIONS.filter(function (s) { return (s.sensors || '').indexOf('river_level') !== -1; }).length;
     $('#statStations').textContent = STATIONS.length;
     $('#statLevel').textContent = levelCount;
-    $('#catalogPill').textContent = STATIONS.length + ' постов · каталог emercit.com';
+    $('#catalogPill').textContent = STATIONS.length + ' постов · каталог pub.emercit.ru';
 
     fillStationSelect(STATIONS, null);
 
