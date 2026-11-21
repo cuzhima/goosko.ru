@@ -3,335 +3,335 @@
    Поля: id — внутренний ID emercit, name — название, sensors — список датчиков,
    archived — 1 если пост архивный, lat/lon — WGS84, river — название реки. */
 window.EMERCIT_STATIONS=[
-{id:5,name:"АГК-0126",sensors:"river_level",archived:0,lat:44.872611,lon:37.906587,river:"Баканка р."}
-{id:8,name:"ЭМЕРСИТ-0164",sensors:"abs_pressure;dew_point;humidity;meds;precipitation;temperature;wind",archived:0,lat:45.03491786,lon:38.97349545}
-{id:10,name:"АГК-0005",sensors:"river_level",archived:0,lat:44.81461,lon:37.88212,river:"Липки р."}
-{id:11,name:"АГК-0004",sensors:"river_level",archived:0,lat:45.00803,lon:41.13927,river:"Кубань р."}
-{id:12,name:"АГК-0006",sensors:"river_level",archived:0,lat:44.85465,lon:37.99347,river:"Вторая р."}
-{id:13,name:"АГК-0007",sensors:"river_level",archived:0,lat:44.93728,lon:38.10055,river:"Абинка р."}
-{id:14,name:"АГК-0008",sensors:"river_level",archived:0,lat:44.85771,lon:37.98788,river:"Псыж р."}
-{id:15,name:"АГК-0009",sensors:"river_level",archived:0,lat:44.85182,lon:37.83588,river:"Барабашева Щель р."}
-{id:16,name:"АГК-0010",sensors:"river_level",archived:0,lat:44.85176,lon:37.87057,river:"Темрючка р."}
-{id:17,name:"АГК-0011",sensors:"river_level",archived:0,lat:45.18284,lon:38.21583,river:"Кубань р."}
-{id:18,name:"АГК-0012",sensors:"river_level",archived:0,lat:44.62991,lon:41.11307,river:"Синюха р."}
-{id:19,name:"АГК-0013",sensors:"river_level",archived:0,lat:45.02301,lon:37.63871,river:"Псебепс р."}
-{id:20,name:"АГК-0014",sensors:"river_level",archived:0,lat:44.85662,lon:38.04317,river:"Шибик р."}
-{id:21,name:"АГК-0016",sensors:"river_level",archived:0,lat:44.87626,lon:38.01732,river:"Вторая р."}
-{id:22,name:"АГК-0018",sensors:"river_level",archived:0,lat:45.45922,lon:38.04644,river:"Протока р."}
-{id:23,name:"АГК-0019",sensors:"river_level",archived:0,lat:44.75185,lon:38.07824,river:"Адегой р."}
-{id:24,name:"АГК-0020",sensors:"river_level",archived:0,lat:44.7083,lon:38.6806,river:"Афипс р."}
-{id:25,name:"АГК-0022",sensors:"river_level",archived:0,lat:44.771484,lon:38.84655,river:"Шебш р."}
-{id:26,name:"АГК-0023-А",sensors:"river_level",archived:1,lat:45.32834,lon:37.38084}
-{id:27,name:"АГК-0024",sensors:"river_level",archived:0,lat:45.29306,lon:37.36662,river:"Кубань р."}
-{id:28,name:"АГК-0025",sensors:"river_level",archived:0,lat:44.908,lon:37.40139,river:"Анапка р."}
-{id:29,name:"АГК-0026",sensors:"river_level",archived:0,lat:44.78828,lon:37.38491,river:"Сукко р."}
-{id:30,name:"АГК-0029",sensors:"photo;river_level",archived:0,lat:45.0008,lon:38.96991,river:"Кубань р."}
-{id:31,name:"АГК-0030",sensors:"river_level",archived:0,lat:44.76935,lon:39.97192,river:"Псенафа р."}
-{id:32,name:"АГК-0031",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.61879,lon:39.77887,river:"Дунайка р."}
-{id:33,name:"АГК-0032",sensors:"river_level",archived:0,lat:44.74076,lon:39.86405,river:"Белая р."}
-{id:34,name:"АГК-0033",sensors:"discharge;river_level",archived:0,lat:44.216526,lon:40.829559,river:"Шедок р."}
-{id:35,name:"АГК-0034",sensors:"river_level",archived:0,lat:44.36187,lon:38.716228,river:"Джубга р."}
-{id:36,name:"АГК-0036",sensors:"river_level",archived:0,lat:44.05236,lon:40.74574,river:"Дальняк р."}
-{id:37,name:"АГК-0037",sensors:"photo;river_level",archived:0,lat:43.90221,lon:39.39437,river:"Цусхвадж р."}
-{id:38,name:"АГК-0038",sensors:"photo;river_level",archived:0,lat:43.852261,lon:39.463875,river:"Чемит р."}
-{id:39,name:"АГК-0039",sensors:"abs_pressure;dew_point;discharge;humidity;precipitation;river_level;temperature",archived:0,lat:44.03074,lon:40.87243,river:"Андрюк р."}
-{id:40,name:"АГК-0040",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.45728,lon:38.74534,river:"Дефань р."}
-{id:41,name:"АГК-0041",sensors:"river_level",archived:0,lat:45.29575,lon:39.94023,river:"Кубань р."}
-{id:42,name:"АГК-0042",sensors:"river_level",archived:0,lat:45.28042,lon:41.01438,river:"протока р. Кубань р."}
-{id:43,name:"АГК-0043",sensors:"river_level",archived:0,lat:45.41639,lon:40.63113,river:"Кубань р."}
-{id:44,name:"АГК-0044",sensors:"discharge;river_level",archived:0,lat:44.04387,lon:40.86213,river:"Угольная р."}
-{id:45,name:"АГК-0047",sensors:"river_level",archived:0,lat:44.77506,lon:37.86648,river:"Богого р."}
-{id:46,name:"АГК-0048",sensors:"discharge;river_level",archived:0,lat:44.66887,lon:37.68703,river:"Чухабль р."}
-{id:47,name:"АГК-0050",sensors:"river_level",archived:0,lat:44.65487,lon:39.63007,river:"Пшиш р."}
-{id:48,name:"АГК-0051",sensors:"river_level",archived:0,lat:44.69442,lon:39.80981,river:"Пшеха р."}
-{id:49,name:"АГК-0052",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.17169,lon:40.60829,river:"Ходзь р."}
-{id:50,name:"АГК-0054",sensors:"discharge;river_level",archived:0,lat:44.69008,lon:37.56614,river:"Дюрсо р."}
-{id:51,name:"АГК-0055",sensors:"discharge;river_level",archived:0,lat:44.71799,lon:37.59462,river:"Абравка р."}
-{id:52,name:"АГК-0056",sensors:"discharge;river_level",archived:0,lat:44.70539,lon:37.63234,river:"Озерейка р."}
-{id:53,name:"АГК-0057",sensors:"discharge;river_level",archived:0,lat:44.86163,lon:37.73762,river:"Баканка р."}
-{id:54,name:"АГК-0058",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.91136,lon:37.56129,river:"Котлома р."}
-{id:55,name:"АГК-0059",sensors:"river_level",archived:0,lat:44.75327,lon:37.72229,river:"Старый Цемес р."}
-{id:56,name:"АГК-0060",sensors:"river_level",archived:0,lat:44.76275,lon:37.71987,river:"Цемес р."}
-{id:57,name:"АГК-0061",sensors:"river_level",archived:0,lat:44.87202,lon:37.79013,river:"Баканка р."}
-{id:58,name:"АГК-0062",sensors:"discharge;river_level",archived:0,lat:44.65018,lon:38.00646,river:"Яшамба р."}
-{id:59,name:"АГК-0063",sensors:"discharge;river_level",archived:0,lat:44.62244,lon:38.03442,river:"Хажукохабль р."}
-{id:60,name:"АГК-0064",sensors:"discharge;river_level",archived:0,lat:44.62428,lon:37.98909,river:"Яшамба р."}
-{id:61,name:"АГК-0066",sensors:"discharge;river_level",archived:0,lat:44.57252,lon:38.17002,river:"Шепс р."}
-{id:62,name:"АГК-0068",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.48048,lon:38.40006,river:"Пшада р."}
-{id:63,name:"АГК-0069",sensors:"river_level",archived:0,lat:44.64434,lon:37.94991,river:"Дооб р."}
-{id:64,name:"АГК-0070",sensors:"abs_pressure;dew_point;discharge;humidity;precipitation;river_level;temperature",archived:0,lat:44.54412,lon:38.23362,river:"Жене р."}
-{id:65,name:"АГК-0071",sensors:"river_level",archived:0,lat:44.50139,lon:38.13312,river:"Мезыбь р."}
-{id:66,name:"АГК-0072",sensors:"discharge;river_level",archived:0,lat:44.4752,lon:38.16792,river:"Хотецай р."}
-{id:67,name:"АГК-0073",sensors:"discharge;river_level",archived:0,lat:44.43587,lon:38.19281,river:"Джанхот р."}
-{id:68,name:"АГК-0074",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.51042,lon:38.32285,river:"Догуаб р."}
-{id:69,name:"АГК-0076",sensors:"discharge;river_level",archived:0,lat:44.37411,lon:38.39685,river:"Бетта р."}
-{id:70,name:"АГК-0077",sensors:"discharge;river_level",archived:0,lat:44.44212,lon:38.46499,river:"Текос р."}
-{id:71,name:"АГК-0078",sensors:"river_level",archived:0,lat:44.37288,lon:38.53197,river:"Вулан р."}
-{id:72,name:"АГК-0079",sensors:"river_level",archived:0,lat:44.37209,lon:38.5984,river:"Тешебс р."}
-{id:73,name:"АГК-0080",sensors:"river_level",archived:0,lat:44.2897,lon:40.51065,river:"Губса р."}
-{id:74,name:"АГК-0081",sensors:"river_level",archived:0,lat:44.6004,lon:40.58138,river:"Малый Чохрак р."}
-{id:75,name:"АГК-0082",sensors:"river_level",archived:0,lat:44.52024,lon:40.5952,river:"Псефирь р."}
-{id:76,name:"АГК-0083",sensors:"river_level",archived:0,lat:44.59412,lon:40.6277,river:"Большой Чохрак р."}
-{id:77,name:"АГК-0084",sensors:"river_level",archived:0,lat:44.54926,lon:40.44865,river:"Фарс р."}
-{id:78,name:"АГК-0085",sensors:"river_level",archived:0,lat:45.19114,lon:39.71626,river:"Кубань р."}
-{id:79,name:"АГК-0086",sensors:"river_level",archived:0,lat:45.34884,lon:40.20345,river:"Кубань р."}
-{id:80,name:"АГК-0087-А0",sensors:"",archived:1,lat:44.52035,lon:39.122853}
-{id:81,name:"АГК-0088",sensors:"river_level",archived:0,lat:44.63648,lon:39.1042,river:"Псекупс р."}
-{id:82,name:"АГК-0089",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.66132,lon:40.34021,river:"Пслух р."}
-{id:83,name:"АГК-0090",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.62137,lon:40.04896,river:"Кепша р."}
-{id:84,name:"АГК-0091",sensors:"river_level",archived:0,lat:44.32634,lon:39.28858,river:"Елизаветка р."}
-{id:85,name:"АГК-0092",sensors:"river_level",archived:0,lat:44.20069,lon:39.2308,river:"Спорная р."}
-{id:86,name:"АГК-0094",sensors:"river_level",archived:0,lat:44.12623,lon:39.08147,river:"Паук р."}
-{id:87,name:"АГК-0095",sensors:"river_level",archived:0,lat:44.36568,lon:39.33545,river:"Пшиш р."}
-{id:88,name:"АГК-0096",sensors:"river_level",archived:0,lat:44.23508,lon:39.37903,river:"Пшиш р."}
-{id:89,name:"АГК-0097",sensors:"river_level",archived:0,lat:44.11061,lon:41.45,river:"1-я Сухая балка р."}
-{id:91,name:"АГК-0101",sensors:"river_level",archived:0,lat:44.17837,lon:41.52992,river:"Уруп р."}
-{id:92,name:"АГК-0102",sensors:"river_level",archived:0,lat:44.20429,lon:41.39809,river:"Малый Тегинь р."}
-{id:93,name:"АГК-0103",sensors:"river_level;wind",archived:0,lat:46.03827,lon:38.14886,river:"Ахтарский л."}
-{id:94,name:"АГК-0104",sensors:"river_level",archived:0,lat:46.14734,lon:38.2326,river:"Ясенский з."}
-{id:95,name:"АГК-0105",sensors:"river_level",archived:0,lat:45.76381,lon:38.72138,river:"Кирпили р."}
-{id:96,name:"АГК-0106",sensors:"river_level",archived:0,lat:44.18092,lon:41.55375,river:"Мокрянка рч."}
-{id:97,name:"АГК-0107",sensors:"river_level",archived:0,lat:45.885025,lon:39.487858,river:"Бейсуг р."}
-{id:98,name:"АГК-0108",sensors:"river_level",archived:0,lat:45.79197,lon:39.40026,river:"Бейсуг р."}
-{id:99,name:"АГК-0109-А0",sensors:"river_level",archived:1,lat:45.61543,lon:38.14773}
-{id:100,name:"АГК-0110",sensors:"river_level",archived:0,lat:45.94711,lon:38.10686,river:"Новоипаквское г."}
-{id:101,name:"АГК-0111",sensors:"photo;river_level",archived:0,lat:43.804588,lon:39.455772,river:"Матросская р."}
-{id:102,name:"АГК-0112",sensors:"river_level",archived:0,lat:45.33603,lon:38.78592,river:"Понура р."}
-{id:104,name:"АГК-0115",sensors:"river_level",archived:0,lat:44.245552,lon:39.774693,river:"Пшеха р."}
-{id:105,name:"АГК-0114",sensors:"river_level",archived:0,lat:44.39299,lon:39.51957,river:"Хадашка р."}
-{id:106,name:"АГК-0113",sensors:"river_level",archived:0,lat:44.39849,lon:39.40826,river:"Пшиш р."}
-{id:107,name:"АГК-0116",sensors:"river_level",archived:0,lat:46.6093,lon:37.77964,river:"Азовское м."}
-{id:108,name:"АГК-0117",sensors:"river_level",archived:0,lat:46.2616,lon:38.28843,river:"Азовское м."}
-{id:109,name:"АГК-0118",sensors:"river_level",archived:0,lat:46.73743,lon:38.29,river:"Ейский л."}
-{id:110,name:"АГК-0119",sensors:"river_level",archived:0,lat:46.39134,lon:38.44714,river:"Ясени р."}
-{id:111,name:"АГК-0120",sensors:"river_level",archived:0,lat:44.49364,lon:40.88892,river:"Кукса р."}
-{id:112,name:"АГК-0121",sensors:"river_level",archived:0,lat:44.56012,lon:40.78088,river:"Кукса р."}
-{id:113,name:"АГК-0123",sensors:"river_level",archived:0,lat:44.46093,lon:41.02623,river:"Хуторянка р."}
-{id:114,name:"АГК-0124",sensors:"river_level",archived:0,lat:44.25171,lon:41.02154,river:"Окард р."}
-{id:115,name:"АГК-0125",sensors:"river_level",archived:0,lat:44.56627,lon:40.95747,river:"Грязнуха р."}
-{id:116,name:"АГК-0127",sensors:"river_level",archived:0,lat:44.14171,lon:41.04902,river:"Ецока р."}
-{id:117,name:"АГК-0128",sensors:"river_level",archived:0,lat:44.16425,lon:41.03352,river:"Большая Лаба р."}
-{id:118,name:"АГК-0129",sensors:"river_level",archived:0,lat:44.38337,lon:41.01362,river:"Окард р."}
-{id:119,name:"АГК-0130",sensors:"river_level",archived:0,lat:44.37273,lon:41.03747,river:"Чамлык р."}
-{id:120,name:"АГК-0131",sensors:"photo;river_level",archived:0,lat:44.70879,lon:40.65276,river:"Лаба р."}
-{id:121,name:"АГК-0132",sensors:"photo;river_level",archived:0,lat:44.81661,lon:40.72685,river:"Чамлык р."}
-{id:122,name:"АГК-0133",sensors:"photo;river_level",archived:0,lat:44.79127,lon:40.96708,river:"Синюха р."}
-{id:123,name:"АГК-0134-А",sensors:"river_level",archived:1,lat:45.08264,lon:41.10051}
-{id:124,name:"АГК-0135-А",sensors:"river_level",archived:1,lat:45.06048,lon:41.10158}
-{id:125,name:"АГК-0136",sensors:"river_level",archived:0,lat:44.73237,lon:41.24318,river:"Уруп р."}
-{id:126,name:"АГК-0137",sensors:"river_level",archived:0,lat:44.83381,lon:41.54045,river:"Кубань р."}
-{id:127,name:"АГК-0139",sensors:"river_level",archived:0,lat:44.21431,lon:40.71217,river:"Куба р."}
-{id:128,name:"АГК-0140",sensors:"abs_pressure;humidity;precipitation;river_level;temperature",archived:0,lat:44.284546,lon:38.957733,river:"Псебе р."}
-{id:129,name:"АГК-0143",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.212158,lon:39.437214,river:"Пшиш р."}
-{id:130,name:"АГК-0144",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.163336,lon:39.271866,river:"Пшенахо р."}
-{id:131,name:"АГК-0145",sensors:"river_level",archived:0,lat:44.07238,lon:39.14366,river:"Дедеркой р."}
-{id:132,name:"АГК-0146",sensors:"river_level",archived:0,lat:44.05888,lon:39.1677,river:"Шепси р."}
-{id:133,name:"АГК-0147",sensors:"river_level",archived:0,lat:44.33024,lon:38.77991,river:"Шепсухо р."}
-{id:134,name:"АГК-0148",sensors:"river_level",archived:0,lat:44.18165,lon:39.01217,river:"Небуг р."}
-{id:135,name:"АГК-0151",sensors:"photo;river_level",archived:0,lat:44.02428,lon:39.16224,river:"Магри р."}
-{id:136,name:"АГК-0154",sensors:"river_level",archived:0,lat:43.86381,lon:39.42076,river:"Чухукт р."}
-{id:137,name:"АГК-0156",sensors:"photo;river_level",archived:0,lat:43.75422,lon:39.56463,river:"Буу р."}
-{id:138,name:"АГК-0157",sensors:"photo;river_level",archived:0,lat:43.73001,lon:39.60896,river:"Лоо р."}
-{id:139,name:"АГК-0158",sensors:"photo;river_level",archived:0,lat:43.73183,lon:39.57806,river:"Хобза р."}
-{id:140,name:"АГК-0159",sensors:"photo;river_level",archived:0,lat:43.72238,lon:39.67245,river:"Западный Дагомыс р."}
-{id:141,name:"АГК-0160",sensors:"photo;river_level",archived:0,lat:43.51698,lon:39.99623,river:"Мзымта р."}
-{id:142,name:"АГК-0161",sensors:"photo;river_level",archived:0,lat:43.54803,lon:39.88264,river:"Хоста р."}
-{id:143,name:"АГК-0179",sensors:"photo;river_level",archived:0,lat:43.45501,lon:39.92199,river:"Херота р."}
-{id:144,name:"АГК-0184",sensors:"river_level",archived:0,lat:43.77793,lon:39.52107,river:"Хаджипсе р."}
-{id:145,name:"АГК-0191",sensors:"photo;river_level",archived:0,lat:43.66653,lon:39.70787,river:"Псахе р."}
-{id:146,name:"АГК-0002",sensors:"river_level",archived:0,lat:44.78526,lon:38.60839,river:"Убин р."}
-{id:147,name:"АГК-0053",sensors:"river_level",archived:0,lat:44.17183,lon:40.60114,river:"Гурман р."}
-{id:148,name:"АГК-0028",sensors:"river_level",archived:0,lat:44.90977,lon:37.32933,river:"Анапка р."}
-{id:150,name:"АГК-0015",sensors:"river_level",archived:0,lat:44.77874,lon:38.51184,river:"Иль р."}
-{id:151,name:"АГК-0017",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.72737,lon:38.18683,river:"Абин р."}
-{id:152,name:"АГК-0177",sensors:"river_level",archived:0,lat:43.62052,lon:39.76295,river:"Бзугу р."}
-{id:153,name:"ЭМЕРСИТ-1001",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature;wind",archived:0,lat:47.110282,lon:39.311761}
-{id:154,name:"АГК-0149",sensors:"photo;river_level",archived:0,lat:43.62469,lon:39.81915,river:"Мацеста р."}
-{id:156,name:"АГК-0163",sensors:"photo;river_level",archived:0,lat:43.44198,lon:40.03269,river:"Псоу р."}
-{id:157,name:"АГК-0194",sensors:"river_level",archived:0,lat:51.38131,lon:37.78747}
-{id:158,name:"АГК-0100",sensors:"river_level",archived:0,lat:44.07064,lon:41.3419,river:"Уруп р."}
-{id:159,name:"АГК-0162",sensors:"photo;river_level",archived:0,lat:43.49812,lon:39.91285,river:"Кудепста р."}
-{id:160,name:"АГК-0067",sensors:"abs_pressure;dew_point;discharge;humidity;precipitation;river_level;temperature",archived:0,lat:44.48388,lon:38.2218,river:"Джанхот р."}
-{id:161,name:"АГК-0049",sensors:"discharge;river_level",archived:0,lat:44.67144,lon:37.74445,river:"Мысхако р."}
-{id:162,name:"АГК-0180",sensors:"photo;river_level",archived:0,lat:43.63348,lon:40.08439,river:"Чвижепсе р."}
-{id:163,name:"АГК-0173",sensors:"photo;river_level",archived:0,lat:43.80592,lon:39.68428,river:"Шахе р."}
-{id:164,name:"АГК-0165",sensors:"photo;river_level",archived:0,lat:43.43858,lon:40.02113,river:"Чахчусер р."}
-{id:165,name:"АГК-0166",sensors:"photo;river_level",archived:0,lat:43.92816,lon:39.31759,river:"Свирка р."}
-{id:166,name:"АГК-0190",sensors:"photo;river_level",archived:0,lat:43.6862,lon:40.24564,river:"Мзымта р."}
-{id:169,name:"АГК-0192",sensors:"photo;river_level",archived:0,lat:43.58809,lon:39.80556,river:"Мацеста р."}
-{id:170,name:"АГК-0182",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.97041,lon:39.44356,river:"Псезуапсе р."}
-{id:171,name:"АГК-0175",sensors:"photo;river_level",archived:0,lat:44.01421,lon:39.36641,river:"Аше р."}
-{id:172,name:"АГК-0185",sensors:"river_level",archived:0,lat:43.67427,lon:39.62154,river:"Битха р."}
-{id:174,name:"АГК-0189",sensors:"photo;river_level",archived:0,lat:43.66166,lon:39.76023,river:"Сочи р."}
-{id:176,name:"АГК-0181",sensors:"river_level",archived:0,lat:44.01878,lon:39.181,river:"Шуюк р."}
-{id:178,name:"АГК-0168-A",sensors:"river_level",archived:1,lat:43.947065,lon:39.385548}
-{id:179,name:"АГК-0193",sensors:"river_level",archived:0,lat:43.57661,lon:39.7823,river:"Цанык р."}
-{id:181,name:"АГК-0187",sensors:"photo;river_level",archived:0,lat:43.81146,lon:39.61029,river:"Шахе р."}
-{id:182,name:"АГК-0021",sensors:"river_level",archived:0,lat:45.14255,lon:37.88673,river:"Кубань р."}
-{id:183,name:"АГК-0035",sensors:"discharge;river_level",archived:0,lat:44.03106,lon:40.8923,river:"Кызыл-Бек р."}
-{id:184,name:"АГК-0045",sensors:"river_level",archived:0,lat:45.08584,lon:41.35942,river:"Горькая балка р."}
-{id:185,name:"АГК-0046",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:43.98226,lon:40.71338,river:"Малая Лаба р."}
-{id:186,name:"АГК-0065-А",sensors:"abs_pressure;dew_point;discharge;humidity;precipitation;river_level;temperature",archived:1,lat:44.61984,lon:38.09882}
-{id:187,name:"АГК-0075",sensors:"discharge;river_level",archived:0,lat:44.41874,lon:38.3601,river:"Кураж р."}
-{id:188,name:"АГК-0093",sensors:"river_level",archived:0,lat:44.15633,lon:39.18,river:"Цыпка р."}
-{id:189,name:"АГК-0098",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.07277,lon:41.37438,river:"Кува р."}
-{id:190,name:"АГК-0122",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.118008,lon:41.081841,river:"Гарнуха р."}
-{id:191,name:"АГК-0138",sensors:"river_level",archived:0,lat:44.103,lon:40.76383,river:"Армянская р."}
-{id:192,name:"АГК-0141",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.36633,lon:38.96422,river:"Нечепсухо р."}
-{id:193,name:"АГК-0142",sensors:"river_level",archived:0,lat:44.19913,lon:39.46312,river:"Пшиш р."}
-{id:194,name:"АГК-0150",sensors:"photo;river_level",archived:0,lat:43.6999741,lon:39.76035,river:"Сочи р."}
-{id:195,name:"АГК-0152",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:44.045544,lon:39.263161,river:"Макопсе р."}
-{id:196,name:"АГК-0153",sensors:"photo;river_level",archived:0,lat:43.6165,lon:40.05032,river:"Кепша р."}
-{id:197,name:"АГК-0155",sensors:"photo;river_level",archived:0,lat:44.01066,lon:39.33377,river:"Аше р."}
-{id:198,name:"АГК-0167",sensors:"photo;river_level",archived:0,lat:43.95338,lon:39.31199,river:"Куапсе р."}
-{id:199,name:"АГК-0169",sensors:"river_level",archived:0,lat:44.01064,lon:39.19063,river:"Вишнёвка р."}
-{id:200,name:"АГК-0170",sensors:"river_level",archived:0,lat:43.8796,lon:39.40768,river:"Годлик р."}
-{id:201,name:"АГК-0171",sensors:"photo;river_level",archived:0,lat:43.76279,lon:39.54442,river:"Детляжка р."}
-{id:202,name:"АГК-0172",sensors:"photo;river_level",archived:0,lat:43.69049,lon:39.6136,river:"Уч-Дере р."}
-{id:203,name:"АГК-0174",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.7002,lon:39.68417,river:"Восточный Дагомыс р."}
-{id:204,name:"АГК-0176",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.947105,lon:39.473373,river:"Псезуапсе р."}
-{id:205,name:"АГК-0178",sensors:"river_level",archived:0,lat:44.02356,lon:39.24228,river:"Макопсе р."}
-{id:206,name:"АГК-0183",sensors:"river_level",archived:0,lat:43.76884,lon:39.53195,river:"Беранда р."}
-{id:207,name:"АГК-0186",sensors:"photo;river_level",archived:0,lat:43.68632,lon:39.65709,river:"Западный Дагомыс р."}
-{id:208,name:"АГК-0188",sensors:"river_level",archived:0,lat:43.77918,lon:39.4824,river:"Осохой р."}
-{id:209,name:"АГК-0196",sensors:"river_level",archived:0,lat:52.62834,lon:39.67662}
-{id:210,name:"АГК-0197",sensors:"river_level",archived:0,lat:52.6172,lon:38.50746}
-{id:220,name:"ЭМЕРСИТ-0206",sensors:"abs_pressure;dew_point;humidity;meds;precipitation;temperature;wind",archived:0,lat:46.320104,lon:39.391878}
-{id:221,name:"ЭМЕРСИТ-0207",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:58.028792,lon:32.977061}
-{id:222,name:"ЭМЕРСИТ-0213",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:52.604179,lon:39.509345}
-{id:230,name:"ЭМЕРСИТ-0215",sensors:"river_level",archived:0,lat:53.86774,lon:34.45469}
-{id:234,name:"ЭМЕРСИТ-1002",sensors:"abs_pressure;dew_point;humidity;river_level;temperature;wind",archived:0,lat:47.06724,lon:39.15884}
-{id:241,name:"ЭМЕРСИТ-0218",sensors:"river_level",archived:0,lat:48.79638,lon:44.71735}
-{id:253,name:"ЭМЕРСИТ-0229",sensors:"river_level;waves",archived:0,lat:44.08279,lon:39.06834}
-{id:254,name:"ЭМЕРСИТ-0228",sensors:"river_level;waves",archived:0,lat:44.091809,lon:39.077431}
-{id:255,name:"ТЕСТ-0230",sensors:"photo;river_level",archived:0,lat:45.0121,lon:38.9971}
-{id:272,name:"ЭМЕРСИТ-0250",sensors:"abs_pressure;dew_point;global_radiation;humidity;precipitation;soil_humidity;soil_temperature;temperature;wind",archived:0,lat:44.762602,lon:37.496806}
-{id:278,name:"ЭМЕРСИТ-0231",sensors:"river_level",archived:0,lat:48.826394,lon:44.726003}
-{id:314,name:"ЭМЕРСИТ-0027",sensors:"river_level",archived:0,lat:45.193769,lon:37.433784,river:"Кубань р."}
-{id:317,name:"ЭМЕРСИТ-0279М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.568884,lon:38.811408}
-{id:318,name:"ЭМЕРСИТ-0264М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.787191,lon:37.826319}
-{id:319,name:"ЭМЕРСИТ-0285М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.386764,lon:39.16609}
-{id:320,name:"ЭМЕРСИТ-0289М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.277282,lon:39.442969}
-{id:321,name:"ЭМЕРСИТ-0286М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.417242,lon:38.72287}
-{id:322,name:"ЭМЕРСИТ-0253М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.198509,lon:39.958783}
-{id:323,name:"ЭМЕРСИТ-0265М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.847238,lon:37.671471}
-{id:324,name:"ЭМЕРСИТ-0254М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.115065,lon:39.685872}
-{id:325,name:"ЭМЕРСИТ-0275М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.639598,lon:38.614728}
-{id:326,name:"ЭМЕРСИТ-0277М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.738148,lon:38.540462}
-{id:327,name:"ЭМЕРСИТ-0271М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.73324,lon:37.929872}
-{id:328,name:"ЭМЕРСИТ-0287М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.469244,lon:38.877069}
-{id:329,name:"ЭМЕРСИТ-0273М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.222949,lon:41.292126}
-{id:330,name:"ЭМЕРСИТ-0272М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.248181,lon:41.145161}
-{id:331,name:"ЭМЕРСИТ-0282",sensors:"river_level",archived:0,lat:44.987789,lon:39.105225,river:"Краснодарское вдх."}
-{id:332,name:"ЭМЕРСИТ-0283",sensors:"river_level",archived:0,lat:44.928188,lon:39.257393,river:"Краснодарское вдх."}
-{id:333,name:"ЭМЕРСИТ-0284",sensors:"river_level",archived:0,lat:45.021481,lon:39.229351,river:"Краснодарское вдх."}
-{id:334,name:"ЭМЕРСИТ-0285",sensors:"river_level",archived:0,lat:44.959492,lon:39.123291,river:"Краснодарское вдх."}
-{id:337,name:"ЭМЕРСИТ-0286",sensors:"river_level",archived:0,lat:56.99678,lon:52.180611}
-{id:339,name:"ЭМЕРСИТ-0322",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature;wind",archived:0,lat:64.715615,lon:177.463198}
-{id:343,name:"ЭМЕРСИТ-0290",sensors:"river_level",archived:0,lat:61.192596,lon:62.798473}
-{id:344,name:"ЭМЕРСИТ-0291",sensors:"river_level",archived:0,lat:61.345425,lon:63.484195}
-{id:345,name:"ЭМЕРСИТ-0292",sensors:"river_level",archived:0,lat:61.367818,lon:63.539619}
-{id:353,name:"ЭМЕРСИТ-0287",sensors:"river_level",archived:0,lat:44.990925,lon:40.305973}
-{id:377,name:"ЭМЕРСИТ-0003Д",sensors:"river_level;tech_signal;temperature",archived:0,lat:44.40725,lon:38.7353,river:"Джубга р."}
-{id:383,name:"ЭМЕРСИТ-0005Д",sensors:"river_level;tech_signal;temperature",archived:0,lat:44.5203,lon:39.122833,river:"Чепси р."}
-{id:384,name:"АГК-0087",sensors:"river_level",archived:0,lat:44.49753,lon:39.07775,river:"Чепси р."}
-{id:385,name:"ЭМЕРСИТ-0007Д",sensors:"river_level;tech_signal;temperature",archived:0,lat:44.604217,lon:39.019067,river:"Каверзе р."}
-{id:386,name:"ЭМЕРСИТ-0323",sensors:"abs_pressure;humidity;precipitation;temperature;wind",archived:0,lat:68.06276,lon:166.452792}
-{id:387,name:"ЭМЕРСИТ-0324",sensors:"abs_pressure;humidity;precipitation;temperature;wind",archived:0,lat:69.699373,lon:170.301825}
-{id:390,name:"ЭМЕРСИТ-0327",sensors:"river_level",archived:0,lat:53.078156,lon:45.115002}
-{id:395,name:"АГК-0043Д",sensors:"precipitation;tech_signal",archived:0,lat:44.36195,lon:38.715835}
-{id:396,name:"АГК-0077Д",sensors:"precipitation;tech_signal;temperature",archived:0,lat:44.44231,lon:38.464948}
-{id:398,name:"ЭМЕРСИТ-0328",sensors:"abs_pressure;dew_point;gas:10;gas:11;gas:8;gas:9;humidity;precipitation;temperature;wind",archived:0,lat:63.570159,lon:53.689389}
-{id:399,name:"ЭМЕРСИТ-0329",sensors:"abs_pressure;dew_point;gas:10;gas:11;gas:8;gas:9;humidity;precipitation;temperature;wind",archived:0,lat:61.791826,lon:50.751701}
-{id:400,name:"ЭМЕРСИТ-0330",sensors:"abs_pressure;dew_point;gas:10;gas:11;gas:8;gas:9;humidity;precipitation;temperature;wind",archived:0,lat:67.517895,lon:64.069229}
-{id:403,name:"АГК-0113-А",sensors:"river_level",archived:1,lat:44.40893,lon:39.41411}
-{id:404,name:"АГК-0176-А",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:1,lat:43.950035,lon:39.467596}
-{id:405,name:"АГК-0033-А",sensors:"discharge;river_level",archived:1,lat:44.22237,lon:40.84539}
-{id:406,name:"АГК-0080-А",sensors:"river_level",archived:1,lat:44.31266,lon:40.61937}
-{id:407,name:"АГК-0051-А",sensors:"river_level",archived:1,lat:44.69663,lon:39.8073}
-{id:408,name:"ЭМЕРСИТ-0331",sensors:"river_level",archived:0,lat:44.383659,lon:39.164761,river:"Псекупс р."}
-{id:409,name:"ЭМЕРСИТ-0332",sensors:"river_level",archived:0,lat:44.253315,lon:39.239459,river:"Чилипси р."}
-{id:410,name:"ЭМЕРСИТ-0333",sensors:"river_level",archived:0,lat:44.161503,lon:39.215195,river:"Туапсе р."}
-{id:413,name:"ЭМЕРСИТ-0336",sensors:"river_level",archived:0,lat:53.078827,lon:45.11245}
-{id:417,name:"ЭМЕРСИТ-0009Д",sensors:"river_level;temperature",archived:0,lat:44.880307,lon:37.933525,river:"Адагум р."}
-{id:418,name:"ЭМЕРСИТ-0002Р",sensors:"temperature",archived:0,lat:44.8044433,lon:38.1561012}
-{id:428,name:"АГК-0107-А",sensors:"",archived:1,lat:45.88022,lon:39.27959}
-{id:429,name:"ЭМЕРСИТ-0349",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature;wind",archived:0,lat:45.046891,lon:38.919336}
-{id:430,name:"АГК-0115-А",sensors:"",archived:1,lat:44.24557,lon:39.77456}
-{id:433,name:"ЭМЕРСИТ-0010Д",sensors:"river_level",archived:0,lat:44.777781,lon:38.590121,river:"Убин р."}
-{id:434,name:"ЭМЕРСИТ-0011Д",sensors:"river_level",archived:0,lat:61.675597,lon:50.847254}
-{id:435,name:"ЭМЕРСИТ-0012Д",sensors:"river_level",archived:0,lat:63.556108,lon:53.71383}
-{id:440,name:"АГК-0047-А",sensors:"",archived:1,lat:44.78093,lon:37.86734}
-{id:443,name:"ЭМЕРСИТ-0350",sensors:"river_level",archived:0,lat:44.110672,lon:39.306667}
-{id:444,name:"ЭМЕРСИТ-0351",sensors:"river_level",archived:0,lat:44.288353,lon:39.283607}
-{id:445,name:"ЭМЕРСИТ-0016Д",sensors:"river_level;temperature",archived:0,lat:44.362663,lon:38.705404,river:"Джубга р."}
-{id:446,name:"АГК-0034-А",sensors:"",archived:1,lat:44.32223,lon:38.70207}
-{id:447,name:"АГК-0169-А",sensors:"",archived:1,lat:44.01058,lon:39.19063}
-{id:448,name:"ЭМЕРСИТ-0352",sensors:"river_level",archived:0,lat:44.17543,lon:39.071892}
-{id:449,name:"АГК-0148-А",sensors:"",archived:1,lat:44.1816,lon:39.01196}
-{id:450,name:"ЭМЕРСИТ-0019Д",sensors:"river_level",archived:0,lat:44.431089,lon:38.787655,river:"Шапсухо р."}
-{id:451,name:"ЭМЕРСИТ-0020Д",sensors:"river_level",archived:0,lat:44.426392,lon:38.782237,river:"Дефань р."}
-{id:452,name:"ЭМЕРСИТ-0022Д",sensors:"precipitation",archived:0,lat:44.286946,lon:40.3169}
-{id:454,name:"АГК-0165-А",sensors:"photo",archived:1,lat:43.44285,lon:40.01869}
-{id:457,name:"ТЕСТ-0900",sensors:"",archived:0,lat:45.0121,lon:38.94}
-{id:484,name:"АГК-0122-А",sensors:"",archived:1,lat:44.11827,lon:41.08165}
-{id:485,name:"ЭМЕРСИТ-0023Д",sensors:"river_level",archived:0,lat:44.402351,lon:38.543568,river:"Вулан р."}
-{id:486,name:"ЭМЕРСИТ-0024Д",sensors:"river_level",archived:0,lat:44.3681144,lon:38.5445404,river:"Тешебс р."}
-{id:494,name:"АГК-0018-А",sensors:"",archived:1,lat:45.45946,lon:38.04691}
-{id:495,name:"АГК-0038-А",sensors:"",archived:1,lat:43.85099,lon:39.46176}
-{id:496,name:"ЭМЕРСИТ-0026Д",sensors:"river_level",archived:0,lat:44.4968605,lon:39.4977111,river:"Пшиш р."}
-{id:497,name:"ЭМЕРСИТ-0392",sensors:"photo;river_level",archived:0,lat:43.666649,lon:39.666485,river:"Дагомыс р."}
-{id:498,name:"АГК-0111-А0",sensors:"",archived:1,lat:43.80471,lon:39.45559}
-{id:499,name:"ЭМЕРСИТ-0027Д",sensors:"river_level",archived:0,lat:45.0672416,lon:37.9002838,river:"Варнавинский к."}
-{id:500,name:"ЭМЕРСИТ-0030Д",sensors:"precipitation",archived:0,lat:43.902275,lon:39.39468}
-{id:501,name:"ЭМЕРСИТ-0034Д",sensors:"precipitation",archived:0,lat:43.7779045,lon:39.5209884}
-{id:502,name:"ЭМЕРСИТ-0033Д",sensors:"precipitation",archived:0,lat:43.81156,lon:39.61029}
-{id:503,name:"ЭМЕРСИТ-0032Д",sensors:"precipitation",archived:0,lat:43.75432,lon:39.56463}
-{id:504,name:"ЭМЕРСИТ-0031Д",sensors:"precipitation",archived:0,lat:43.8520851,lon:39.46389}
-{id:506,name:"АГК-0088-А0",sensors:"",archived:1,lat:44.6063,lon:39.07644}
-{id:507,name:"ЭМЕРСИТ-0401",sensors:"river_level",archived:0,lat:44.15102,lon:39.272392,river:"Малое Псеушхо р."}
-{id:508,name:"ЭМЕРСИТ-0403",sensors:"river_level",archived:0,lat:44.7626457,lon:39.2840614,river:"Псекупс р."}
-{id:509,name:"ЭМЕРСИТ-0404",sensors:"river_level",archived:0,lat:44.7088966,lon:39.2193641,river:"Псекупс р."}
-{id:510,name:"ЭМЕРСИТ-0402",sensors:"river_level",archived:0,lat:52.358044,lon:35.413017}
-{id:511,name:"ЭМЕРСИТ-0405",sensors:"river_level",archived:0,lat:52.35844,lon:35.419986}
-{id:512,name:"ЭМЕРСИТ-0406",sensors:"river_level",archived:0,lat:52.358448,lon:35.424612}
-{id:513,name:"ЭМЕРСИТ-0407",sensors:"river_level",archived:0,lat:52.358448,lon:35.429612}
-{id:514,name:"ЭМЕРСИТ-0411",sensors:"abs_pressure;humidity;precipitation;river_level;temperature",archived:0,lat:44.252899,lon:38.85207}
-{id:515,name:"ЭМЕРСИТ-0408",sensors:"river_level",archived:0,lat:44.3518981,lon:38.920043}
-{id:516,name:"ЭМЕРСИТ-0412",sensors:"river_level",archived:0,lat:44.268814,lon:38.8653221}
-{id:518,name:"ЭМЕРСИТ-0413",sensors:"river_level",archived:0,lat:44.2594947,lon:38.8617095}
-{id:519,name:"ЭМЕРСИТ-0409",sensors:"abs_pressure;humidity;precipitation;river_level;temperature",archived:0,lat:44.3125152,lon:38.8830947}
-{id:520,name:"ЭМЕРСИТ-0410-A",sensors:"river_level",archived:1,lat:44.2852592,lon:38.9007034}
-{id:521,name:"ЭМЕРСИТ-0418",sensors:"photo;river_level",archived:0,lat:43.982914,lon:39.282738,river:"Аше р."}
-{id:523,name:"ЭМЕРСИТ-0420",sensors:"photo;river_level",archived:0,lat:43.617992,lon:39.90921,river:"Большая Хоста р."}
-{id:524,name:"ЭМЕРСИТ-0421",sensors:"photo;river_level",archived:0,lat:43.460781,lon:39.96944,river:"Мзымта р."}
-{id:525,name:"АГК-0189Д",sensors:"precipitation",archived:0,lat:43.6616,lon:39.76023}
-{id:526,name:"ЭМЕРСИТ-0420Д",sensors:"precipitation",archived:0,lat:43.6189,lon:39.90921}
-{id:527,name:"ЭМЕРСИТ-0175Д",sensors:"precipitation",archived:0,lat:44.01421,lon:39.36641}
-{id:529,name:"АГК-0173Д",sensors:"precipitation",archived:0,lat:43.80892,lon:39.68428}
-{id:535,name:"ЭМЕРСИТ-0411T",sensors:"precipitation",archived:0,lat:44.255899,lon:38.85207}
-{id:536,name:"ЭМЕРСИТ-0423",sensors:"river_level",archived:0,lat:44.558815,lon:38.798283,river:"Шебш р."}
-{id:537,name:"ЭМЕРСИТ-0424",sensors:"river_level",archived:0,lat:44.876222,lon:38.850956}
-{id:538,name:"ЭМЕРСИТ-0429",sensors:"abs_pressure;humidity;precipitation;river_level;temperature;wind",archived:0,lat:45.719353,lon:37.768887,river:"Протока р."}
-{id:539,name:"ЭМЕРСИТ-0433",sensors:"river_level",archived:0,lat:44.276665,lon:38.835709,river:"Малое Пляхо р."}
-{id:540,name:"ЭМЕРСИТ-0431-А",sensors:"abs_pressure;humidity;precipitation;river_level;temperature;wind",archived:1,lat:45.031612,lon:38.902393}
-{id:541,name:"ЭМЕРСИТ-0432",sensors:"river_level",archived:0,lat:44.240227,lon:38.9053,river:"Ту р."}
-{id:542,name:"ЭМЕРСИТ-0434",sensors:"river_level",archived:0,lat:44.178497,lon:39.162266,river:"Цыпка р."}
-{id:545,name:"ЭМЕРСИТ-0437",sensors:"river_level",archived:0,lat:44.096203,lon:40.778606,river:"Дальняк р."}
-{id:546,name:"ЭМЕРСИТ-0438",sensors:"river_level",archived:0,lat:44.399452,lon:40.819553,river:"Лаба р."}
-{id:555,name:"ЭМЕРСИТ-0447",sensors:"river_level",archived:0,lat:44.437679,lon:39.487732,river:"Пшиш р."}
-{id:556,name:"ЭМЕРСИТ-0448",sensors:"river_level",archived:0,lat:44.236507,lon:39.905849,river:"Курджипс р."}
-{id:557,name:"АГК-0168",sensors:"photo;river_level",archived:0,lat:43.956402,lon:39.407959,river:"Псезуапсе р."}
-{id:560,name:"ТЕСТ-0001",sensors:"abs_pressure;humidity;precipitation;temperature",archived:0,lat:45.035,lon:39.04}
-{id:561,name:"АГК-0023",sensors:"river_level",archived:0,lat:45.329414,lon:37.307541,river:"Темрюкский з."}
-{id:562,name:"ЭМЕРСИТ-0410",sensors:"river_level",archived:0,lat:44.2852592,lon:38.9007034}
-{id:614,name:"АГК-0134",sensors:"river_level",archived:0,lat:44.188942,lon:38.973778,river:"Казачья Щель р."}
-{id:615,name:"ЭМЕРСИТ-0456",sensors:"river_level",archived:0,lat:43.807804,lon:41.910904}
-{id:616,name:"ЭМЕРСИТ-0457",sensors:"river_level",archived:0,lat:44.778877,lon:40.519165}
-{id:617,name:"ЭМЕРСИТ-0458",sensors:"river_level",archived:0,lat:43.91095,lon:41.463295}
-{id:618,name:"ЭМЕРСИТ-0459",sensors:"river_level",archived:0,lat:44.290577,lon:42.046833}
-{id:622,name:"АГК-0135",sensors:"river_level",archived:0,lat:45.082542,lon:41.099751,river:"Кубань р."}
-{id:623,name:"АГК-0065",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.608578,lon:38.101982,river:"Адерба р."}
-{id:632,name:"АГК-0109",sensors:"river_level",archived:0,lat:45.616325,lon:38.147404}
+{id:5,name:"АГК-0126",sensors:"river_level",archived:0,lat:44.872611,lon:37.906587,river:"Баканка р."},
+{id:8,name:"ЭМЕРСИТ-0164",sensors:"abs_pressure;dew_point;humidity;meds;precipitation;temperature;wind",archived:0,lat:45.03491786,lon:38.97349545},
+{id:10,name:"АГК-0005",sensors:"river_level",archived:0,lat:44.81461,lon:37.88212,river:"Липки р."},
+{id:11,name:"АГК-0004",sensors:"river_level",archived:0,lat:45.00803,lon:41.13927,river:"Кубань р."},
+{id:12,name:"АГК-0006",sensors:"river_level",archived:0,lat:44.85465,lon:37.99347,river:"Вторая р."},
+{id:13,name:"АГК-0007",sensors:"river_level",archived:0,lat:44.93728,lon:38.10055,river:"Абинка р."},
+{id:14,name:"АГК-0008",sensors:"river_level",archived:0,lat:44.85771,lon:37.98788,river:"Псыж р."},
+{id:15,name:"АГК-0009",sensors:"river_level",archived:0,lat:44.85182,lon:37.83588,river:"Барабашева Щель р."},
+{id:16,name:"АГК-0010",sensors:"river_level",archived:0,lat:44.85176,lon:37.87057,river:"Темрючка р."},
+{id:17,name:"АГК-0011",sensors:"river_level",archived:0,lat:45.18284,lon:38.21583,river:"Кубань р."},
+{id:18,name:"АГК-0012",sensors:"river_level",archived:0,lat:44.62991,lon:41.11307,river:"Синюха р."},
+{id:19,name:"АГК-0013",sensors:"river_level",archived:0,lat:45.02301,lon:37.63871,river:"Псебепс р."},
+{id:20,name:"АГК-0014",sensors:"river_level",archived:0,lat:44.85662,lon:38.04317,river:"Шибик р."},
+{id:21,name:"АГК-0016",sensors:"river_level",archived:0,lat:44.87626,lon:38.01732,river:"Вторая р."},
+{id:22,name:"АГК-0018",sensors:"river_level",archived:0,lat:45.45922,lon:38.04644,river:"Протока р."},
+{id:23,name:"АГК-0019",sensors:"river_level",archived:0,lat:44.75185,lon:38.07824,river:"Адегой р."},
+{id:24,name:"АГК-0020",sensors:"river_level",archived:0,lat:44.7083,lon:38.6806,river:"Афипс р."},
+{id:25,name:"АГК-0022",sensors:"river_level",archived:0,lat:44.771484,lon:38.84655,river:"Шебш р."},
+{id:26,name:"АГК-0023-А",sensors:"river_level",archived:1,lat:45.32834,lon:37.38084},
+{id:27,name:"АГК-0024",sensors:"river_level",archived:0,lat:45.29306,lon:37.36662,river:"Кубань р."},
+{id:28,name:"АГК-0025",sensors:"river_level",archived:0,lat:44.908,lon:37.40139,river:"Анапка р."},
+{id:29,name:"АГК-0026",sensors:"river_level",archived:0,lat:44.78828,lon:37.38491,river:"Сукко р."},
+{id:30,name:"АГК-0029",sensors:"photo;river_level",archived:0,lat:45.0008,lon:38.96991,river:"Кубань р."},
+{id:31,name:"АГК-0030",sensors:"river_level",archived:0,lat:44.76935,lon:39.97192,river:"Псенафа р."},
+{id:32,name:"АГК-0031",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.61879,lon:39.77887,river:"Дунайка р."},
+{id:33,name:"АГК-0032",sensors:"river_level",archived:0,lat:44.74076,lon:39.86405,river:"Белая р."},
+{id:34,name:"АГК-0033",sensors:"discharge;river_level",archived:0,lat:44.216526,lon:40.829559,river:"Шедок р."},
+{id:35,name:"АГК-0034",sensors:"river_level",archived:0,lat:44.36187,lon:38.716228,river:"Джубга р."},
+{id:36,name:"АГК-0036",sensors:"river_level",archived:0,lat:44.05236,lon:40.74574,river:"Дальняк р."},
+{id:37,name:"АГК-0037",sensors:"photo;river_level",archived:0,lat:43.90221,lon:39.39437,river:"Цусхвадж р."},
+{id:38,name:"АГК-0038",sensors:"photo;river_level",archived:0,lat:43.852261,lon:39.463875,river:"Чемит р."},
+{id:39,name:"АГК-0039",sensors:"abs_pressure;dew_point;discharge;humidity;precipitation;river_level;temperature",archived:0,lat:44.03074,lon:40.87243,river:"Андрюк р."},
+{id:40,name:"АГК-0040",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.45728,lon:38.74534,river:"Дефань р."},
+{id:41,name:"АГК-0041",sensors:"river_level",archived:0,lat:45.29575,lon:39.94023,river:"Кубань р."},
+{id:42,name:"АГК-0042",sensors:"river_level",archived:0,lat:45.28042,lon:41.01438,river:"протока р. Кубань р."},
+{id:43,name:"АГК-0043",sensors:"river_level",archived:0,lat:45.41639,lon:40.63113,river:"Кубань р."},
+{id:44,name:"АГК-0044",sensors:"discharge;river_level",archived:0,lat:44.04387,lon:40.86213,river:"Угольная р."},
+{id:45,name:"АГК-0047",sensors:"river_level",archived:0,lat:44.77506,lon:37.86648,river:"Богого р."},
+{id:46,name:"АГК-0048",sensors:"discharge;river_level",archived:0,lat:44.66887,lon:37.68703,river:"Чухабль р."},
+{id:47,name:"АГК-0050",sensors:"river_level",archived:0,lat:44.65487,lon:39.63007,river:"Пшиш р."},
+{id:48,name:"АГК-0051",sensors:"river_level",archived:0,lat:44.69442,lon:39.80981,river:"Пшеха р."},
+{id:49,name:"АГК-0052",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.17169,lon:40.60829,river:"Ходзь р."},
+{id:50,name:"АГК-0054",sensors:"discharge;river_level",archived:0,lat:44.69008,lon:37.56614,river:"Дюрсо р."},
+{id:51,name:"АГК-0055",sensors:"discharge;river_level",archived:0,lat:44.71799,lon:37.59462,river:"Абравка р."},
+{id:52,name:"АГК-0056",sensors:"discharge;river_level",archived:0,lat:44.70539,lon:37.63234,river:"Озерейка р."},
+{id:53,name:"АГК-0057",sensors:"discharge;river_level",archived:0,lat:44.86163,lon:37.73762,river:"Баканка р."},
+{id:54,name:"АГК-0058",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.91136,lon:37.56129,river:"Котлома р."},
+{id:55,name:"АГК-0059",sensors:"river_level",archived:0,lat:44.75327,lon:37.72229,river:"Старый Цемес р."},
+{id:56,name:"АГК-0060",sensors:"river_level",archived:0,lat:44.76275,lon:37.71987,river:"Цемес р."},
+{id:57,name:"АГК-0061",sensors:"river_level",archived:0,lat:44.87202,lon:37.79013,river:"Баканка р."},
+{id:58,name:"АГК-0062",sensors:"discharge;river_level",archived:0,lat:44.65018,lon:38.00646,river:"Яшамба р."},
+{id:59,name:"АГК-0063",sensors:"discharge;river_level",archived:0,lat:44.62244,lon:38.03442,river:"Хажукохабль р."},
+{id:60,name:"АГК-0064",sensors:"discharge;river_level",archived:0,lat:44.62428,lon:37.98909,river:"Яшамба р."},
+{id:61,name:"АГК-0066",sensors:"discharge;river_level",archived:0,lat:44.57252,lon:38.17002,river:"Шепс р."},
+{id:62,name:"АГК-0068",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.48048,lon:38.40006,river:"Пшада р."},
+{id:63,name:"АГК-0069",sensors:"river_level",archived:0,lat:44.64434,lon:37.94991,river:"Дооб р."},
+{id:64,name:"АГК-0070",sensors:"abs_pressure;dew_point;discharge;humidity;precipitation;river_level;temperature",archived:0,lat:44.54412,lon:38.23362,river:"Жене р."},
+{id:65,name:"АГК-0071",sensors:"river_level",archived:0,lat:44.50139,lon:38.13312,river:"Мезыбь р."},
+{id:66,name:"АГК-0072",sensors:"discharge;river_level",archived:0,lat:44.4752,lon:38.16792,river:"Хотецай р."},
+{id:67,name:"АГК-0073",sensors:"discharge;river_level",archived:0,lat:44.43587,lon:38.19281,river:"Джанхот р."},
+{id:68,name:"АГК-0074",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.51042,lon:38.32285,river:"Догуаб р."},
+{id:69,name:"АГК-0076",sensors:"discharge;river_level",archived:0,lat:44.37411,lon:38.39685,river:"Бетта р."},
+{id:70,name:"АГК-0077",sensors:"discharge;river_level",archived:0,lat:44.44212,lon:38.46499,river:"Текос р."},
+{id:71,name:"АГК-0078",sensors:"river_level",archived:0,lat:44.37288,lon:38.53197,river:"Вулан р."},
+{id:72,name:"АГК-0079",sensors:"river_level",archived:0,lat:44.37209,lon:38.5984,river:"Тешебс р."},
+{id:73,name:"АГК-0080",sensors:"river_level",archived:0,lat:44.2897,lon:40.51065,river:"Губса р."},
+{id:74,name:"АГК-0081",sensors:"river_level",archived:0,lat:44.6004,lon:40.58138,river:"Малый Чохрак р."},
+{id:75,name:"АГК-0082",sensors:"river_level",archived:0,lat:44.52024,lon:40.5952,river:"Псефирь р."},
+{id:76,name:"АГК-0083",sensors:"river_level",archived:0,lat:44.59412,lon:40.6277,river:"Большой Чохрак р."},
+{id:77,name:"АГК-0084",sensors:"river_level",archived:0,lat:44.54926,lon:40.44865,river:"Фарс р."},
+{id:78,name:"АГК-0085",sensors:"river_level",archived:0,lat:45.19114,lon:39.71626,river:"Кубань р."},
+{id:79,name:"АГК-0086",sensors:"river_level",archived:0,lat:45.34884,lon:40.20345,river:"Кубань р."},
+{id:80,name:"АГК-0087-А0",sensors:"",archived:1,lat:44.52035,lon:39.122853},
+{id:81,name:"АГК-0088",sensors:"river_level",archived:0,lat:44.63648,lon:39.1042,river:"Псекупс р."},
+{id:82,name:"АГК-0089",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.66132,lon:40.34021,river:"Пслух р."},
+{id:83,name:"АГК-0090",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.62137,lon:40.04896,river:"Кепша р."},
+{id:84,name:"АГК-0091",sensors:"river_level",archived:0,lat:44.32634,lon:39.28858,river:"Елизаветка р."},
+{id:85,name:"АГК-0092",sensors:"river_level",archived:0,lat:44.20069,lon:39.2308,river:"Спорная р."},
+{id:86,name:"АГК-0094",sensors:"river_level",archived:0,lat:44.12623,lon:39.08147,river:"Паук р."},
+{id:87,name:"АГК-0095",sensors:"river_level",archived:0,lat:44.36568,lon:39.33545,river:"Пшиш р."},
+{id:88,name:"АГК-0096",sensors:"river_level",archived:0,lat:44.23508,lon:39.37903,river:"Пшиш р."},
+{id:89,name:"АГК-0097",sensors:"river_level",archived:0,lat:44.11061,lon:41.45,river:"1-я Сухая балка р."},
+{id:91,name:"АГК-0101",sensors:"river_level",archived:0,lat:44.17837,lon:41.52992,river:"Уруп р."},
+{id:92,name:"АГК-0102",sensors:"river_level",archived:0,lat:44.20429,lon:41.39809,river:"Малый Тегинь р."},
+{id:93,name:"АГК-0103",sensors:"river_level;wind",archived:0,lat:46.03827,lon:38.14886,river:"Ахтарский л."},
+{id:94,name:"АГК-0104",sensors:"river_level",archived:0,lat:46.14734,lon:38.2326,river:"Ясенский з."},
+{id:95,name:"АГК-0105",sensors:"river_level",archived:0,lat:45.76381,lon:38.72138,river:"Кирпили р."},
+{id:96,name:"АГК-0106",sensors:"river_level",archived:0,lat:44.18092,lon:41.55375,river:"Мокрянка рч."},
+{id:97,name:"АГК-0107",sensors:"river_level",archived:0,lat:45.885025,lon:39.487858,river:"Бейсуг р."},
+{id:98,name:"АГК-0108",sensors:"river_level",archived:0,lat:45.79197,lon:39.40026,river:"Бейсуг р."},
+{id:99,name:"АГК-0109-А0",sensors:"river_level",archived:1,lat:45.61543,lon:38.14773},
+{id:100,name:"АГК-0110",sensors:"river_level",archived:0,lat:45.94711,lon:38.10686,river:"Новоипаквское г."},
+{id:101,name:"АГК-0111",sensors:"photo;river_level",archived:0,lat:43.804588,lon:39.455772,river:"Матросская р."},
+{id:102,name:"АГК-0112",sensors:"river_level",archived:0,lat:45.33603,lon:38.78592,river:"Понура р."},
+{id:104,name:"АГК-0115",sensors:"river_level",archived:0,lat:44.245552,lon:39.774693,river:"Пшеха р."},
+{id:105,name:"АГК-0114",sensors:"river_level",archived:0,lat:44.39299,lon:39.51957,river:"Хадашка р."},
+{id:106,name:"АГК-0113",sensors:"river_level",archived:0,lat:44.39849,lon:39.40826,river:"Пшиш р."},
+{id:107,name:"АГК-0116",sensors:"river_level",archived:0,lat:46.6093,lon:37.77964,river:"Азовское м."},
+{id:108,name:"АГК-0117",sensors:"river_level",archived:0,lat:46.2616,lon:38.28843,river:"Азовское м."},
+{id:109,name:"АГК-0118",sensors:"river_level",archived:0,lat:46.73743,lon:38.29,river:"Ейский л."},
+{id:110,name:"АГК-0119",sensors:"river_level",archived:0,lat:46.39134,lon:38.44714,river:"Ясени р."},
+{id:111,name:"АГК-0120",sensors:"river_level",archived:0,lat:44.49364,lon:40.88892,river:"Кукса р."},
+{id:112,name:"АГК-0121",sensors:"river_level",archived:0,lat:44.56012,lon:40.78088,river:"Кукса р."},
+{id:113,name:"АГК-0123",sensors:"river_level",archived:0,lat:44.46093,lon:41.02623,river:"Хуторянка р."},
+{id:114,name:"АГК-0124",sensors:"river_level",archived:0,lat:44.25171,lon:41.02154,river:"Окард р."},
+{id:115,name:"АГК-0125",sensors:"river_level",archived:0,lat:44.56627,lon:40.95747,river:"Грязнуха р."},
+{id:116,name:"АГК-0127",sensors:"river_level",archived:0,lat:44.14171,lon:41.04902,river:"Ецока р."},
+{id:117,name:"АГК-0128",sensors:"river_level",archived:0,lat:44.16425,lon:41.03352,river:"Большая Лаба р."},
+{id:118,name:"АГК-0129",sensors:"river_level",archived:0,lat:44.38337,lon:41.01362,river:"Окард р."},
+{id:119,name:"АГК-0130",sensors:"river_level",archived:0,lat:44.37273,lon:41.03747,river:"Чамлык р."},
+{id:120,name:"АГК-0131",sensors:"photo;river_level",archived:0,lat:44.70879,lon:40.65276,river:"Лаба р."},
+{id:121,name:"АГК-0132",sensors:"photo;river_level",archived:0,lat:44.81661,lon:40.72685,river:"Чамлык р."},
+{id:122,name:"АГК-0133",sensors:"photo;river_level",archived:0,lat:44.79127,lon:40.96708,river:"Синюха р."},
+{id:123,name:"АГК-0134-А",sensors:"river_level",archived:1,lat:45.08264,lon:41.10051},
+{id:124,name:"АГК-0135-А",sensors:"river_level",archived:1,lat:45.06048,lon:41.10158},
+{id:125,name:"АГК-0136",sensors:"river_level",archived:0,lat:44.73237,lon:41.24318,river:"Уруп р."},
+{id:126,name:"АГК-0137",sensors:"river_level",archived:0,lat:44.83381,lon:41.54045,river:"Кубань р."},
+{id:127,name:"АГК-0139",sensors:"river_level",archived:0,lat:44.21431,lon:40.71217,river:"Куба р."},
+{id:128,name:"АГК-0140",sensors:"abs_pressure;humidity;precipitation;river_level;temperature",archived:0,lat:44.284546,lon:38.957733,river:"Псебе р."},
+{id:129,name:"АГК-0143",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.212158,lon:39.437214,river:"Пшиш р."},
+{id:130,name:"АГК-0144",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.163336,lon:39.271866,river:"Пшенахо р."},
+{id:131,name:"АГК-0145",sensors:"river_level",archived:0,lat:44.07238,lon:39.14366,river:"Дедеркой р."},
+{id:132,name:"АГК-0146",sensors:"river_level",archived:0,lat:44.05888,lon:39.1677,river:"Шепси р."},
+{id:133,name:"АГК-0147",sensors:"river_level",archived:0,lat:44.33024,lon:38.77991,river:"Шепсухо р."},
+{id:134,name:"АГК-0148",sensors:"river_level",archived:0,lat:44.18165,lon:39.01217,river:"Небуг р."},
+{id:135,name:"АГК-0151",sensors:"photo;river_level",archived:0,lat:44.02428,lon:39.16224,river:"Магри р."},
+{id:136,name:"АГК-0154",sensors:"river_level",archived:0,lat:43.86381,lon:39.42076,river:"Чухукт р."},
+{id:137,name:"АГК-0156",sensors:"photo;river_level",archived:0,lat:43.75422,lon:39.56463,river:"Буу р."},
+{id:138,name:"АГК-0157",sensors:"photo;river_level",archived:0,lat:43.73001,lon:39.60896,river:"Лоо р."},
+{id:139,name:"АГК-0158",sensors:"photo;river_level",archived:0,lat:43.73183,lon:39.57806,river:"Хобза р."},
+{id:140,name:"АГК-0159",sensors:"photo;river_level",archived:0,lat:43.72238,lon:39.67245,river:"Западный Дагомыс р."},
+{id:141,name:"АГК-0160",sensors:"photo;river_level",archived:0,lat:43.51698,lon:39.99623,river:"Мзымта р."},
+{id:142,name:"АГК-0161",sensors:"photo;river_level",archived:0,lat:43.54803,lon:39.88264,river:"Хоста р."},
+{id:143,name:"АГК-0179",sensors:"photo;river_level",archived:0,lat:43.45501,lon:39.92199,river:"Херота р."},
+{id:144,name:"АГК-0184",sensors:"river_level",archived:0,lat:43.77793,lon:39.52107,river:"Хаджипсе р."},
+{id:145,name:"АГК-0191",sensors:"photo;river_level",archived:0,lat:43.66653,lon:39.70787,river:"Псахе р."},
+{id:146,name:"АГК-0002",sensors:"river_level",archived:0,lat:44.78526,lon:38.60839,river:"Убин р."},
+{id:147,name:"АГК-0053",sensors:"river_level",archived:0,lat:44.17183,lon:40.60114,river:"Гурман р."},
+{id:148,name:"АГК-0028",sensors:"river_level",archived:0,lat:44.90977,lon:37.32933,river:"Анапка р."},
+{id:150,name:"АГК-0015",sensors:"river_level",archived:0,lat:44.77874,lon:38.51184,river:"Иль р."},
+{id:151,name:"АГК-0017",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.72737,lon:38.18683,river:"Абин р."},
+{id:152,name:"АГК-0177",sensors:"river_level",archived:0,lat:43.62052,lon:39.76295,river:"Бзугу р."},
+{id:153,name:"ЭМЕРСИТ-1001",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature;wind",archived:0,lat:47.110282,lon:39.311761},
+{id:154,name:"АГК-0149",sensors:"photo;river_level",archived:0,lat:43.62469,lon:39.81915,river:"Мацеста р."},
+{id:156,name:"АГК-0163",sensors:"photo;river_level",archived:0,lat:43.44198,lon:40.03269,river:"Псоу р."},
+{id:157,name:"АГК-0194",sensors:"river_level",archived:0,lat:51.38131,lon:37.78747},
+{id:158,name:"АГК-0100",sensors:"river_level",archived:0,lat:44.07064,lon:41.3419,river:"Уруп р."},
+{id:159,name:"АГК-0162",sensors:"photo;river_level",archived:0,lat:43.49812,lon:39.91285,river:"Кудепста р."},
+{id:160,name:"АГК-0067",sensors:"abs_pressure;dew_point;discharge;humidity;precipitation;river_level;temperature",archived:0,lat:44.48388,lon:38.2218,river:"Джанхот р."},
+{id:161,name:"АГК-0049",sensors:"discharge;river_level",archived:0,lat:44.67144,lon:37.74445,river:"Мысхако р."},
+{id:162,name:"АГК-0180",sensors:"photo;river_level",archived:0,lat:43.63348,lon:40.08439,river:"Чвижепсе р."},
+{id:163,name:"АГК-0173",sensors:"photo;river_level",archived:0,lat:43.80592,lon:39.68428,river:"Шахе р."},
+{id:164,name:"АГК-0165",sensors:"photo;river_level",archived:0,lat:43.43858,lon:40.02113,river:"Чахчусер р."},
+{id:165,name:"АГК-0166",sensors:"photo;river_level",archived:0,lat:43.92816,lon:39.31759,river:"Свирка р."},
+{id:166,name:"АГК-0190",sensors:"photo;river_level",archived:0,lat:43.6862,lon:40.24564,river:"Мзымта р."},
+{id:169,name:"АГК-0192",sensors:"photo;river_level",archived:0,lat:43.58809,lon:39.80556,river:"Мацеста р."},
+{id:170,name:"АГК-0182",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.97041,lon:39.44356,river:"Псезуапсе р."},
+{id:171,name:"АГК-0175",sensors:"photo;river_level",archived:0,lat:44.01421,lon:39.36641,river:"Аше р."},
+{id:172,name:"АГК-0185",sensors:"river_level",archived:0,lat:43.67427,lon:39.62154,river:"Битха р."},
+{id:174,name:"АГК-0189",sensors:"photo;river_level",archived:0,lat:43.66166,lon:39.76023,river:"Сочи р."},
+{id:176,name:"АГК-0181",sensors:"river_level",archived:0,lat:44.01878,lon:39.181,river:"Шуюк р."},
+{id:178,name:"АГК-0168-A",sensors:"river_level",archived:1,lat:43.947065,lon:39.385548},
+{id:179,name:"АГК-0193",sensors:"river_level",archived:0,lat:43.57661,lon:39.7823,river:"Цанык р."},
+{id:181,name:"АГК-0187",sensors:"photo;river_level",archived:0,lat:43.81146,lon:39.61029,river:"Шахе р."},
+{id:182,name:"АГК-0021",sensors:"river_level",archived:0,lat:45.14255,lon:37.88673,river:"Кубань р."},
+{id:183,name:"АГК-0035",sensors:"discharge;river_level",archived:0,lat:44.03106,lon:40.8923,river:"Кызыл-Бек р."},
+{id:184,name:"АГК-0045",sensors:"river_level",archived:0,lat:45.08584,lon:41.35942,river:"Горькая балка р."},
+{id:185,name:"АГК-0046",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:43.98226,lon:40.71338,river:"Малая Лаба р."},
+{id:186,name:"АГК-0065-А",sensors:"abs_pressure;dew_point;discharge;humidity;precipitation;river_level;temperature",archived:1,lat:44.61984,lon:38.09882},
+{id:187,name:"АГК-0075",sensors:"discharge;river_level",archived:0,lat:44.41874,lon:38.3601,river:"Кураж р."},
+{id:188,name:"АГК-0093",sensors:"river_level",archived:0,lat:44.15633,lon:39.18,river:"Цыпка р."},
+{id:189,name:"АГК-0098",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.07277,lon:41.37438,river:"Кува р."},
+{id:190,name:"АГК-0122",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.118008,lon:41.081841,river:"Гарнуха р."},
+{id:191,name:"АГК-0138",sensors:"river_level",archived:0,lat:44.103,lon:40.76383,river:"Армянская р."},
+{id:192,name:"АГК-0141",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.36633,lon:38.96422,river:"Нечепсухо р."},
+{id:193,name:"АГК-0142",sensors:"river_level",archived:0,lat:44.19913,lon:39.46312,river:"Пшиш р."},
+{id:194,name:"АГК-0150",sensors:"photo;river_level",archived:0,lat:43.6999741,lon:39.76035,river:"Сочи р."},
+{id:195,name:"АГК-0152",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:44.045544,lon:39.263161,river:"Макопсе р."},
+{id:196,name:"АГК-0153",sensors:"photo;river_level",archived:0,lat:43.6165,lon:40.05032,river:"Кепша р."},
+{id:197,name:"АГК-0155",sensors:"photo;river_level",archived:0,lat:44.01066,lon:39.33377,river:"Аше р."},
+{id:198,name:"АГК-0167",sensors:"photo;river_level",archived:0,lat:43.95338,lon:39.31199,river:"Куапсе р."},
+{id:199,name:"АГК-0169",sensors:"river_level",archived:0,lat:44.01064,lon:39.19063,river:"Вишнёвка р."},
+{id:200,name:"АГК-0170",sensors:"river_level",archived:0,lat:43.8796,lon:39.40768,river:"Годлик р."},
+{id:201,name:"АГК-0171",sensors:"photo;river_level",archived:0,lat:43.76279,lon:39.54442,river:"Детляжка р."},
+{id:202,name:"АГК-0172",sensors:"photo;river_level",archived:0,lat:43.69049,lon:39.6136,river:"Уч-Дере р."},
+{id:203,name:"АГК-0174",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.7002,lon:39.68417,river:"Восточный Дагомыс р."},
+{id:204,name:"АГК-0176",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:43.947105,lon:39.473373,river:"Псезуапсе р."},
+{id:205,name:"АГК-0178",sensors:"river_level",archived:0,lat:44.02356,lon:39.24228,river:"Макопсе р."},
+{id:206,name:"АГК-0183",sensors:"river_level",archived:0,lat:43.76884,lon:39.53195,river:"Беранда р."},
+{id:207,name:"АГК-0186",sensors:"photo;river_level",archived:0,lat:43.68632,lon:39.65709,river:"Западный Дагомыс р."},
+{id:208,name:"АГК-0188",sensors:"river_level",archived:0,lat:43.77918,lon:39.4824,river:"Осохой р."},
+{id:209,name:"АГК-0196",sensors:"river_level",archived:0,lat:52.62834,lon:39.67662},
+{id:210,name:"АГК-0197",sensors:"river_level",archived:0,lat:52.6172,lon:38.50746},
+{id:220,name:"ЭМЕРСИТ-0206",sensors:"abs_pressure;dew_point;humidity;meds;precipitation;temperature;wind",archived:0,lat:46.320104,lon:39.391878},
+{id:221,name:"ЭМЕРСИТ-0207",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:0,lat:58.028792,lon:32.977061},
+{id:222,name:"ЭМЕРСИТ-0213",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:52.604179,lon:39.509345},
+{id:230,name:"ЭМЕРСИТ-0215",sensors:"river_level",archived:0,lat:53.86774,lon:34.45469},
+{id:234,name:"ЭМЕРСИТ-1002",sensors:"abs_pressure;dew_point;humidity;river_level;temperature;wind",archived:0,lat:47.06724,lon:39.15884},
+{id:241,name:"ЭМЕРСИТ-0218",sensors:"river_level",archived:0,lat:48.79638,lon:44.71735},
+{id:253,name:"ЭМЕРСИТ-0229",sensors:"river_level;waves",archived:0,lat:44.08279,lon:39.06834},
+{id:254,name:"ЭМЕРСИТ-0228",sensors:"river_level;waves",archived:0,lat:44.091809,lon:39.077431},
+{id:255,name:"ТЕСТ-0230",sensors:"photo;river_level",archived:0,lat:45.0121,lon:38.9971},
+{id:272,name:"ЭМЕРСИТ-0250",sensors:"abs_pressure;dew_point;global_radiation;humidity;precipitation;soil_humidity;soil_temperature;temperature;wind",archived:0,lat:44.762602,lon:37.496806},
+{id:278,name:"ЭМЕРСИТ-0231",sensors:"river_level",archived:0,lat:48.826394,lon:44.726003},
+{id:314,name:"ЭМЕРСИТ-0027",sensors:"river_level",archived:0,lat:45.193769,lon:37.433784,river:"Кубань р."},
+{id:317,name:"ЭМЕРСИТ-0279М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.568884,lon:38.811408},
+{id:318,name:"ЭМЕРСИТ-0264М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.787191,lon:37.826319},
+{id:319,name:"ЭМЕРСИТ-0285М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.386764,lon:39.16609},
+{id:320,name:"ЭМЕРСИТ-0289М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.277282,lon:39.442969},
+{id:321,name:"ЭМЕРСИТ-0286М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.417242,lon:38.72287},
+{id:322,name:"ЭМЕРСИТ-0253М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.198509,lon:39.958783},
+{id:323,name:"ЭМЕРСИТ-0265М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.847238,lon:37.671471},
+{id:324,name:"ЭМЕРСИТ-0254М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.115065,lon:39.685872},
+{id:325,name:"ЭМЕРСИТ-0275М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.639598,lon:38.614728},
+{id:326,name:"ЭМЕРСИТ-0277М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.738148,lon:38.540462},
+{id:327,name:"ЭМЕРСИТ-0271М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.73324,lon:37.929872},
+{id:328,name:"ЭМЕРСИТ-0287М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.469244,lon:38.877069},
+{id:329,name:"ЭМЕРСИТ-0273М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.222949,lon:41.292126},
+{id:330,name:"ЭМЕРСИТ-0272М",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature",archived:0,lat:44.248181,lon:41.145161},
+{id:331,name:"ЭМЕРСИТ-0282",sensors:"river_level",archived:0,lat:44.987789,lon:39.105225,river:"Краснодарское вдх."},
+{id:332,name:"ЭМЕРСИТ-0283",sensors:"river_level",archived:0,lat:44.928188,lon:39.257393,river:"Краснодарское вдх."},
+{id:333,name:"ЭМЕРСИТ-0284",sensors:"river_level",archived:0,lat:45.021481,lon:39.229351,river:"Краснодарское вдх."},
+{id:334,name:"ЭМЕРСИТ-0285",sensors:"river_level",archived:0,lat:44.959492,lon:39.123291,river:"Краснодарское вдх."},
+{id:337,name:"ЭМЕРСИТ-0286",sensors:"river_level",archived:0,lat:56.99678,lon:52.180611},
+{id:339,name:"ЭМЕРСИТ-0322",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature;wind",archived:0,lat:64.715615,lon:177.463198},
+{id:343,name:"ЭМЕРСИТ-0290",sensors:"river_level",archived:0,lat:61.192596,lon:62.798473},
+{id:344,name:"ЭМЕРСИТ-0291",sensors:"river_level",archived:0,lat:61.345425,lon:63.484195},
+{id:345,name:"ЭМЕРСИТ-0292",sensors:"river_level",archived:0,lat:61.367818,lon:63.539619},
+{id:353,name:"ЭМЕРСИТ-0287",sensors:"river_level",archived:0,lat:44.990925,lon:40.305973},
+{id:377,name:"ЭМЕРСИТ-0003Д",sensors:"river_level;tech_signal;temperature",archived:0,lat:44.40725,lon:38.7353,river:"Джубга р."},
+{id:383,name:"ЭМЕРСИТ-0005Д",sensors:"river_level;tech_signal;temperature",archived:0,lat:44.5203,lon:39.122833,river:"Чепси р."},
+{id:384,name:"АГК-0087",sensors:"river_level",archived:0,lat:44.49753,lon:39.07775,river:"Чепси р."},
+{id:385,name:"ЭМЕРСИТ-0007Д",sensors:"river_level;tech_signal;temperature",archived:0,lat:44.604217,lon:39.019067,river:"Каверзе р."},
+{id:386,name:"ЭМЕРСИТ-0323",sensors:"abs_pressure;humidity;precipitation;temperature;wind",archived:0,lat:68.06276,lon:166.452792},
+{id:387,name:"ЭМЕРСИТ-0324",sensors:"abs_pressure;humidity;precipitation;temperature;wind",archived:0,lat:69.699373,lon:170.301825},
+{id:390,name:"ЭМЕРСИТ-0327",sensors:"river_level",archived:0,lat:53.078156,lon:45.115002},
+{id:395,name:"АГК-0043Д",sensors:"precipitation;tech_signal",archived:0,lat:44.36195,lon:38.715835},
+{id:396,name:"АГК-0077Д",sensors:"precipitation;tech_signal;temperature",archived:0,lat:44.44231,lon:38.464948},
+{id:398,name:"ЭМЕРСИТ-0328",sensors:"abs_pressure;dew_point;gas:10;gas:11;gas:8;gas:9;humidity;precipitation;temperature;wind",archived:0,lat:63.570159,lon:53.689389},
+{id:399,name:"ЭМЕРСИТ-0329",sensors:"abs_pressure;dew_point;gas:10;gas:11;gas:8;gas:9;humidity;precipitation;temperature;wind",archived:0,lat:61.791826,lon:50.751701},
+{id:400,name:"ЭМЕРСИТ-0330",sensors:"abs_pressure;dew_point;gas:10;gas:11;gas:8;gas:9;humidity;precipitation;temperature;wind",archived:0,lat:67.517895,lon:64.069229},
+{id:403,name:"АГК-0113-А",sensors:"river_level",archived:1,lat:44.40893,lon:39.41411},
+{id:404,name:"АГК-0176-А",sensors:"abs_pressure;dew_point;humidity;photo;precipitation;river_level;temperature",archived:1,lat:43.950035,lon:39.467596},
+{id:405,name:"АГК-0033-А",sensors:"discharge;river_level",archived:1,lat:44.22237,lon:40.84539},
+{id:406,name:"АГК-0080-А",sensors:"river_level",archived:1,lat:44.31266,lon:40.61937},
+{id:407,name:"АГК-0051-А",sensors:"river_level",archived:1,lat:44.69663,lon:39.8073},
+{id:408,name:"ЭМЕРСИТ-0331",sensors:"river_level",archived:0,lat:44.383659,lon:39.164761,river:"Псекупс р."},
+{id:409,name:"ЭМЕРСИТ-0332",sensors:"river_level",archived:0,lat:44.253315,lon:39.239459,river:"Чилипси р."},
+{id:410,name:"ЭМЕРСИТ-0333",sensors:"river_level",archived:0,lat:44.161503,lon:39.215195,river:"Туапсе р."},
+{id:413,name:"ЭМЕРСИТ-0336",sensors:"river_level",archived:0,lat:53.078827,lon:45.11245},
+{id:417,name:"ЭМЕРСИТ-0009Д",sensors:"river_level;temperature",archived:0,lat:44.880307,lon:37.933525,river:"Адагум р."},
+{id:418,name:"ЭМЕРСИТ-0002Р",sensors:"temperature",archived:0,lat:44.8044433,lon:38.1561012},
+{id:428,name:"АГК-0107-А",sensors:"",archived:1,lat:45.88022,lon:39.27959},
+{id:429,name:"ЭМЕРСИТ-0349",sensors:"abs_pressure;dew_point;humidity;precipitation;temperature;wind",archived:0,lat:45.046891,lon:38.919336},
+{id:430,name:"АГК-0115-А",sensors:"",archived:1,lat:44.24557,lon:39.77456},
+{id:433,name:"ЭМЕРСИТ-0010Д",sensors:"river_level",archived:0,lat:44.777781,lon:38.590121,river:"Убин р."},
+{id:434,name:"ЭМЕРСИТ-0011Д",sensors:"river_level",archived:0,lat:61.675597,lon:50.847254},
+{id:435,name:"ЭМЕРСИТ-0012Д",sensors:"river_level",archived:0,lat:63.556108,lon:53.71383},
+{id:440,name:"АГК-0047-А",sensors:"",archived:1,lat:44.78093,lon:37.86734},
+{id:443,name:"ЭМЕРСИТ-0350",sensors:"river_level",archived:0,lat:44.110672,lon:39.306667},
+{id:444,name:"ЭМЕРСИТ-0351",sensors:"river_level",archived:0,lat:44.288353,lon:39.283607},
+{id:445,name:"ЭМЕРСИТ-0016Д",sensors:"river_level;temperature",archived:0,lat:44.362663,lon:38.705404,river:"Джубга р."},
+{id:446,name:"АГК-0034-А",sensors:"",archived:1,lat:44.32223,lon:38.70207},
+{id:447,name:"АГК-0169-А",sensors:"",archived:1,lat:44.01058,lon:39.19063},
+{id:448,name:"ЭМЕРСИТ-0352",sensors:"river_level",archived:0,lat:44.17543,lon:39.071892},
+{id:449,name:"АГК-0148-А",sensors:"",archived:1,lat:44.1816,lon:39.01196},
+{id:450,name:"ЭМЕРСИТ-0019Д",sensors:"river_level",archived:0,lat:44.431089,lon:38.787655,river:"Шапсухо р."},
+{id:451,name:"ЭМЕРСИТ-0020Д",sensors:"river_level",archived:0,lat:44.426392,lon:38.782237,river:"Дефань р."},
+{id:452,name:"ЭМЕРСИТ-0022Д",sensors:"precipitation",archived:0,lat:44.286946,lon:40.3169},
+{id:454,name:"АГК-0165-А",sensors:"photo",archived:1,lat:43.44285,lon:40.01869},
+{id:457,name:"ТЕСТ-0900",sensors:"",archived:0,lat:45.0121,lon:38.94},
+{id:484,name:"АГК-0122-А",sensors:"",archived:1,lat:44.11827,lon:41.08165},
+{id:485,name:"ЭМЕРСИТ-0023Д",sensors:"river_level",archived:0,lat:44.402351,lon:38.543568,river:"Вулан р."},
+{id:486,name:"ЭМЕРСИТ-0024Д",sensors:"river_level",archived:0,lat:44.3681144,lon:38.5445404,river:"Тешебс р."},
+{id:494,name:"АГК-0018-А",sensors:"",archived:1,lat:45.45946,lon:38.04691},
+{id:495,name:"АГК-0038-А",sensors:"",archived:1,lat:43.85099,lon:39.46176},
+{id:496,name:"ЭМЕРСИТ-0026Д",sensors:"river_level",archived:0,lat:44.4968605,lon:39.4977111,river:"Пшиш р."},
+{id:497,name:"ЭМЕРСИТ-0392",sensors:"photo;river_level",archived:0,lat:43.666649,lon:39.666485,river:"Дагомыс р."},
+{id:498,name:"АГК-0111-А0",sensors:"",archived:1,lat:43.80471,lon:39.45559},
+{id:499,name:"ЭМЕРСИТ-0027Д",sensors:"river_level",archived:0,lat:45.0672416,lon:37.9002838,river:"Варнавинский к."},
+{id:500,name:"ЭМЕРСИТ-0030Д",sensors:"precipitation",archived:0,lat:43.902275,lon:39.39468},
+{id:501,name:"ЭМЕРСИТ-0034Д",sensors:"precipitation",archived:0,lat:43.7779045,lon:39.5209884},
+{id:502,name:"ЭМЕРСИТ-0033Д",sensors:"precipitation",archived:0,lat:43.81156,lon:39.61029},
+{id:503,name:"ЭМЕРСИТ-0032Д",sensors:"precipitation",archived:0,lat:43.75432,lon:39.56463},
+{id:504,name:"ЭМЕРСИТ-0031Д",sensors:"precipitation",archived:0,lat:43.8520851,lon:39.46389},
+{id:506,name:"АГК-0088-А0",sensors:"",archived:1,lat:44.6063,lon:39.07644},
+{id:507,name:"ЭМЕРСИТ-0401",sensors:"river_level",archived:0,lat:44.15102,lon:39.272392,river:"Малое Псеушхо р."},
+{id:508,name:"ЭМЕРСИТ-0403",sensors:"river_level",archived:0,lat:44.7626457,lon:39.2840614,river:"Псекупс р."},
+{id:509,name:"ЭМЕРСИТ-0404",sensors:"river_level",archived:0,lat:44.7088966,lon:39.2193641,river:"Псекупс р."},
+{id:510,name:"ЭМЕРСИТ-0402",sensors:"river_level",archived:0,lat:52.358044,lon:35.413017},
+{id:511,name:"ЭМЕРСИТ-0405",sensors:"river_level",archived:0,lat:52.35844,lon:35.419986},
+{id:512,name:"ЭМЕРСИТ-0406",sensors:"river_level",archived:0,lat:52.358448,lon:35.424612},
+{id:513,name:"ЭМЕРСИТ-0407",sensors:"river_level",archived:0,lat:52.358448,lon:35.429612},
+{id:514,name:"ЭМЕРСИТ-0411",sensors:"abs_pressure;humidity;precipitation;river_level;temperature",archived:0,lat:44.252899,lon:38.85207},
+{id:515,name:"ЭМЕРСИТ-0408",sensors:"river_level",archived:0,lat:44.3518981,lon:38.920043},
+{id:516,name:"ЭМЕРСИТ-0412",sensors:"river_level",archived:0,lat:44.268814,lon:38.8653221},
+{id:518,name:"ЭМЕРСИТ-0413",sensors:"river_level",archived:0,lat:44.2594947,lon:38.8617095},
+{id:519,name:"ЭМЕРСИТ-0409",sensors:"abs_pressure;humidity;precipitation;river_level;temperature",archived:0,lat:44.3125152,lon:38.8830947},
+{id:520,name:"ЭМЕРСИТ-0410-A",sensors:"river_level",archived:1,lat:44.2852592,lon:38.9007034},
+{id:521,name:"ЭМЕРСИТ-0418",sensors:"photo;river_level",archived:0,lat:43.982914,lon:39.282738,river:"Аше р."},
+{id:523,name:"ЭМЕРСИТ-0420",sensors:"photo;river_level",archived:0,lat:43.617992,lon:39.90921,river:"Большая Хоста р."},
+{id:524,name:"ЭМЕРСИТ-0421",sensors:"photo;river_level",archived:0,lat:43.460781,lon:39.96944,river:"Мзымта р."},
+{id:525,name:"АГК-0189Д",sensors:"precipitation",archived:0,lat:43.6616,lon:39.76023},
+{id:526,name:"ЭМЕРСИТ-0420Д",sensors:"precipitation",archived:0,lat:43.6189,lon:39.90921},
+{id:527,name:"ЭМЕРСИТ-0175Д",sensors:"precipitation",archived:0,lat:44.01421,lon:39.36641},
+{id:529,name:"АГК-0173Д",sensors:"precipitation",archived:0,lat:43.80892,lon:39.68428},
+{id:535,name:"ЭМЕРСИТ-0411T",sensors:"precipitation",archived:0,lat:44.255899,lon:38.85207},
+{id:536,name:"ЭМЕРСИТ-0423",sensors:"river_level",archived:0,lat:44.558815,lon:38.798283,river:"Шебш р."},
+{id:537,name:"ЭМЕРСИТ-0424",sensors:"river_level",archived:0,lat:44.876222,lon:38.850956},
+{id:538,name:"ЭМЕРСИТ-0429",sensors:"abs_pressure;humidity;precipitation;river_level;temperature;wind",archived:0,lat:45.719353,lon:37.768887,river:"Протока р."},
+{id:539,name:"ЭМЕРСИТ-0433",sensors:"river_level",archived:0,lat:44.276665,lon:38.835709,river:"Малое Пляхо р."},
+{id:540,name:"ЭМЕРСИТ-0431-А",sensors:"abs_pressure;humidity;precipitation;river_level;temperature;wind",archived:1,lat:45.031612,lon:38.902393},
+{id:541,name:"ЭМЕРСИТ-0432",sensors:"river_level",archived:0,lat:44.240227,lon:38.9053,river:"Ту р."},
+{id:542,name:"ЭМЕРСИТ-0434",sensors:"river_level",archived:0,lat:44.178497,lon:39.162266,river:"Цыпка р."},
+{id:545,name:"ЭМЕРСИТ-0437",sensors:"river_level",archived:0,lat:44.096203,lon:40.778606,river:"Дальняк р."},
+{id:546,name:"ЭМЕРСИТ-0438",sensors:"river_level",archived:0,lat:44.399452,lon:40.819553,river:"Лаба р."},
+{id:555,name:"ЭМЕРСИТ-0447",sensors:"river_level",archived:0,lat:44.437679,lon:39.487732,river:"Пшиш р."},
+{id:556,name:"ЭМЕРСИТ-0448",sensors:"river_level",archived:0,lat:44.236507,lon:39.905849,river:"Курджипс р."},
+{id:557,name:"АГК-0168",sensors:"photo;river_level",archived:0,lat:43.956402,lon:39.407959,river:"Псезуапсе р."},
+{id:560,name:"ТЕСТ-0001",sensors:"abs_pressure;humidity;precipitation;temperature",archived:0,lat:45.035,lon:39.04},
+{id:561,name:"АГК-0023",sensors:"river_level",archived:0,lat:45.329414,lon:37.307541,river:"Темрюкский з."},
+{id:562,name:"ЭМЕРСИТ-0410",sensors:"river_level",archived:0,lat:44.2852592,lon:38.9007034},
+{id:614,name:"АГК-0134",sensors:"river_level",archived:0,lat:44.188942,lon:38.973778,river:"Казачья Щель р."},
+{id:615,name:"ЭМЕРСИТ-0456",sensors:"river_level",archived:0,lat:43.807804,lon:41.910904},
+{id:616,name:"ЭМЕРСИТ-0457",sensors:"river_level",archived:0,lat:44.778877,lon:40.519165},
+{id:617,name:"ЭМЕРСИТ-0458",sensors:"river_level",archived:0,lat:43.91095,lon:41.463295},
+{id:618,name:"ЭМЕРСИТ-0459",sensors:"river_level",archived:0,lat:44.290577,lon:42.046833},
+{id:622,name:"АГК-0135",sensors:"river_level",archived:0,lat:45.082542,lon:41.099751,river:"Кубань р."},
+{id:623,name:"АГК-0065",sensors:"abs_pressure;dew_point;humidity;precipitation;river_level;temperature",archived:0,lat:44.608578,lon:38.101982,river:"Адерба р."},
+{id:632,name:"АГК-0109",sensors:"river_level",archived:0,lat:45.616325,lon:38.147404},
 {id:633,name:"ЭМЕРСИТ-0431",sensors:"abs_pressure;humidity;precipitation;temperature;wind",archived:1,lat:45.271179,lon:38.128269}
 ];
