@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0e2b20">
+<title>Гидропосты и данные — ГОО «СКО» | goosko.ru/emercit</title>
+<meta name="description" content="Открытые данные автоматических гидропостов emercit.com: выберите пост АГК, сроки, постройте график уровня воды, температуры или осадков и скачайте CSV.">
+<link rel="canonical" href="https://goosko.ru/emercit/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ГОО «СКО»">
+<meta property="og:title" content="Гидропосты и данные — ГОО «СКО»">
+<meta property="og:description" content="Графики и CSV по автоматическим гидропостам emercit.com: уровень воды, осадки, температура и другие параметры.">
+<meta property="og:url" content="https://goosko.ru/emercit/">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="../images/result/logo.webp" type="image/webp">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.20/400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.20/500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.20/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.0.20/800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.20/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.20/700.css">
+
+<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="emercit.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+<a class="skip" href="#main">Перейти к содержимому</a>
+
+<!-- ШАПКА -->
+<header class="header" id="header">
+  <div class="wrap header__in">
+    <a class="brand" href="../index.html#top" aria-label="СКО — на главную">
+      <span class="brand__mark"><img src="../images/result/logo.webp" alt="Эмблема СКО"></span>
+      <span class="brand__txt">
+        <span class="brand__name">СКО</span>
+        <span class="brand__sub">Сочинское Краеведческое Общество</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <a href="../index.html#about">О нас</a>
+      <a href="../index.html#directions">Направления</a>
+      <a href="../index.html#plan">План походов</a>
+      <a href="../index.html#safety">Безопасность</a>
+      <a href="../index.html#governance">Управление</a>
+      <a href="../charter.html">Устав</a>
+      <a href="../media.html">Галерея</a>
+      <a href="index.html" class="is-active" aria-current="page">Гидропосты</a>
+      <a href="../index.html#contacts">Контакты</a>
+    </nav>
+
+    <div class="header__act">
+      <a class="btn btn--sm" href="../index.html#join">Вступить</a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="mnav"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- МОБИЛЬНОЕ МЕНЮ -->
+<div class="mnav" id="mnav" aria-hidden="true">
+  <a href="../index.html#about">О нас <small>Статус, миссия и цели</small></a>
+  <a href="../index.html#directions">Направления <small>Шесть направлений работы</small></a>
+  <a href="../index.html#plan">План походов <small>Расписание выходов</small></a>
+  <a href="../index.html#safety">Безопасность <small>Правила и чек-лист</small></a>
+  <a href="../index.html#governance">Управление <small>Совет, финансы и правила чата</small></a>
+  <a href="../charter.html">Устав и бланки <small>Полный текст и приложения №1–4</small></a>
+  <a href="../media.html">Галерея <small>Медиатека СКО</small></a>
+  <a href="index.html" aria-current="page">Гидропосты <small>Графики и CSV с emercit.com</small></a>
+  <a href="../index.html#contacts">Контакты <small>Усадьба и связь</small></a>
+  <div class="mnav__act">
+    <a class="btn" href="../index.html#join">Вступить в СКО</a>
+  </div>
+  <div class="mnav__contacts">
+    <a href="tel:+79890868976">+7 (989) 086-89-76</a>
+    <a href="mailto:cuzhima@yandex.ru">cuzhima@yandex.ru</a>
+    <span>г. Сочи · ул. Войкова, 68</span>
+  </div>
+</div>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ОБЛОЖКА -->
+<section class="page-hero" aria-label="Данные гидропостов">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Хлебные крошки">
+      <a href="../index.html">Главная</a>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      <span aria-current="page">Гидропосты</span>
+    </nav>
+
+    <div class="page-hero__grid">
+      <div>
+        <span class="eyebrow">Открытые гидрологические данные</span>
+        <h1>Гидропосты<br><em>emercit.com</em></h1>
+        <p class="page-hero__lead">Выберите пост по названию (например, АГК-0174), задайте сроки — и посмотрите график уровня воды, осадков, температуры или другого параметра. Любую выборку можно скачать в CSV для Excel и собственных расчётов.</p>
+        <div class="page-hero__act">
+          <a class="btn" href="#data">Перейти к данным
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--light" href="http://map.emercit.com/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Карта emercit.com
+          </a>
+        </div>
+      </div>
+
+      <div class="page-hero__stats" aria-label="Данные в цифрах">
+        <div class="mstat"><b id="statStations">331</b><span>гидропост в каталоге</span></div>
+        <div class="mstat"><b id="statLevel">276</b><span>постов с уровнем воды</span></div>
+        <div class="mstat"><b>10</b><span>минут между измерениями</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ОСНОВНОЙ БЛОК -->
+<section class="section" id="data">
+  <div class="wrap">
+    <div class="head head--row reveal">
+      <div style="max-width:66ch">
+        <span class="eyebrow">Выборка и выгрузка</span>
+        <h2>Пост, параметр и сроки</h2>
+        <p>Данные берутся напрямую с emercit.com через прокси и не хранятся на сайте. График строится в браузере, CSV формируется из тех же строк, что видны на экране.</p>
+      </div>
+      <span class="pill" id="catalogPill">Каталог загружается…</span>
+    </div>
+
+    <div class="edash">
+      <!-- ПАНЕЛЬ -->
+      <form class="epanel reveal" id="epanel" novalidate>
+        <div class="epanel__hd">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M6 12h12M10 18h4"/></svg>
+          <b>Параметры выборки</b>
+        </div>
+
+        <div class="efield">
+          <label for="stSearch">Поиск гидропоста</label>
+          <input class="einput" id="stSearch" type="search" placeholder="АГК-0174, 174 или ЭМЕРСИТ" autocomplete="off" spellcheck="false">
+        </div>
+
+        <div class="efield">
+          <label for="stSelect">Гидропост <span class="req">*</span></label>
+          <select class="eselect" id="stSelect" size="1" aria-describedby="stMeta"></select>
+          <p class="estation-meta" id="stMeta">—</p>
+        </div>
+
+        <div class="efield">
+          <label for="modeSelect">Параметр <span class="req">*</span></label>
+          <select class="eselect" id="modeSelect"></select>
+        </div>
+
+        <div class="efield">
+          <label>Сроки</label>
+          <div class="epresets" id="presets" role="group" aria-label="Быстрый выбор периода">
+            <button class="epreset" type="button" data-days="1">Сутки</button>
+            <button class="epreset is-on" type="button" data-days="7">7 дней</button>
+            <button class="epreset" type="button" data-days="30">30 дней</button>
+            <button class="epreset" type="button" data-days="90">90 дней</button>
+            <button class="epreset" type="button" data-days="365">Год</button>
+          </div>
+        </div>
+
+        <div class="edates">
+          <div class="efield">
+            <label for="fromDate">С даты</label>
+            <input class="einput" id="fromDate" type="date" required>
+          </div>
+          <div class="efield">
+            <label for="toDate">По дату</label>
+            <input class="einput" id="toDate" type="date" required>
+          </div>
+        </div>
+
+        <div class="eact">
+          <button class="btn" id="loadBtn" type="submit">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+            Построить график
+          </button>
+          <div class="eact__row">
+            <button class="btn btn--green btn--sm" id="downloadBtn" type="button">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+              Скачать CSV
+            </button>
+            <select class="eselect" id="csvFmt" aria-label="Формат CSV" title="Формат CSV">
+              <option value="excel">Excel: ; и запятая</option>
+              <option value="dot">Универсальный: ; и точка</option>
+              <option value="comma">США/Европа: , и точка</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="eprog" id="progress" role="progressbar" aria-label="Загрузка данных" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+        <p class="estatus" id="status" role="status" aria-live="polite">Выберите пост и нажмите «Построить график».</p>
+        <noscript><p class="estatus err">Для построения графиков и выгрузки CSV нужен JavaScript.</p></noscript>
+
+        <details class="eadv">
+          <summary>Не загружается? Другой прокси</summary>
+          <div class="eadv__body">
+            <p>По умолчанию запросы идут через Cloudflare Worker <code>emercitproxy.cuzhima.workers.dev</code>. Если он недоступен, укажите адрес своего прокси с тем же API (<code>?id=&amp;a=&amp;b=&amp;mode=</code>).</p>
+            <div class="eadv__row">
+              <input class="einput" id="proxyInput" type="url" placeholder="https://example.com/csv.php" autocomplete="off" spellcheck="false">
+              <button class="btn btn--ghost btn--sm" id="proxySave" type="button">ОК</button>
+            </div>
+            <p><button class="linkbtn" id="proxyReset" type="button" style="padding:0; font-size:12.4px">Вернуть стандартный прокси</button></p>
+          </div>
+        </details>
+      </form>
+
+      <!-- РЕЗУЛЬТАТЫ -->
+      <div>
+        <div class="ecard reveal">
+          <div class="ecard__hd">
+            <div class="ecard__title">
+              <b id="chartTitle">График показаний</b>
+              <span id="chartSub">Выберите гидропост, параметр и сроки</span>
+            </div>
+            <div class="ecard__tools">
+              <span class="pill" id="chartMeta">—</span>
+            </div>
+          </div>
+          <div class="echips" id="chips" hidden></div>
+          <div class="ecard__body">
+            <div class="echart" id="chartWrap">
+              <canvas id="chart" role="img" aria-label="График данных гидропоста"></canvas>
+              <div class="etip" id="tip" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="estats" id="stats" hidden>
+          <div class="estat estat--accent"><b id="statLast">—</b><span id="statLastL">Последнее значение</span></div>
+          <div class="estat"><b id="statMin">—</b><span>Минимум</span></div>
+          <div class="estat"><b id="statMax">—</b><span>Максимум</span></div>
+          <div class="estat"><b id="statAvg">—</b><span>Среднее</span></div>
+        </div>
+        <p class="etable__note" id="statsNote"></p>
+
+        <div class="ecard reveal" style="margin-top:16px">
+          <div class="ecard__hd">
+            <div class="ecard__title">
+              <b style="font-size:20px">Таблица данных</b>
+              <span id="tableSub">Появится после загрузки</span>
+            </div>
+            <div class="ecard__tools">
+              <span class="pill" id="tablePill">—</span>
+            </div>
+          </div>
+          <div class="ecard__body">
+            <div class="etable-wrap" id="tableWrap" hidden>
+              <table class="etable" id="table">
+                <thead></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <p class="etable__note" id="tableNote">Показания постов обновляются каждые 10 минут; время в источнике — местное (МСК).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- О ДАННЫХ -->
+<section class="section section--tint" id="about">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Как это работает</span>
+      <h2>Откуда берутся цифры</h2>
+      <p>Раздел использует открытый экспорт emercit.com — системы автоматического мониторинга, которую применяют на водпостах Краснодарского края и соседних регионов.</p>
+    </div>
+
+    <div class="einfo reveal">
+      <div class="einfo__card">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+          Источник и обновление
+        </h3>
+        <p>Данные отдаёт <code>csv.php</code> сайта emercit.com. Каждый пост присылает измерения примерно раз в 10 минут. Запросы кем-то не изменяются: сайт только читает и перестраивает ряды.</p>
+      </div>
+      <div class="einfo__card">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg>
+          Длинные периоды
+        </h3>
+        <p>Источник надёжно отдаёт не больше ~10 дней за один запрос, поэтому большие сроки автоматически разбиваются на части и склеиваются в браузере. Максимальный период — 366 дней.</p>
+      </div>
+      <div class="einfo__card">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L2.4 18a2 2 0 0 0 1.7 3h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+          Точность и ответственность
+        </h3>
+        <p>Это сырые телеметрические данные без калибровки и поверки. Они годятся для наблюдений, учебных проектов и предварительной оценки обстановки, но не заменяют официальные прогнозы и предупреждения.</p>
+      </div>
+    </div>
+
+    <div class="note-card reveal">
+      <span class="note-card__ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3 7h7l-5.7 4.4 2.2 7.1L12 16.9 5.5 20.5l2.2-7.1L2 9h7z"/></svg>
+      </span>
+      <div>
+        <h3>Нашли ошибку в данных или нужен другой пост?</h3>
+        <p>Каталог построен по <code>overall.php</code> emercit.com. Если пост переименован, добавлен новый датчик или нужна помощь с выгрузкой — напишите нам, обновим каталог и подскажем формат.</p>
+      </div>
+      <a class="btn btn--green btn--sm" href="mailto:cuzhima@yandex.ru?subject=Гидропосты%20goosko.ru">Написать в СКО</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ФУТЕР -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__about">
+        <a class="brand" href="../index.html#top">
+          <span class="brand__mark"><img src="../images/result/logo.webp" alt="Эмблема СКО"></span>
+          <span class="brand__txt"><span class="brand__name">ГОО «СКО»</span><span class="brand__sub">Сочинское Краеведческое Общество</span></span>
+        </a>
+        <p>Добровольное самоуправляемое общественное объединение без образования юридического лица (ФЗ № 82-ФЗ).</p>
+        <div class="footer__soc">
+          <a href="https://vk.ru/sochi_kraeved" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.8 17.1c-5.2 0-8.6-3.7-8.7-9.8h2.6c.1 4.5 2.1 6.4 3.7 6.8V7.3h2.5v3.9c1.5-.2 3.1-2 3.6-3.9h2.5c-.4 2.2-2 4-3.2 4.8 1.2.6 3 2.2 3.7 4.9h-2.8c-.6-1.9-2-3.3-4-3.6v3.7h-.9z"/></svg> ВКонтакте</a>
+          <a href="https://t.me/sochi_kraeved" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3L18.9 19c-.2 1-.8 1.2-1.7.8l-4.5-3.3-2.2 2.1c-.2.2-.5.5-1 .5l.4-5 8.6-7.8c.4-.3-.1-.5-.6-.2L6.6 12.9 2.2 11.5c-1-.3-1-1 .2-1.4l18-6.9c.8-.3 1.6.2 1.5.9z"/></svg> Telegram</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Навигация</h4>
+        <ul>
+          <li><a href="../index.html#about">О нас</a></li>
+          <li><a href="../index.html#directions">Направления</a></li>
+          <li><a href="../index.html#expeditions">Экспедиции</a></li>
+          <li><a href="../index.html#plan">План походов</a></li>
+          <li><a href="../media.html">Галерея</a></li>
+          <li><a href="index.html">Гидропосты и данные</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Документы</h4>
+        <ul>
+          <li><a href="../charter.html">Устав ГОО «СКО»</a></li>
+          <li><a href="../charter.html#annex-1">Согласие на ПДн (Прил. №1)</a></li>
+          <li><a href="../charter.html#annex-2">Согласие родителей (Прил. №2)</a></li>
+          <li><a href="../charter.html#annex-3">Анкета кандидата (Прил. №3)</a></li>
+          <li><a href="../charter.html#annex-4">Финансовый отчёт (Прил. №4)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li>г. Сочи · ул. Войкова, 68</li>
+          <li><a href="tel:+79890868976">+7 (989) 086-89-76</a></li>
+          <li><a href="mailto:cuzhima@yandex.ru">cuzhima@yandex.ru</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bot">
+      <span>© 2026 Городская общественная организация «Сочинское Краеведческое Общество» (ГОО «СКО»).</span>
+      <span>Данные: emercit.com · официальный сайт goosko.ru</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" aria-label="Наверх">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="emercit-stations.js"></script>
+<script src="emercit-app.js"></script>
+</body>
+</html>
