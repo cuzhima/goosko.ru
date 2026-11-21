@@ -1056,33 +1056,29 @@
 
   /* ------------------------------ События ------------------------------ */
   function bind() {
-    console.log('[bind] called');
     var form = $('#epanel');
     if (form) form.addEventListener('submit', function (e) { e.preventDefault(); load(); });
 
-    var attachSearchListener = function () {
-      var search = $('#stSearch');
-      console.log('[bind] attachSearchListener, search:', search);
-      if (!search) {
-        // Элемент ещё не готов — пробуем через 50 мс
-        setTimeout(attachSearchListener, 50);
-        return;
-      }
+    var search = $('#stSearch');
+    if (search) {
       if (search._listenerAttached) return;
       search._listenerAttached = true;
-      search.addEventListener('input', function () {
-        console.log('[bind] input event, value:', this.value);
-        var list = filterStations(this.value);
-        fillStationSelect(list, null);
-        if (list.length) {
-          var s = STATION_BY_ID[$('#stSelect').value];
-          if (s && (!state.station || state.station.id !== s.id)) setStation(s);
-        } else {
-          $('#stMeta').textContent = 'По запросу «' + this.value.trim() + '» ничего не найдено';
-        }
-      };
-    };
-    attachSearchListener();
+      search.addEventListener('input', onSearchInput);
+    } else {
+      // Элемент ещё не готов — пробуем через 50 мс
+      setTimeout(bind, 50);
+    }
+
+    function onSearchInput() {
+      var list = filterStations(this.value);
+      fillStationSelect(list, null);
+      if (list.length) {
+        var s = STATION_BY_ID[$('#stSelect').value];
+        if (s && (!state.station || state.station.id !== s.id)) setStation(s);
+      } else {
+        $('#stMeta').textContent = 'По запросу «' + this.value.trim() + '» ничего не найдено';
+      }
+    }
 
     $('#stSelect').addEventListener('change', function () {
       var s = STATION_BY_ID[this.value];
