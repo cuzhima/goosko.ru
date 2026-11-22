@@ -1250,4 +1250,16 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
+
+  /* Export to global scope for debugging and external access */
+  window.EMERCIT_APP = {
+    STATIONS: STATIONS,
+    filterStations: filterStations,
+    bind: bind,
+    init: init,
+    state: state,
+    MODES: MODES,
+    load: load,
+    downloadCsv: downloadCsv
+  };
 })();
